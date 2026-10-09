@@ -1,0 +1,54 @@
+-- Pandoc Lua filter: maps LaTeX constructs of ptx_model_answers.tex to Word styles.
+
+local function strip_style(attr)
+  if attr and attr.attributes then attr.attributes.style = nil end
+end
+
+function Span(el)
+  local st = el.attributes.style
+  if st and st:match("color:%s*ans") then
+    el.attributes.style = nil
+    el.attributes["custom-style"] = "Answer"
+    return el
+  end
+  if st then
+    strip_style(el)
+    return el.content
+  end
+end
+
+function Div(el)
+  if el.classes:includes("titlepage") then
+    return {}
+  end
+  if el.classes:includes("keybox") then
+    -- first paragraph is the box title
+    local blocks = el.content
+    if #blocks > 0 and blocks[1].t == "Para" then
+      blocks[1] = pandoc.Div({ pandoc.Para({ pandoc.Strong(pandoc.utils.stringify(blocks[1])) }) },
+        pandoc.Attr("", {}, { ["custom-style"] = "Key Box Title" }))
+    end
+    return pandoc.Div(blocks, pandoc.Attr("", {}, { ["custom-style"] = "Key Box" }))
+  end
+  if el.classes:includes("center") then
+    if pandoc.utils.stringify(el):match("^End of Subject") then
+      return pandoc.Div(el.content, pandoc.Attr("", {}, { ["custom-style"] = "End Note" }))
+    end
+    return pandoc.Div(el.content, pandoc.Attr("", {}, { ["custom-style"] = "Centered" }))
+  end
+end
+
+function RawBlock(el)
+  if el.format == "latex" or el.format == "tex" then
+    if el.text:match("\\clearpage") or el.text:match("\\newpage") then
+      return pandoc.RawBlock("openxml", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
+    end
+    return {}
+  end
+end
+
+function RawInline(el)
+  if el.format == "latex" or el.format == "tex" then
+    return {}
+  end
+end
