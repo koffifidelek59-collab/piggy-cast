@@ -89,7 +89,8 @@ def preprocess(tex):
     tex = tex.replace("\\end{xltabular}", "\\end{tabular}").replace("\\endhead", "")
     tex = re.sub(r"\\begin\{tabular\}\{l\*\{8\}\{c\}\}", r"\\begin{tabular}{lcccccccc}", tex)
     tex = tex.replace("\\textdegree", "°").replace("\\texteuro", "€")
-    tex = tex.replace(r"\newcommand{\degC}{\,° C}", r"\newcommand{\degC}{\,°C}")
+    tex = tex.replace(r"\newcommand{\degC}{\,° C}", r"\newcommand{\degC}{~°C}")
+    tex = tex.replace("\\,\\%", "~\\%")
     tex = tex.replace(r"\newcommand{\pts}[1]{\hfill{\normalsize\textbf{(#1)}}}",
                       r"\newcommand{\pts}[1]{\quad\textbf{(#1)}}")
     tex = re.sub(r"\\needspace\{[^}]*\}", "", tex)
@@ -167,7 +168,7 @@ for name in ("Normal", "Body Text", "First Paragraph", "Compact", "Block Text"):
         st = S(name)
         set_font(st, 12)
         pf = st.paragraph_format
-        pf.space_before, pf.space_after, pf.line_spacing = Pt(0), Pt(6), 1.5
+        pf.space_before, pf.space_after, pf.line_spacing = Pt(0), Pt(5), 1.15
         pf.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 for name, size in (("Heading 1", 13), ("Heading 2", 12), ("Heading 3", 12)):
     st = S(name)
@@ -190,7 +191,7 @@ ans.font.name, ans.font.bold, ans.font.color.rgb = FONT, True, GREEN
 kb = styles.add_style("Key Box", WD_STYLE_TYPE.PARAGRAPH)
 kb.base_style = S("Normal")
 set_font(kb, 12)
-kb.paragraph_format.line_spacing = 1.5
+kb.paragraph_format.line_spacing = 1.15
 kb.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 kbt = styles.add_style("Key Box Title", WD_STYLE_TYPE.PARAGRAPH)
 kbt.base_style = S("Normal")
@@ -368,12 +369,17 @@ for p in doc.paragraphs:
 for p in doc.paragraphs:
     if p.text.startswith(("Source: ", "Table 1.")):
         p.paragraph_format.line_spacing = 1.0
-        for r in p.runs:
-            r.font.size = Pt(10)
+        for r in p._p.iter(qn("w:r")):  # includes runs inside hyperlinks
+            rpr = r.get_or_add_rPr()
+            for old in rpr.findall(qn("w:sz")):
+                rpr.remove(old)
+            sz = OxmlElement("w:sz")
+            sz.set(qn("w:val"), "20")
+            rpr.append(sz)
 
 # images: limit width
 for shape in doc.inline_shapes:
-    if shape.width > TEXT_W:
+    if shape.width != TEXT_W:  # figure spans the full text width, as in the PDF
         ratio = TEXT_W / shape.width
         shape.width = int(shape.width * ratio)
         shape.height = int(shape.height * ratio)
