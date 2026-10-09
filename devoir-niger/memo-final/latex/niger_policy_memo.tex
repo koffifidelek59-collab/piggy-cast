@@ -3,21 +3,22 @@
 %  Policy memo: Why limiting climate change matters for Niger
 %  Skill Up for Earth, Climate Solutions and Strategies (Fall 2026 cohort)
 %  Author: KOUAME Koffi Fidele
-%  Compile: pdflatex niger_policy_memo.tex (twice)
+%  Compile: lualatex niger_policy_memo.tex (twice)
+%  Format: Times New Roman (metric-compatible Liberation Serif), 12 pt, 1.5 line spacing, justified
 % =====================================================================
-\documentclass[10pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{tgtermes}
-\usepackage{mathptmx}
+\usepackage{fontspec}
+% Times New Roman if installed, otherwise its metric-compatible equivalent
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{Liberation Serif}}
+\usepackage{setspace}
+\onehalfspacing
 \usepackage[english]{babel}
-\usepackage[a4paper,top=1.9cm,bottom=1.7cm,left=1.9cm,right=1.9cm,headsep=0.5cm,footskip=0.8cm]{geometry}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headsep=0.6cm,footskip=1cm]{geometry}
 \usepackage{microtype}
-\usepackage{amsmath,amssymb}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usepackage{tabularx,array,booktabs}
+\usepackage{tabularx,array,booktabs,xltabular}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -45,17 +46,17 @@
 
 % ---- layout
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
-\setlist{nosep,itemsep=1.5pt,leftmargin=1.3em}
-\captionsetup{font=small,labelfont=bf,skip=3pt}
+\setlength{\parskip}{6pt}
+\setlist{nosep,itemsep=3pt,leftmargin=1.3em}
+\captionsetup{font={small,singlespacing},labelfont=bf,skip=3pt,justification=justified,singlelinecheck=false}
 
 \titleformat{\section}{\large\bfseries}{}{0pt}{}
-\titlespacing*{\section}{0pt}{8pt}{3pt}
+\titlespacing*{\section}{0pt}{12pt}{4pt}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textbf{Climate Solutions and Strategies | Assignment 1}}
-\fancyhead[R]{\small Skill Up for Earth | Fall 2026 | KOUAME Koffi Fidèle}
+\fancyhead[L]{\footnotesize\textbf{Climate Solutions and Strategies | Assignment 1}}
+\fancyhead[R]{\footnotesize Skill Up for Earth | Fall 2026 | KOUAME Koffi Fidèle}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.6pt}
 
@@ -81,7 +82,7 @@
 \end{center}
 \vspace{-4pt}
 
-{\small
+{\small\singlespacing
 \renewcommand{\arraystretch}{1.35}
 \begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
 \hline
@@ -115,19 +116,20 @@ phase-out of emissions, and secure the finance to adapt now.}
 \end{itemize}
 
 \section{2. Three priority impacts, compared across scenarios}
-{\small\itshape Source: \CIE{} (Climate Analytics), Niger, annual values, area-weighted average. NGFS
+{\small\singlespacing\itshape Source: \CIE{} (Climate Analytics), Niger, annual values, area-weighted average. NGFS
 ``Below 2\degC'' scenario (1.6\degC{} of global warming in 2100) versus ``Current policies'' (2.9\degC). Median
 of five climate models, with the 5--95\,\% model range in brackets; the tool flags results after 2060 as
 indicative.\par}
 \vspace{3pt}
 
-{\small
+{\small\singlespacing
 \renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{@{}L{2.75cm} C{1.45cm} C{2.15cm} C{2.15cm} Y@{}}
+\begin{xltabular}{\linewidth}{@{}L{2.6cm} C{1.45cm} C{2.1cm} C{2.1cm} Y@{}}
 \toprule
 \textbf{Impact (CIE indicator)} & \textbf{Today (2020)} & \textbf{Below 2\degC} &
 \textbf{Current policies} & \textbf{Why it matters for Niger}\\
 \midrule
+\endhead
 \textbf{1. Dangerous heat}\newline{\footnotesize\itshape Days per year with a heat index above 40\degC} &
 \textbf{31 days}\newline\rng{25--38} &
 2050: \textbf{45}\newline\rng{33--69}\par\vspace{2pt}2100: \textbf{42}\newline\rng{29--72} &
@@ -139,10 +141,10 @@ twice as large in the densely populated south as in the north (+44 versus +21 da
 Africa's population at 1.5--2\degC{} (\Sylla). \\
 \midrule
 \textbf{2. Severe drought}\newline{\footnotesize\itshape Share of land with at least one month of SPEI
-below $-1.5$ (\%)} &
+below −1.5 (\%)} &
 \textbf{84\,\%}\newline\rng{72--97} &
 2050: \textbf{98\,\%}\newline\rng{85--100}\par\vspace{2pt}2100: \textbf{98\,\%}\newline\rng{81--100} &
-2050: \textbf{$\approx$100\,\%}\newline\rng{96--100}\par\vspace{2pt}2100: \textbf{100\,\%}\newline\rng{98--100} &
+2050: \textbf{≈100\,\%}\newline\rng{96--100}\par\vspace{2pt}2100: \textbf{100\,\%}\newline\rng{98--100} &
 Because SPEI accounts for evaporation as well as rainfall, it captures how heat dries out soils, crops and
 pastures. Around 96\,\% of the country is affected by 2030 in every scenario, so severe drought months become
 the norm whatever the world does; only a 1.5\degC{} pathway brings the share back down (87\,\% by 2100). WASCAL
@@ -150,15 +152,15 @@ crop modelling projects declining millet yields in most scenarios (\Mohamed). \\
 \midrule
 \textbf{3. Extreme rainfall}\newline{\footnotesize\itshape Annual maximum 5-day precipitation, change from
 1995--2014 (\%)} &
-\textbf{+8\,\%}\newline\rng{$-$7 to +29} &
-2050: \textbf{+18\,\%}\newline\rng{0 to +55}\par\vspace{2pt}2100: \textbf{+17\,\%}\newline\rng{$-$1 to +54} &
-2050: \textbf{+24\,\%}\newline\rng{$-$1 to +67}\par\vspace{2pt}2100: \textbf{+43\,\%}\newline\rng{+5 to +110} &
+\textbf{+8\,\%}\newline\rng{−7 to +29} &
+2050: \textbf{+18\,\%}\newline\rng{0 to +55}\par\vspace{2pt}2100: \textbf{+17\,\%}\newline\rng{−1 to +54} &
+2050: \textbf{+24\,\%}\newline\rng{−1 to +67}\par\vspace{2pt}2100: \textbf{+43\,\%}\newline\rng{+5 to +110} &
 Heavier downpours on bare, crusted soils produce the floods that strike Niamey and the Niger River valley, where
 people, infrastructure and irrigated rice are concentrated. Under current policies, even the low end of the
 model range shows an increase by 2100, and extreme Sahelian storms have already tripled in frequency since 1982
 (\Taylor). \\
 \bottomrule
-\end{tabularx}}
+\end{xltabular}}
 
 % =====================================================================
 %  MEMO, PAGE 2
@@ -188,9 +190,9 @@ migration or conflict (\WBtwentytwo).
 \textbf{Drought makes adaptation urgent in every scenario.} Because severe drought months spread to almost the
 whole country by 2030 regardless of emissions, adaptation cannot wait for the outcome of negotiations:
 drought-tolerant millet and sorghum, water harvesting, early warning and the protection of herders' mobility
-are needed now. The danger lies in a cascade rather than a single number: a hot, dry year $\rightarrow$ failed
-harvests and pastures $\rightarrow$ higher grain prices and distress sales of livestock $\rightarrow$
-malnutrition, household debt and farmer--herder tensions $\rightarrow$ emergency spending that crowds out
+are needed now. The danger lies in a cascade rather than a single number: a hot, dry year → failed
+harvests and pastures → higher grain prices and distress sales of livestock →
+malnutrition, household debt and farmer--herder tensions → emergency spending that crowds out
 investment. Every tenth of a degree avoided makes such years rarer and the adaptation bill smaller.
 
 \begin{graybox}{Recommended negotiating position}
@@ -219,13 +221,13 @@ larger.
 % =====================================================================
 \clearpage
 \section{References}
-{\small
+{\singlespacing
 \begin{list}{}{\leftmargin=1.4em \itemindent=-1.4em \itemsep=5pt \parsep=0pt}
 \item AFP (2024, 9 October). Niger ups flood toll to 339 dead, more than 1 million affected.
       \emph{Inquirer.net}.
       \url{https://globalnation.inquirer.net/251812/niger-ups-flood-toll-to-339-dead-more-than-1-million-affected}
 \item Climate Analytics (2026). \emph{Climate Impact Explorer}: Niger. Indicators: days per year with
-      dangerous heat risk (HI $>$ 40\degC), area under severe drought (SPEI $< -1.5$) and annual maximum 5-day
+      dangerous heat risk (HI > 40\degC), area under severe drought (SPEI < −1.5) and annual maximum 5-day
       precipitation; NGFS Below 2\degC, Current Policies and Net Zero 2050 scenarios; ISIMIP data.
       \url{https://climate-impact-explorer.climateanalytics.org} (accessed 9 October 2026).
 \item Mohamed, A. M. L., Salack, S., Mkuhlani, S., Chemura, A., et al. (2025). Impact of climate change on

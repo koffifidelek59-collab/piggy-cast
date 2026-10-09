@@ -80,6 +80,8 @@ def preprocess(tex):
 
     tex = re.sub(r"\\begin\{tabularx\}\{\\linewidth\}\{(.*?)\}\n", lambda m: tabx(m) + "\n", tex)
     tex = tex.replace("\\end{tabularx}", "\\end{tabular}")
+    tex = re.sub(r"\\begin\{xltabular\}\{\\linewidth\}\{(.*?)\}\n", lambda m: tabx(m) + "\n", tex)
+    tex = tex.replace("\\end{xltabular}", "\\end{tabular}").replace("\\endhead", "")
     tex = re.sub(r"\\begin\{tabular\}\{l\*\{8\}\{c\}\}", r"\\begin{tabular}{lcccccccc}", tex)
     tex = tex.replace("\\textdegree", "°").replace("\\texteuro", "€")
     tex = tex.replace(r"\newcommand{\degC}{\,° C}", r"\newcommand{\degC}{\,°C}")
@@ -158,13 +160,15 @@ def S(name):
 for name in ("Normal", "Body Text", "First Paragraph", "Compact", "Block Text"):
     if name in [s.name for s in styles]:
         st = S(name)
-        set_font(st, 10.5)
+        set_font(st, 12)
         pf = st.paragraph_format
-        pf.space_before, pf.space_after, pf.line_spacing = Pt(0), Pt(3), 1.0
-for name, size in (("Heading 1", 12.5), ("Heading 2", 12), ("Heading 3", 11)):
+        pf.space_before, pf.space_after, pf.line_spacing = Pt(0), Pt(6), 1.5
+        pf.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+for name, size in (("Heading 1", 13), ("Heading 2", 12), ("Heading 3", 12)):
     st = S(name)
     set_font(st, size, bold=True)
-    st.paragraph_format.space_before, st.paragraph_format.space_after = Pt(8), Pt(3)
+    st.paragraph_format.space_before, st.paragraph_format.space_after = Pt(12), Pt(4)
+    st.paragraph_format.line_spacing = 1.15
     st.paragraph_format.keep_with_next = True
 for name in ("Title", "Subtitle"):
     set_font(S(name), 26 if name == "Title" else 14, bold=name == "Title")
@@ -180,10 +184,12 @@ ans.font.name, ans.font.bold, ans.font.color.rgb = FONT, True, GREEN
 
 kb = styles.add_style("Key Box", WD_STYLE_TYPE.PARAGRAPH)
 kb.base_style = S("Normal")
-set_font(kb, 10.5)
+set_font(kb, 12)
+kb.paragraph_format.line_spacing = 1.5
+kb.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 kbt = styles.add_style("Key Box Title", WD_STYLE_TYPE.PARAGRAPH)
 kbt.base_style = S("Normal")
-set_font(kbt, 11, bold=True)
+set_font(kbt, 12, bold=True)
 for st in (kb, kbt):
     ppr = st.element.get_or_add_pPr()
     shd = OxmlElement("w:shd")
@@ -230,8 +236,8 @@ os.remove(pre)
 doc = Document(raw)
 sec = doc.sections[0]
 sec.page_height, sec.page_width = Cm(29.7), Cm(21.0)
-sec.top_margin, sec.bottom_margin = Cm(1.9), Cm(1.7)
-sec.left_margin = sec.right_margin = Cm(1.9)
+sec.top_margin = sec.bottom_margin = Cm(2.5)
+sec.left_margin = sec.right_margin = Cm(2.5)
 TEXT_W = sec.page_width - sec.left_margin - sec.right_margin
 
 
@@ -284,13 +290,16 @@ def booktabs(table):
             for p in cell.paragraphs:
                 p.paragraph_format.space_after = Pt(1)
                 p.paragraph_format.space_before = Pt(1)
+                p.paragraph_format.line_spacing = 1.0
+                if p.alignment == WD_ALIGN_PARAGRAPH.JUSTIFY or p.alignment is None:
+                    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
                 for r in p.runs:
-                    r.font.size = Pt(9)
+                    r.font.size = Pt(10)
                     r.font.name = FONT
 
 
 WIDTHS = {  # first header cell -> column widths (cm), text width 17.2 cm
-    "Impact (CIE indicator)": [2.9, 1.6, 2.3, 2.3, 8.1],
+    "Impact (CIE indicator)": [2.4, 1.4, 2.35, 2.35, 7.5],
 }
 
 
@@ -332,10 +341,21 @@ for t in doc.tables:
             tcPr = cell._tc.get_or_add_tcPr()
             for b in tcPr.findall(qn("w:tcBorders")):
                 tcPr.remove(b)
-        set_widths(t, [8.6, 8.6])
+        set_widths(t, [8.0, 8.0])
         continue
     if key in WIDTHS and len(WIDTHS[key]) == len(t.columns):
         set_widths(t, WIDTHS[key])
+
+# references and captions: left-aligned, single spacing
+in_refs = False
+for p in doc.paragraphs:
+    if p.style.name.startswith("Heading") and p.text.strip() == "References":
+        in_refs = True
+        continue
+    if in_refs or p.style.name in ("Image Caption", "Caption"):
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT if in_refs else WD_ALIGN_PARAGRAPH.JUSTIFY
+        p.paragraph_format.line_spacing = 1.0
+        p.paragraph_format.space_after = Pt(6)
 
 # images: limit width
 for shape in doc.inline_shapes:
