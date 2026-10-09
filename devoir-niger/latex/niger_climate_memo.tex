@@ -70,6 +70,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xurl}
 \usepackage{caption}
+\usepackage{float}
 \urlstyle{same}
 \captionsetup{skip=3pt}
 
@@ -188,28 +189,30 @@ global warming by 2100). Median of the models; model range in brackets.\par}
 \cellcolor{lowbg}\textbf{\HeatLow}\newline{\footnotesize [\HeatLowRange]} &
 \cellcolor{highbg}\textbf{\HeatHigh}\newline{\footnotesize [\HeatHighRange]} &
 Above this threshold, sustained work outdoors risks heat exhaustion and heat stroke. Most Nigeriens farm,
-herd or build outdoors, mostly without electricity or cooling: every extra day means lost working hours,
-stressed livestock and higher mortality (GIZ/PIK, 2021, project a threefold rise in heat-related deaths
-by 2080 under high emissions). \\
+herd or build outdoors, mostly without electricity or cooling. WASCAL researchers project that even at
+1.5--2\degC{} of global warming, more than half the population of most of West Africa would face heat
+discomfort seasonally (Sylla et al., 2018); the deadly April 2024 Sahel heatwave would have been impossible
+without the warming observed so far (WWA, 2024). \\
 \midrule
 \textbf{2. Severe drought}\newline{\footnotesize\itshape Share of land area with SPEI below $-1.5$ (\%)} &
 \cellcolor{nowbg}\textbf{\DroughtNow}\newline{\footnotesize \%} &
 \cellcolor{lowbg}\textbf{\DroughtLow\%}\newline{\footnotesize [\DroughtLowRange]} &
 \cellcolor{highbg}\textbf{\DroughtHigh\%}\newline{\footnotesize [\DroughtHighRange]} &
 This index counts evaporation as well as rain, so it captures what heat does to soils and pastures.
-Millet and sorghum feed the country; past warming has already cut West African millet yields by
-10--20\% (Sultan et al., 2019), and beyond about +2\degC{} of local warming no plausible rise in rainfall
-offsets the losses (Sultan et al., 2013). A drought year means higher grain prices, malnutrition and
-distress sales of livestock. \\
+Millet and sorghum feed the country. WASCAL crop modelling for three Nigerien zones projects a steady
+decline in millet yields in most scenarios, worst under very high emissions late in the century
+(Mohamed et al., 2025); beyond about +2\degC{} of local warming, no plausible rise in rainfall offsets
+heat losses (Sultan et al., 2013). A drought year means higher grain prices, malnutrition and distress
+sales of livestock. \\
 \midrule
 \textbf{3. Extreme rainfall}\newline{\footnotesize\itshape Annual maximum 5-day precipitation (mm)} &
 \cellcolor{nowbg}\textbf{\RainNow}\newline{\footnotesize mm} &
 \cellcolor{lowbg}\textbf{\RainLow}\newline{\footnotesize [\RainLowRange]} &
 \cellcolor{highbg}\textbf{\RainHigh}\newline{\footnotesize [\RainHighRange]} &
-Heavier multi-day downpours on bare, crusted soils drive the flash and river floods that hit Niamey
-and the Niger River valley, where people, infrastructure and irrigated rice are concentrated. In 2020 the
-river reached its highest level since 1929 (Al Jazeera, 2020). Niger must prepare for droughts
-\emph{and} floods, often in the same decade. \\
+Extreme Sahelian storms have tripled in frequency since 1982 as land temperatures rose (Taylor et al.,
+2017), and climate change made the deadly 2022 rains in Niger, Nigeria and Chad about 80 times more likely
+(WWA, 2022). Downpours on bare, crusted soils flood Niamey and the Niger River valley, where people,
+infrastructure and irrigated rice are concentrated. Niger must prepare for droughts \emph{and} floods. \\
 \bottomrule
 \end{tabularx}}
 \vspace{2pt}
@@ -217,7 +220,7 @@ river reached its highest level since 1929 (Al Jazeera, 2020). Niger must prepar
 % =====================================================================
 %  c) VISUAL
 % =====================================================================
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \IfFileExists{cie_figure.png}{%
   \includegraphics[width=0.86\linewidth,height=6.6cm,keepaspectratio]{cie_figure.png}%
@@ -277,7 +280,8 @@ with the African Group and the LDC group.
 Rising heat is the most robust signal: all models agree on its direction. \textbf{Rainfall is far less
 certain}: models disagree on whether the Sahel gets wetter or drier, so the drought and extreme-rainfall
 figures carry wider ranges, and some studies even project small millet yield gains from CO$_2$
-fertilisation (GIZ/PIK, 2021). The tool's only crop indicators (maize, rice, soy) were set aside because
+fertilisation (GIZ/PIK, 2021). Conversely, observed storm intensification is faster than most models
+simulate (Taylor et al., 2017), so the extreme-rainfall figures may be conservative. The tool's only crop indicators (maize, rice, soy) were set aside because
 Niger's staples, millet and sorghum, are not modelled. These figures are projections, not forecasts, and
 they describe hazards only: Niger's high social vulnerability means actual impacts are likely to be larger
 than the physical numbers suggest.\par}
@@ -291,8 +295,6 @@ than the physical numbers suggest.\par}
 \begin{list}{}{\leftmargin=1.2em \itemindent=-1.2em \itemsep=4pt \parsep=0pt}
 \item AFP (2024, 9 October). Niger ups flood toll to 339 dead, more than 1 million affected.
       \emph{Inquirer.net}. \url{https://globalnation.inquirer.net/251812/niger-ups-flood-toll-to-339-dead-more-than-1-million-affected}
-\item Al Jazeera (2020, 29 August). Niger flooding: At least 45 killed, 226,000 displaced.
-      \url{https://www.aljazeera.com/news/2020/08/niger-flooding-45-killed-226000-displaced-200829064145712.html}
 \item Climate Analytics (2026). \emph{Climate Impact Explorer}: Niger. Indicators: days per year with
       dangerous heat risk (HI $>$ 40\degC), area under severe drought (SPEI $< -1.5$), annual maximum
       5-day precipitation; NGFS Below 2\degC{} and Current Policies scenarios.
@@ -300,16 +302,29 @@ than the physical numbers suggest.\par}
 \item GIZ \& PIK (2021). \emph{Climate Risk Profile: Niger}. Bonn and Potsdam: Deutsche Gesellschaft für
       Internationale Zusammenarbeit and Potsdam Institute for Climate Impact Research.
       \url{https://www.adaptationcommunity.net/wp-content/uploads/2021/02/GIZ_Climate-risk-profile-Niger_EN_final.pdf}
-\item Sultan, B., Defrance, D., \& Iizumi, T. (2019). Evidence of crop production losses in West Africa due
-      to historical global warming in two crop models. \emph{Scientific Reports}, 9, 12834.
+\item Mohamed, A. M. L., Salack, S., Mkuhlani, S., Chemura, A., et al. (2025). Impact of climate change on
+      millet yield under different fertilization levels in three agroecological zones of Niger Republic.
+      \emph{PLOS ONE}, 20(10), e0333963. \url{https://doi.org/10.1371/journal.pone.0333963}
 \item Sultan, B., Roudier, P., Quirion, P., Alhassane, A., Muller, B., Dingkuhn, M., Ciais, P., Guimberteau, M.,
       Traore, S., \& Baron, C. (2013). Assessing climate change impacts on sorghum and millet yields in the
       Sudanian and Sahelian savannas of West Africa. \emph{Environmental Research Letters}, 8, 014040.
+\item Sylla, M. B., Faye, A., Giorgi, F., Diedhiou, A., \& Kunstmann, H. (2018). Projected heat stress
+      under 1.5\degC{} and 2\degC{} global warming scenarios creates unprecedented discomfort for humans in
+      West Africa. \emph{Earth's Future}, 6(7), 1029--1044. \url{https://doi.org/10.1029/2018EF000873}
+\item Taylor, C. M., Belu\v{s}i\'{c}, D., Guichard, F., Parker, D. J., Vischel, T., Bock, O., Harris, P. P.,
+      Janicot, S., Klein, C., \& Panthou, G. (2017). Frequency of extreme Sahelian storms tripled since 1982
+      in satellite observations. \emph{Nature}, 544, 475--478. \url{https://doi.org/10.1038/nature22069}
 \item World Bank (2022). \emph{G5 Sahel Region Country Climate and Development Report}. CCDR Series.
       Washington, DC: World Bank. \url{http://hdl.handle.net/10986/37620}
 \item World Bank (2024, 28 June). The World Bank supports food security and climate resilience for households
       in Niger [Press release].
       \url{https://www.worldbank.org/en/news/press-release/2024/07/01/the-world-bank-supports-food-security-and-climate-resilience-for-households-in-niger}
+\item World Weather Attribution (2022). Climate change exacerbated heavy rainfall leading to large scale
+      flooding in highly vulnerable communities in West Africa.
+      \url{https://www.worldweatherattribution.org/climate-change-exacerbated-heavy-rainfall-leading-to-large-scale-flooding-in-highly-vulnerable-communities-in-west-africa}
+\item World Weather Attribution (2024). Extreme Sahel heatwave that hit highly vulnerable population at the end
+      of Ramadan would not have occurred without climate change.
+      \url{https://www.worldweatherattribution.org/extreme-sahel-heatwave-that-hit-highly-vulnerable-population-at-the-end-of-ramadan-would-not-have-occurred-without-climate-change}
 \end{list}}
 
 \end{document}
