@@ -6,37 +6,42 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------------------------------------------------------------------
-%  1. CLIMATE IMPACT EXPLORER VALUES -- EDIT THIS BLOCK ONLY
-%  Replace each \todo{...} by the number read in the CIE (Niger,
-%  median across models). Example:  \newcommand{\HeatLow}{4.2}
-%  Ranges are the shaded bands on the CIE chart, e.g. {2.1--6.0}.
+%  CLIMATE IMPACT EXPLORER VALUES -- EDIT THIS BLOCK ONLY
+%  Country: Niger | Temporal average: Annual | Spatial: Area-weighted average
+%  Scenario: NGFS below 2 degree | Alternative scenario: NGFS current policies
+%  Replace each \todo{...} by the value read in the CIE (median line),
+%  e.g.  \newcommand{\HeatNow}{38}.  Ranges = hatched band, e.g. {85--140}.
 % ---------------------------------------------------------------------
 \newcommand{\AuthorName}{\todo{Your name}}
 \newcommand{\CIEAccessDate}{\todo{date accessed}}
+\newcommand{\Horizon}{2100}   % year used for the two scenario columns
 
-% Indicator 1 -- Land area annually exposed to heatwaves (% of land area)
-\newcommand{\HeatLow}{\todo{??}}        % median at 1.5 C
+% Indicator 1 -- Heat: Days per year with dangerous heat risk (HI > 40 C)  [days]
+\newcommand{\HeatNow}{\todo{??}}          % today (first year shown, ~2020)
+\newcommand{\HeatLow}{\todo{??}}          % Horizon, NGFS below 2 degree
 \newcommand{\HeatLowRange}{\todo{??--??}}
-\newcommand{\HeatHigh}{\todo{??}}       % median at 3 C
+\newcommand{\HeatHigh}{\todo{??}}         % Horizon, NGFS current policies
 \newcommand{\HeatHighRange}{\todo{??--??}}
 
-% Indicator 2 -- Land area annually exposed to crop failures (% of land area)
-\newcommand{\CropLow}{\todo{??}}
-\newcommand{\CropLowRange}{\todo{??--??}}
-\newcommand{\CropHigh}{\todo{??}}
-\newcommand{\CropHighRange}{\todo{??--??}}
+% Indicator 2 -- Drought: Area under severe drought (SPEI < -1.5)  [% of area]
+\newcommand{\DroughtNow}{\todo{??}}
+\newcommand{\DroughtLow}{\todo{??}}
+\newcommand{\DroughtLowRange}{\todo{??--??}}
+\newcommand{\DroughtHigh}{\todo{??}}
+\newcommand{\DroughtHighRange}{\todo{??--??}}
 
-% Indicator 3 -- Population annually exposed to river floods (% of population)
-\newcommand{\FloodLow}{\todo{??}}
-\newcommand{\FloodLowRange}{\todo{??--??}}
-\newcommand{\FloodHigh}{\todo{??}}
-\newcommand{\FloodHighRange}{\todo{??--??}}
+% Indicator 3 -- Extreme precipitation: Annual Maximum 5-day Precipitation  [mm]
+\newcommand{\RainNow}{\todo{??}}
+\newcommand{\RainLow}{\todo{??}}
+\newcommand{\RainLowRange}{\todo{??--??}}
+\newcommand{\RainHigh}{\todo{??}}
+\newcommand{\RainHighRange}{\todo{??--??}}
 
-% Figure: save your CIE screenshot as  cie_figure.png  next to this file.
-% Look at the shaded uncertainty bands on that chart:
-%   if the bottom of the 3 C band is ABOVE the top of the 1.5 C band
-%   (the bands do not overlap), keep \bandsseparatetrue;
-%   if they overlap, change it to \bandsseparatefalse.
+% Figure: save your CIE screenshot of the HEAT chart (both scenarios shown)
+% as  cie_figure.png  next to this file.
+% Look at the hatched uncertainty bands at the end of the century:
+%   bands do NOT overlap  -> keep \bandsseparatetrue
+%   bands overlap         -> change to \bandsseparatefalse
 \newif\ifbandsseparate
 \bandsseparatetrue
 
@@ -73,6 +78,7 @@
 \definecolor{brick}{HTML}{A6261D}
 \definecolor{lowbg}{HTML}{E8F1E8}
 \definecolor{highbg}{HTML}{FBE9E6}
+\definecolor{nowbg}{HTML}{EEF1F5}
 \definecolor{msgbg}{HTML}{F7F3EC}
 \definecolor{rule}{HTML}{C9D3DF}
 \definecolor{lowtxt}{HTML}{2E6B34}
@@ -103,8 +109,8 @@
 \fancyfoot[R]{\scriptsize\color{gray}\thepage}
 
 \newcommand{\degC}{\,\textdegree C}
-\newcommand{\low}{1.5\degC}
-\newcommand{\high}{3\degC}
+\newcommand{\lowscen}{a below-2\degC{} world}
+\newcommand{\highscen}{current policies}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
@@ -135,14 +141,14 @@
 \begin{tcolorbox}[colback=msgbg,colframe=brick,boxrule=0pt,leftrule=3pt,arc=0pt,
                   left=7pt,right=7pt,top=4pt,bottom=4pt]
 {\color{brick}\small\bfseries KEY MESSAGE}\\[1pt]
-\textbf{Niger's economy rests on the activities that heat and erratic rain hit first: rain-fed farming
-and herding generate almost 40\% of GDP and employ more than 80\% of the population.}
-Climate Impact Explorer projections show that at \high{} of global warming rather than \low,
-the share of Niger's land hit by a heatwave in a typical year would rise from about \HeatLow\% to
-\HeatHigh\%, and the share exposed to crop failure from \CropLow\% to \CropHigh\%. The World Bank
-estimates that a dry, high-impact climate future could cut Niger's GDP by up to 11.9\% by 2050.
-\textbf{Niger emits a negligible share of global greenhouse gases yet faces some of the largest
-losses: pushing for a rapid global phase-out of emissions is a matter of national interest, not charity.}
+\textbf{Heat is becoming the defining threat to Niger's economy, which rests on outdoor, rain-fed
+farming and herding: almost 40\% of GDP and more than 80\% of jobs.}
+Under current global policies, Niger would face about \HeatHigh{} days a year of dangerous heat by
+\Horizon{}, against \HeatNow{} today; holding warming below 2\degC{} would limit this to about
+\HeatLow{} days. Hotter air also dries soils and pastures, so the share of the country in severe
+drought rises from \DroughtNow\% to \DroughtHigh\% under current policies.
+\textbf{Niger emits a negligible share of global greenhouse gases yet faces some of the largest losses:
+pressing for a rapid global phase-out of emissions is a matter of national interest, not charity.}
 \end{tcolorbox}
 
 % =====================================================================
@@ -161,42 +167,49 @@ losses: pushing for a rapid global phase-out of emissions is a matter of nationa
 % =====================================================================
 %  b) THREE PRIORITY IMPACTS
 % =====================================================================
-\section{Three priority impacts: \low{} versus \high{} of global warming}
-{\footnotesize\itshape Source: Climate Impact Explorer (Climate Analytics), Niger, multi-model median;
-model range in brackets. A \high{} world is roughly where current policies lead by 2100; the
-difference between the two columns is what Niger gains if the world limits warming.\par}
+\section{Three priority impacts: below 2\degC{} versus current policies}
+{\footnotesize\itshape Source: Climate Impact Explorer (Climate Analytics), Niger, annual, area-weighted
+average; NGFS ``Below 2\degC'' and ``Current policies'' scenarios (the latter leads to roughly 3\degC{} of
+global warming by 2100). Median of the models; model range in brackets.\par}
 \vspace{3pt}
 
 {\small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\linewidth}{@{}L{3.25cm} C{2.05cm} C{2.05cm} Y@{}}
+\begin{tabularx}{\linewidth}{@{}L{2.75cm} C{1.25cm} C{1.75cm} C{1.75cm} Y@{}}
 \rowcolor{navy}
 \color{white}\bfseries Impact (CIE indicator) &
-\color{white}\bfseries At \low &
-\color{white}\bfseries At \high &
+\color{white}\bfseries Today &
+\color{white}\bfseries \Horizon:\newline Below 2\degC &
+\color{white}\bfseries \Horizon:\newline Current policies &
 \color{white}\bfseries Why it matters for Niger \\[2pt]
 %
-\textbf{1. Extreme heat}\newline{\footnotesize\itshape Land area exposed to heatwaves each year (\%)} &
-\cellcolor{lowbg}\textbf{\HeatLow\%}\newline{\footnotesize [\HeatLowRange]} &
-\cellcolor{highbg}\textbf{\HeatHigh\%}\newline{\footnotesize [\HeatHighRange]} &
-Farming, herding and construction are done outdoors, mostly without electricity or cooling. Heat cuts
-working hours, stresses livestock and raises mortality: GIZ/PIK (2021) project about 50 more very
-hot days a year and a threefold rise in heat-related deaths by 2080 under high emissions. \\
+\textbf{1. Dangerous heat}\newline{\footnotesize\itshape Days per year with heat index above 40\degC} &
+\cellcolor{nowbg}\textbf{\HeatNow}\newline{\footnotesize days} &
+\cellcolor{lowbg}\textbf{\HeatLow}\newline{\footnotesize [\HeatLowRange]} &
+\cellcolor{highbg}\textbf{\HeatHigh}\newline{\footnotesize [\HeatHighRange]} &
+Above this threshold, sustained work outdoors risks heat exhaustion and heat stroke. Most Nigeriens farm,
+herd or build outdoors, mostly without electricity or cooling: every extra day means lost working hours,
+stressed livestock and higher mortality (GIZ/PIK, 2021, project a threefold rise in heat-related deaths
+by 2080 under high emissions). \\
 \midrule
-\textbf{2. Crop failure}\newline{\footnotesize\itshape Land area exposed to crop failure each year (\%)} &
-\cellcolor{lowbg}\textbf{\CropLow\%}\newline{\footnotesize [\CropLowRange]} &
-\cellcolor{highbg}\textbf{\CropHigh\%}\newline{\footnotesize [\CropHighRange]} &
-Millet and sorghum feed the country. Past warming has already cut West African millet yields by
-10--20\% (Sultan et al., 2019), and beyond about +2\degC{} of local warming no plausible increase in
-rainfall offsets the heat losses (Sultan et al., 2013). A failed harvest means higher grain prices,
-malnutrition and distress sales of livestock. \\
+\textbf{2. Severe drought}\newline{\footnotesize\itshape Share of land area with SPEI below $-1.5$ (\%)} &
+\cellcolor{nowbg}\textbf{\DroughtNow}\newline{\footnotesize \%} &
+\cellcolor{lowbg}\textbf{\DroughtLow\%}\newline{\footnotesize [\DroughtLowRange]} &
+\cellcolor{highbg}\textbf{\DroughtHigh\%}\newline{\footnotesize [\DroughtHighRange]} &
+This index counts evaporation as well as rain, so it captures what heat does to soils and pastures.
+Millet and sorghum feed the country; past warming has already cut West African millet yields by
+10--20\% (Sultan et al., 2019), and beyond about +2\degC{} of local warming no plausible rise in rainfall
+offsets the losses (Sultan et al., 2013). A drought year means higher grain prices, malnutrition and
+distress sales of livestock. \\
 \midrule
-\textbf{3. River floods}\newline{\footnotesize\itshape Population exposed to river floods each year (\%)} &
-\cellcolor{lowbg}\textbf{\FloodLow\%}\newline{\footnotesize [\FloodLowRange]} &
-\cellcolor{highbg}\textbf{\FloodHigh\%}\newline{\footnotesize [\FloodHighRange]} &
-Niamey, the Niger River valley and irrigated rice schemes concentrate people, infrastructure and
-food production. In 2020 the river reached its highest level since 1929 and paralysed the capital
-(Al Jazeera, 2020). Niger must prepare for droughts \emph{and} floods, often in the same decade. \\
+\textbf{3. Extreme rainfall}\newline{\footnotesize\itshape Annual maximum 5-day precipitation (mm)} &
+\cellcolor{nowbg}\textbf{\RainNow}\newline{\footnotesize mm} &
+\cellcolor{lowbg}\textbf{\RainLow}\newline{\footnotesize [\RainLowRange]} &
+\cellcolor{highbg}\textbf{\RainHigh}\newline{\footnotesize [\RainHighRange]} &
+Heavier multi-day downpours on bare, crusted soils drive the flash and river floods that hit Niamey
+and the Niger River valley, where people, infrastructure and irrigated rice are concentrated. In 2020 the
+river reached its highest level since 1929 (Al Jazeera, 2020). Niger must prepare for droughts
+\emph{and} floods, often in the same decade. \\
 \bottomrule
 \end{tabularx}}
 \vspace{2pt}
@@ -211,19 +224,19 @@ food production. In 2020 the river reached its highest level since 1929 and para
 }{%
   \fcolorbox{gray}{gray!8}{\parbox[c][5.6cm][c]{0.84\linewidth}{\centering\small
   \todo{Save your Climate Impact Explorer screenshot as \textsf{cie\_figure.png}}\\[4pt]
-  Niger -- land area exposed to crop failure -- \low{} vs.\ \high{} (or 1.5\degC{} pathway
-  vs.\ current policies)}}%
+  Niger -- days per year with dangerous heat risk (HI $>$ 40\degC) --
+  NGFS below 2\degC{} vs.\ NGFS current policies}}%
 }
 \vspace{-2pt}
-\caption*{\footnotesize\textbf{Figure 1. Crop-failure exposure in Niger: the gap between the two curves is
-what limiting warming saves.} At \high, about \CropHigh\% of Niger's land would be exposed to crop failure
-in a typical year, against \CropLow\% at \low.
+\caption*{\footnotesize\textbf{Figure 1. Days of dangerous heat per year in Niger: the gap between the
+two curves is what limiting warming saves.} By \Horizon, current policies would bring about \HeatHigh{}
+dangerous-heat days a year, against \HeatLow{} in \lowscen{} and \HeatNow{} today.
 \ifbandsseparate
-  The shaded bands show model uncertainty: even the low end of the \high{} range lies above the
-  high end of the \low{} range, so the direction of the risk is robust.
+  The hatched bands show model uncertainty and do not overlap by the end of the century: the models
+  disagree on the exact number of days, but not on the size of the difference between the two paths.
 \else
-  The shaded bands show model uncertainty and overlap: the exact size of the increase is uncertain,
-  but the central estimate is clearly worse at \high.
+  The hatched bands show model uncertainty and partly overlap: the exact number of days is uncertain,
+  but every model shows more dangerous-heat days under current policies.
 \fi
 Source: Climate Impact Explorer, Climate Analytics.}
 \end{figure}
@@ -239,16 +252,16 @@ change would reduce Niger's annual GDP by 2.2\% in a wet, optimistic scenario bu
 pessimistic one, the largest loss among the five G5 Sahel countries. These figures are probably
 \emph{under}estimates: they leave out migration, conflict and ecosystem degradation.
 
-\textbf{2. The real danger is a cascade, not a single number.} A hot year with erratic rains
-$\rightarrow$ failed harvests and pastures $\rightarrow$ higher grain prices and forced sales of
-livestock $\rightarrow$ malnutrition, household debt, migration to cities and farmer--herder tensions
-$\rightarrow$ emergency spending that crowds out investment. The warmer the world, the more often these
-``bad years'' occur.
+\textbf{2. The real danger is a cascade, not a single number.} A hot, dry year $\rightarrow$ failed
+harvests and pastures $\rightarrow$ higher grain prices and forced sales of livestock $\rightarrow$
+malnutrition, household debt, migration to cities and farmer--herder tensions $\rightarrow$ emergency
+spending that crowds out investment. Heat makes each step worse, and current policies make such years
+far more frequent.
 
 \textbf{3. Adaptation has limits that only global mitigation can push back.} Irrigation, drought-tolerant
-seeds and crop insurance are essential but costly, and beyond roughly +2\degC{} of local warming they cannot
-fully offset heat losses (Sultan et al., 2013). Every tenth of a degree avoided lowers an adaptation
-bill Niger cannot pay alone.
+seeds, early warning and crop insurance are essential but costly, and outdoor work cannot be ``adapted''
+away from a heat index above 40\degC. Every tenth of a degree avoided lowers an adaptation bill that
+Niger cannot pay alone.
 
 \begin{tcolorbox}[colback=lowbg,colframe=lowtxt,boxrule=0pt,leftrule=3pt,arc=0pt,
                   left=7pt,right=7pt,top=3pt,bottom=3pt]
@@ -261,12 +274,13 @@ with the African Group and the LDC group.
 
 \section{What the evidence does, and does not, say}
 {\small
-Rising heat is the most robust signal: all models agree on its direction. \textbf{For rainfall, models
-disagree even on the sign of change}, and some project small millet yield gains from CO$_2$ fertilisation
-(GIZ/PIK, 2021). The risk to plan for is therefore not a certain fall in average yields but greater
-variability, with more drought years \emph{and} more flood years. These figures are projections, not
-forecasts, and they describe hazards only: Niger's high social vulnerability means actual impacts are
-likely to be larger than the physical numbers suggest.\par}
+Rising heat is the most robust signal: all models agree on its direction. \textbf{Rainfall is far less
+certain}: models disagree on whether the Sahel gets wetter or drier, so the drought and extreme-rainfall
+figures carry wider ranges, and some studies even project small millet yield gains from CO$_2$
+fertilisation (GIZ/PIK, 2021). The tool's only crop indicators (maize, rice, soy) were set aside because
+Niger's staples, millet and sorghum, are not modelled. These figures are projections, not forecasts, and
+they describe hazards only: Niger's high social vulnerability means actual impacts are likely to be larger
+than the physical numbers suggest.\par}
 
 % =====================================================================
 %  REFERENCES (page 3 -- outside the 2-page limit)
@@ -279,8 +293,9 @@ likely to be larger than the physical numbers suggest.\par}
       \emph{Inquirer.net}. \url{https://globalnation.inquirer.net/251812/niger-ups-flood-toll-to-339-dead-more-than-1-million-affected}
 \item Al Jazeera (2020, 29 August). Niger flooding: At least 45 killed, 226,000 displaced.
       \url{https://www.aljazeera.com/news/2020/08/niger-flooding-45-killed-226000-displaced-200829064145712.html}
-\item Climate Analytics (2026). \emph{Climate Impact Explorer}: Niger. Indicators: land area exposed to
-      heatwaves, land area exposed to crop failures, population exposed to river floods.
+\item Climate Analytics (2026). \emph{Climate Impact Explorer}: Niger. Indicators: days per year with
+      dangerous heat risk (HI $>$ 40\degC), area under severe drought (SPEI $< -1.5$), annual maximum
+      5-day precipitation; NGFS Below 2\degC{} and Current Policies scenarios.
       \url{https://climate-impact-explorer.climateanalytics.org} (accessed \CIEAccessDate).
 \item GIZ \& PIK (2021). \emph{Climate Risk Profile: Niger}. Bonn and Potsdam: Deutsche Gesellschaft für
       Internationale Zusammenarbeit and Potsdam Institute for Climate Impact Research.
