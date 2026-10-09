@@ -1,81 +1,75 @@
-# Devoir 1 — Niger : ce qu'il reste à faire (≈ 30–45 min)
+# Devoir 1 — Niger : guide pour finaliser la note LaTeX (≈ 30–45 min)
 
-La note `Note_Niger_risques_climatiques.docx` est rédigée et mise en page : 2 pages, plus une 3e page de
-références. **Les seuls éléments à compléter sont surlignés en jaune.** Ce sont les valeurs et le graphique
-du **Climate Impact Explorer (CIE)**. Le site était bloqué depuis l'environnement où la note a été préparée,
-et inventer ces chiffres vous ferait perdre le critère « Exactitude ».
+Fichier principal : `latex/niger_climate_memo.tex`, en anglais. Le PDF actuel
+(`latex/niger_climate_memo.pdf`) est un **aperçu** : les éléments surlignés en jaune sont les seules valeurs
+à compléter. Ce sont les chiffres du **Climate Impact Explorer (CIE)**, inaccessible depuis l'environnement
+où la note a été préparée, plus votre nom. Inventer ces chiffres coûterait le critère « Accuracy ».
 
----
+## 1. Compiler
 
-## 1. Récupérer les chiffres dans le CIE
+- **Overleaf (le plus simple)** : *New Project > Upload Project*, puis importez `niger_climate_memo.tex`
+  (et plus tard `cie_figure.png`). Compilateur : **pdfLaTeX**, réglage par défaut.
+- **En local** : lancez `pdflatex niger_climate_memo.tex` deux fois.
 
-Site : <https://climate-impact-explorer.climateanalytics.org> → choisir **Niger**.
+## 2. Remplir les valeurs : un seul bloc à modifier
 
-Pour chacun des 3 indicateurs ci-dessous :
+Toutes les valeurs sont regroupées **en haut du fichier .tex**, dans le bloc
+`CLIMATE IMPACT EXPLORER VALUES`. Le texte, le tableau et la légende se mettent à jour automatiquement.
 
-1. Sélectionnez l'indicateur. Les noms exacts peuvent légèrement varier ; cherchez dans les catégories
-   « Extreme events » ou « Exposure ».
-2. Affichez la vue **par niveau de réchauffement** (*warming levels*) et relevez la **médiane** et la
-   **fourchette** (bande colorée) à **1,5 °C** et à **3 °C**.
-   - Si vous préférez la vue par scénario, comparez « 1,5 °C / Paris » et « Current policies » vers 2050 ou 2100.
-     Modifiez alors l'en-tête du tableau (« À 1,5 °C » / « À 3 °C ») et la phrase « Source : … horizon … »
-     au-dessus du tableau.
-3. Reportez les valeurs dans le tableau, en remplaçant `[__ %]` et `(fourchette [__–__ %])`.
+```latex
+\newcommand{\HeatLow}{\todo{??}}         % devient par exemple  \newcommand{\HeatLow}{4.2}
+\newcommand{\HeatLowRange}{\todo{??--??}} % devient par exemple  \newcommand{\HeatLowRange}{2.1--6.0}
+```
 
-| # | Indicateur à choisir dans le CIE | Remplace | Si l'indicateur n'existe pas, prendre… |
-|---|---|---|---|
-| 1 | Land area (ou Population) **annually exposed to heatwaves** | ligne 1 du tableau + 1re paire `[__ %]` du message principal | « Hot days » / jours > 35 °C, ou Tmax |
-| 2 | Land area **annually exposed to crop failures** | ligne 2 + 2e paire `[__ %]` du message principal | « Droughts » (terres exposées aux sécheresses) |
-| 3 | Population (ou Land area) **annually exposed to river floods** | ligne 3 | « Annual expected damage from river floods » (% du PIB) |
+Site : <https://climate-impact-explorer.climateanalytics.org>, pays **Niger**, vue par **niveaux de
+réchauffement** (*warming levels*). Relevez la **médiane** (le chiffre) et la **bande colorée** (la fourchette)
+à **1,5 °C** et à **3 °C** :
 
-> Si vous changez d'unité (par ex. % de la population au lieu de % du territoire), corrigez le libellé
-> en italique de la 1re colonne **et** la phrase du message principal.
+| Macros | Indicateur CIE | Si l'indicateur n'existe pas |
+|---|---|---|
+| `\HeatLow…`, `\HeatHigh…` | *Land area annually exposed to heatwaves* (%) | *Hot days* / jours > 35 °C |
+| `\CropLow…`, `\CropHigh…` | *Land area annually exposed to crop failures* (%) | *Land area exposed to droughts* |
+| `\FloodLow…`, `\FloodHigh…` | *Population annually exposed to river floods* (%) | *Annual expected damage from river floods* (% du PIB) |
 
-## 2. Insérer le graphique (obligatoire)
+Si vous changez d'indicateur ou d'unité, modifiez aussi le libellé en italique de la 1re colonne du tableau
+et la phrase correspondante du *Key message*.
 
-- Faites une capture du graphique de l'indicateur 2 (pertes de récoltes), avec les deux courbes visibles
-  (1,5 °C et 3 °C, ou les deux scénarios).
-- Dans Word : cliquez dans le cadre gris → supprimez le texte jaune → *Insertion > Image*. Largeur ≈ 16 cm.
-- Relisez la légende « Figure 1 » et adaptez-la à ce que montre **votre** graphique :
-  - Les courbes divergent-elles vraiment vers 2030 ? Sinon, corrigez la date.
-  - Remplacez `[à vérifier sur le graphique]` : le bas de la bande à 3 °C dépasse-t-il le haut de la bande
-    à 1,5 °C ? Si **oui**, écrivez « dépasse ». Si **non**, réécrivez la phrase, par exemple : « Les bandes se
-    chevauchent : l'ampleur exacte est incertaine, mais la tendance médiane est nettement plus défavorable à 3 °C. »
-    C'est exactement ce que le critère « incertitude » attend.
+Si vous préférez comparer des **scénarios** (« 1.5 °C pathway » contre « Current policies » vers 2050 ou 2100) :
+modifiez `\newcommand{\high}{3\degC}` et la ligne en italique *Source: …* au-dessus du tableau.
 
-## 3. Ajuster le texte si les données surprennent
+Remplissez aussi `\AuthorName` et `\CIEAccessDate`.
 
-- **Si l'exposition aux pertes de récoltes change peu entre 1,5 °C et 3 °C :** gardez l'argument sur la chaleur
-  comme message principal. Mettez la chaleur en ligne 2 du message principal et présentez les cultures comme
-  un risque « incertain mais à fort enjeu ».
-- **Si les crues baissent à 3 °C :** dites-le. Les modèles divergent sur les pluies au Sahel, et le reconnaître
-  montre votre jugement. La section « Ce que les données disent — et ne disent pas » le prépare déjà.
-- Utilisez les formulations prudentes demandées : « devrait augmenter », « pourrait passer d'environ X à Y »,
-  « la fourchette projetée est… ».
+## 3. Ajouter le graphique (obligatoire)
 
-## 4. Avant de remettre : derniers points à vérifier
+1. Faites une capture du graphique CIE de l'indicateur **crop failure**, avec les deux courbes visibles.
+2. Enregistrez-la sous **`cie_figure.png`** dans le même dossier que le `.tex` (ou importez-la dans Overleaf).
+   Elle remplace automatiquement le cadre gris.
+3. Regardez les bandes d'incertitude :
+   - si le bas de la bande à 3 °C reste **au-dessus** du haut de la bande à 1,5 °C, laissez `\bandsseparatetrue` ;
+   - si les bandes **se chevauchent**, remplacez par `\bandsseparatefalse`.
 
-- [ ] Plus **aucun surlignage jaune** (Accueil > Surlignage > Aucune couleur).
-- [ ] Références : date de consultation du CIE ; titre exact et URL de l'article Al Jazeera 2024 sur les inondations.
-- [ ] Toujours **2 pages maximum** avant les références. Si le graphique fait déborder, réduisez-le à ≈ 14 cm.
-- [ ] Remplacez « Conseiller·ère climat » par votre nom si le cours le demande.
-- [ ] Exportez en **PDF** (*Fichier > Enregistrer sous > PDF*) et remettez dans « Assignment 1. Due Oct 14 ».
+   La légende s'adapte toute seule. C'est exactement la compétence « communiquer l'incertitude » évaluée.
 
-## 5. Pourquoi la note devrait bien répondre à la grille
+## 4. Si les données surprennent
+
+- **L'exposition aux pertes de récoltes change peu :** mettez la chaleur en avant dans le *Key message* et
+  présentez les cultures comme un risque « incertain mais à fort enjeu ».
+- **Les crues baissent à 3 °C :** dites-le. Les modèles divergent sur les pluies au Sahel, et la section
+  *What the evidence does, and does not, say* le prépare déjà.
+
+## 5. Avant de remettre
+
+- [ ] Passez `\finalfalse` à **`\finaltrue`**. Le surlignage disparaît ; s'il reste un « ?? » dans le PDF,
+      une valeur a été oubliée.
+- [ ] Vérifiez qu'il y a toujours **2 pages** avant les références. Si le graphique fait déborder, réduisez
+      `height=6.6cm` dans `\includegraphics`.
+- [ ] Remettez le **PDF** dans « Assignment 1. Due Oct 14 ».
+
+## Correspondance avec la grille d'évaluation
 
 | Critère | Ce qui y répond dans la note |
 |---|---|
-| **Exactitude** | Chiffres CIE avec médiane + fourchette ; chaque chiffre externe est sourcé ; les estimations de PIB sont présentées comme une fourchette entre scénarios, pas comme une prévision. |
-| **Jugement** | Indicateurs choisis pour le contexte nigérien : travail en plein air, mil/sorgho pluviaux, vallée du fleuve et Niamey. Les rendements moyens de maïs ou de blé, peu pertinents ici, sont écartés. |
-| **Analyse** | Chaque impact est relié à des personnes et des secteurs précis ; une chaîne de risques en cascade ; un argument sur les limites de l'adaptation (Sultan et al., 2013). |
-| **Communication** | Message principal en tête, tableau lisible en 30 secondes, une seule figure avec une légende qui dit quoi regarder, recommandations de négociation concrètes. |
-
-## Sources supplémentaires utilisées
-
-- **Principale :** Banque mondiale (2022), *G5 Sahel Region CCDR*. PIB du Niger en 2050 : −2,2 % (scénario humide
-  et optimiste) à −11,9 % (scénario sec et pessimiste).
-- **Secondaire :** GIZ & PIK (2021), *Climate Risk Profile: Niger*. Environ 50 jours très chauds de plus et une
-  mortalité liée à la chaleur multipliée par 3 d'ici 2080 ; possibles gains de rendement du mil dus au CO₂.
-  C'est cette nuance qui nourrit la section sur l'incertitude.
-- **Appui :** Sultan et al. (2019, 2013) pour les pertes de mil et de sorgho ; Banque mondiale (2024) pour le poids
-  de l'agriculture ; Al Jazeera (2020, 2024) pour les inondations.
+| **Accuracy** | Médiane et fourchette CIE ; chaque chiffre externe est sourcé ; les pertes de PIB sont présentées comme une fourchette entre scénarios (−2,2 % à −11,9 %), pas comme une prévision. |
+| **Judgment** | Indicateurs choisis pour le Niger : travail en plein air, mil et sorgho pluviaux, vallée du fleuve et Niamey. Les rendements de maïs ou de blé, peu pertinents ici, sont écartés. |
+| **Analysis** | Chaque impact est relié à des personnes et des secteurs précis ; une chaîne de risques en cascade ; les limites de l'adaptation (Sultan et al., 2013). |
+| **Communication** | *Key message* en tête, tableau lisible en 30 secondes, une seule figure avec une légende qui dit quoi regarder, position de négociation concrète. |
