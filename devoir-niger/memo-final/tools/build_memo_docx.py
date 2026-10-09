@@ -1,7 +1,7 @@
 """Build the Word version of the Niger policy memo from the LaTeX source.
 
 Pipeline: LaTeX (pre-processed for pandoc) -> pandoc + Lua filter -> .docx
-          -> python-docx post-processing (cover page, header/footer, tables, fonts).
+          -> python-docx post-processing (header/footer, tables, fonts).
 Equations are converted by pandoc into native, editable Word equations.
 
 Usage: python3 build_docx.py <latex_dir> <output.docx>
@@ -341,14 +341,14 @@ for shape in doc.inline_shapes:
         shape.width = int(shape.width * ratio)
         shape.height = int(shape.height * ratio)
 
-# ---- header / footer (not on the cover page)
-sec.different_first_page_header_footer = True
+# ---- header / footer
+sec.different_first_page_header_footer = False
 hp = sec.header.paragraphs[0]
 hp.text = ""
 hp.paragraph_format.tab_stops.add_tab_stop(TEXT_W, WD_TAB_ALIGNMENT.RIGHT)
-r = hp.add_run("Climate Solutions and Strategies | Policy memo")
+r = hp.add_run("Climate Solutions and Strategies | Assignment 1")
 r.bold, r.font.size, r.font.name = True, Pt(9.5), FONT
-r = hp.add_run("\tIMP-EGH | System Analysis | 2026")
+r = hp.add_run("\tSkill Up for Earth | Fall 2026 | KOUAME Koffi Fidèle")
 r.font.size, r.font.name = Pt(9.5), FONT
 pPr = hp._p.get_or_add_pPr()
 pbdr = OxmlElement("w:pBdr")
@@ -373,106 +373,11 @@ for kind, txt in (("begin", None), (None, "PAGE"), ("end", None)):
         it.text = txt
         run._r.append(it)
 
-# ---- cover page (built at the end of the document, then moved to the top)
-body = doc.element.body
-n_before = len(body)
-
-
-def para(text="", size=11, bold=False, italic=False, align=WD_ALIGN_PARAGRAPH.CENTER,
-         after=0, before=0, color=None):
-    p = doc.add_paragraph()
-    p.alignment = align
-    p.paragraph_format.space_after, p.paragraph_format.space_before = Pt(after), Pt(before)
-    if text:
-        r = p.add_run(text)
-        r.font.size, r.bold, r.italic, r.font.name = Pt(size), bold, italic, FONT
-        if color:
-            r.font.color.rgb = color
-    return p
-
-
-def initials(p, words, size, color, bold=True):
-    for i, w in enumerate(words):
-        if i:
-            p.add_run(" ").font.size = Pt(size)
-        if w[0].isupper() and w not in ("in", "and"):
-            r = p.add_run(w[0])
-            r.font.color.rgb, r.bold, r.font.size, r.font.name = color, bold, Pt(size), FONT
-            r = p.add_run(w[1:])
-        else:
-            r = p.add_run(w)
-        r.bold, r.font.size, r.font.name = bold, Pt(size), FONT
-
-
-logo_tbl = doc.add_table(rows=1, cols=3)
-no_borders(logo_tbl)
-logo_tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-c0, c1, c2 = logo_tbl.rows[0].cells
-set_widths(logo_tbl, [3.5, 10.2, 3.5])
-c0.paragraphs[0].add_run().add_picture(os.path.join(LATEX_DIR, "logo_uam.png"), width=Cm(3.1))
-c2.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
-c2.paragraphs[0].add_run().add_picture(os.path.join(LATEX_DIR, "logo_impegh.png"), width=Cm(3.3))
-p = c1.paragraphs[0]
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-initials(p, "Abdou Moumouni University".split(), 14, RED)
-p = c1.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-initials(p, "International Master Program in Energy and Green Hydrogen".split(), 9.5, LEAF)
-p = c1.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-r = p.add_run("(IMP-EGH)")
-r.bold, r.font.size, r.font.name = True, Pt(11), FONT
-for cell in (c0, c1, c2):
-    cell.vertical_alignment = 1
-
-rule = para(after=0, before=6)
-rpPr = rule._p.get_or_add_pPr()
-rb = OxmlElement("w:pBdr")
-rbot = OxmlElement("w:bottom")
-for k, v in (("w:val", "single"), ("w:sz", "18"), ("w:space", "1"), ("w:color", "A59F93")):
-    rbot.set(qn(k), v)
-rb.append(rbot)
-rpPr.append(rb)
-
-para(before=130)
-para("Why Limiting Climate Change", 26, bold=True)
-para("Matters for Niger", 26, bold=True, after=12)
-para("Policy memo to the Government of Niger", 16, italic=True, after=6)
-para("Climate Solutions and Strategies     Assignment 1     Country case study: Niger", 12, after=22)
-para("Assessing national climate risks with the Climate Impact Explorer", 12)
-para("and the national interest of limiting global warming", 12, after=140)
-
-sig = doc.add_table(rows=1, cols=2)
-no_borders(sig)
-set_widths(sig, [8.6, 8.6])
-left, right = sig.rows[0].cells
-for cell, lines, al in ((left, ["Course", "Climate Solutions and Strategies", "Assignment 1, due 14 October 2026"],
-                         WD_ALIGN_PARAGRAPH.LEFT),
-                        (right, ["Prepared by", "KOUAME Koffi Fidèle", "IMP-EGH, option System Analysis"],
-                         WD_ALIGN_PARAGRAPH.RIGHT)):
-    for i, line in enumerate(lines):
-        p = cell.paragraphs[0] if i == 0 else cell.add_paragraph()
-        p.alignment = al
-        p.paragraph_format.space_after = Pt(4 if i == 0 else 0)
-        r = p.add_run(line)
-        r.bold, r.font.size, r.font.name = i == 0, Pt(11), FONT
-
-para("October 2026", 11, bold=True, before=50)
-brk = para()
-brk.add_run().add_break(WD_BREAK.PAGE)
-
-# move the cover elements (everything added after n_before, except the final sectPr) to the top
-sectPr = body.find(qn("w:sectPr"))
-new_elems = [el for el in list(body)[n_before - 1:] if el is not sectPr and el.tag != qn("w:sectPr")]
-for i, el in enumerate(new_elems):
-    body.remove(el)
-    body.insert(i, el)
-
 # ---- core properties
 cp = doc.core_properties
 cp.title = "Why Limiting Climate Change Matters for Niger | Policy memo"
 cp.author = "KOUAME Koffi Fidèle"
-cp.subject = "Climate Solutions and Strategies, Assignment 1"
+cp.subject = "Skill Up for Earth, Climate Solutions and Strategies, Assignment 1"
 
 doc.save(OUT)
 print("saved", OUT)

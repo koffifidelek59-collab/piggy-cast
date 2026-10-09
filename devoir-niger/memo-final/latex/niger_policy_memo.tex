@@ -1,15 +1,12 @@
 % =====================================================================
 %  Climate Solutions and Strategies | Assignment 1
 %  Policy memo: Why limiting climate change matters for Niger
-%  Author: KOUAME Koffi Fidele, IMP-EGH, Abdou Moumouni University
+%  Skill Up for Earth, Climate Solutions and Strategies (Fall 2026 cohort)
+%  Author: KOUAME Koffi Fidele
 %  Compile: pdflatex niger_policy_memo.tex (twice)
 % =====================================================================
 \documentclass[10pt,a4paper]{article}
 
-% Cover page on (true) or off (false). The memo itself is 2 pages either way;
-% references are on the following page.
-\newif\ifcover
-\coverfalse
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -32,10 +29,7 @@
 \usepackage{float}
 \urlstyle{same}
 
-% ---- colours (same palette as the IMP-EGH documents)
-\definecolor{uamred}{HTML}{C00000}
-\definecolor{egh}{HTML}{6AA84F}
-\definecolor{rulegray}{HTML}{A59F93}
+% ---- colours
 \definecolor{boxgray}{HTML}{E6E6E6}
 
 % ---- layout
@@ -49,8 +43,8 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textbf{Climate Solutions and Strategies | Policy memo}}
-\fancyhead[R]{\small IMP-EGH | System Analysis | 2026}
+\fancyhead[L]{\small\textbf{Climate Solutions and Strategies | Assignment 1}}
+\fancyhead[R]{\small Skill Up for Earth | Fall 2026 | KOUAME Koffi Fidèle}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.6pt}
 
@@ -60,64 +54,13 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
-% gray box with black left rule, as the "Instructions" box of the IMP-EGH sheets
+% gray box with black left rule
 \newtcolorbox{graybox}[1]{colback=boxgray!35,colframe=black,boxrule=0pt,leftrule=2.5pt,arc=0pt,
   left=6pt,right=6pt,top=2pt,bottom=3pt,
   title={\textbf{#1}},coltitle=black,colbacktitle=boxgray,attach title to upper={\par\smallskip}}
 
 \begin{document}
 
-% =====================================================================
-%  COVER PAGE
-% =====================================================================
-\ifcover
-\begin{titlepage}
-\thispagestyle{empty}
-\begin{minipage}[c]{0.2\textwidth}
-  \includegraphics[width=\linewidth]{logo_uam.png}
-\end{minipage}%
-\begin{minipage}[c]{0.58\textwidth}
-  \centering
-  {\Large\bfseries\textcolor{uamred}{A}bdou \textcolor{uamred}{M}oumouni \textcolor{uamred}{U}niversity}\\[6pt]
-  {\small\bfseries\textcolor{egh}{I}nternational \textcolor{egh}{M}aster \textcolor{egh}{P}rogram in
-   \textcolor{egh}{E}nergy and \textcolor{egh}{G}reen \textcolor{egh}{H}ydrogen}\\[4pt]
-  {\bfseries (IMP-EGH)}
-\end{minipage}%
-\begin{minipage}[c]{0.22\textwidth}
-  \raggedleft\includegraphics[width=0.95\linewidth]{logo_impegh.png}
-\end{minipage}
-
-\vspace{10pt}
-{\color{rulegray}\rule{\textwidth}{2.2pt}}
-
-\vspace*{4.6cm}
-\begin{center}
-{\fontsize{26}{32}\selectfont\bfseries Why Limiting Climate Change}\\[6pt]
-{\fontsize{26}{32}\selectfont\bfseries Matters for Niger}\\[14pt]
-{\Large\itshape Policy memo to the Government of Niger}\\[8pt]
-{\large Climate Solutions and Strategies\quad Assignment 1\quad Country case study: Niger}\\[24pt]
-{\large Assessing national climate risks with the Climate Impact Explorer}\\[2pt]
-{\large and the national interest of limiting global warming}
-\end{center}
-
-\vfill
-\begin{minipage}[t]{0.5\textwidth}
-\textbf{Course}\\[3pt]
-Climate Solutions and Strategies\\
-Assignment 1, due 14 October 2026
-\end{minipage}%
-\begin{minipage}[t]{0.5\textwidth}
-\raggedleft
-\textbf{Prepared by}\\[3pt]
-KOUAME Koffi Fidèle\\
-IMP-EGH, option System Analysis
-\end{minipage}
-
-\vspace{2.2cm}
-\begin{center}\textbf{October 2026}\end{center}
-\end{titlepage}
-\setcounter{page}{1}
-\fi
 
 % =====================================================================
 %  MEMO, PAGE 1
