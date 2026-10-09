@@ -1,54 +1,40 @@
 % =====================================================================
 %  Assignment 1 -- Assessing climate risk at the national level: NIGER
 %  Policy memo: "Why limiting climate change matters for Niger"
-%  Compile with pdflatex (twice) -- works as-is on Overleaf.
+%  Compile with pdflatex (twice) -- works as-is on Overleaf
+%  (upload this file + cie_figure.png).
 % =====================================================================
 \documentclass[10pt,a4paper]{article}
 
 % ---------------------------------------------------------------------
-%  CLIMATE IMPACT EXPLORER VALUES -- EDIT THIS BLOCK ONLY
-%  Country: Niger | Temporal average: Annual | Spatial: Area-weighted average
-%  Scenario: NGFS below 2 degree | Alternative scenario: NGFS current policies
-%  Replace each \todo{...} by the value read in the CIE (median line),
-%  e.g.  \newcommand{\HeatNow}{38}.  Ranges = hatched band, e.g. {85--140}.
+%  Only remaining field to fill in: your name.
 % ---------------------------------------------------------------------
 \newcommand{\AuthorName}{\todo{Your name}}
-\newcommand{\CIEAccessDate}{\todo{date accessed}}
-\newcommand{\Horizon}{2100}   % year used for the two scenario columns
 
-% Indicator 1 -- Heat: Days per year with dangerous heat risk (HI > 40 C)  [days]
-\newcommand{\HeatNow}{\todo{??}}          % today (first year shown, ~2020)
-\newcommand{\HeatLow}{\todo{??}}          % Horizon, NGFS below 2 degree
-\newcommand{\HeatLowRange}{\todo{??--??}}
-\newcommand{\HeatHigh}{\todo{??}}         % Horizon, NGFS current policies
-\newcommand{\HeatHighRange}{\todo{??--??}}
-
-% Indicator 2 -- Drought: Area under severe drought (SPEI < -1.5)  [% of area]
-\newcommand{\DroughtNow}{\todo{??}}
-\newcommand{\DroughtLow}{\todo{??}}
-\newcommand{\DroughtLowRange}{\todo{??--??}}
-\newcommand{\DroughtHigh}{\todo{??}}
-\newcommand{\DroughtHighRange}{\todo{??--??}}
-
-% Indicator 3 -- Extreme precipitation: Annual Maximum 5-day Precipitation  [mm]
-\newcommand{\RainNow}{\todo{??}}
-\newcommand{\RainLow}{\todo{??}}
-\newcommand{\RainLowRange}{\todo{??--??}}
-\newcommand{\RainHigh}{\todo{??}}
-\newcommand{\RainHighRange}{\todo{??--??}}
-
-% Figure: save your CIE screenshot of the HEAT chart (both scenarios shown)
-% as  cie_figure.png  next to this file.
-% Look at the hatched uncertainty bands at the end of the century:
-%   bands do NOT overlap  -> keep \bandsseparatetrue
-%   bands overlap         -> change to \bandsseparatefalse
-\newif\ifbandsseparate
-\bandsseparatetrue
-
-% Set to \finaltrue once every value is filled in: removes the yellow
-% highlighting (any value still missing will then show as "??").
+% Set to \finaltrue once your name is filled in (removes yellow highlight).
 \newif\iffinal
 \finalfalse
+
+% ---------------------------------------------------------------------
+%  DATA (Climate Impact Explorer, Niger, annual, area-weighted average,
+%  downloaded 9 Oct 2026). Median [5th--95th percentile].
+%  Scenarios: o_2c = NGFS Below 2 C, h_cpol = NGFS Current policies,
+%             o_1p5c = NGFS Net Zero 2050 (1.5 C).
+%  Global warming in 2100: o_2c 1.62 C | h_cpol 2.90 C | o_1p5c 1.27 C.
+%
+%  Days/yr with dangerous heat risk (HI > 40 C), days:
+%    2020: 30.8 [25.4-37.6]
+%    2050: o_2c 44.9 [32.7-69.1] | h_cpol 54.4 [40.6-84.2] | o_1p5c 40.6
+%    2100: o_2c 42.4 [29.2-72.2] | h_cpol 91.4 [58.6-133.9] | o_1p5c 32.2
+%    Map, 2.0 C vs 1.0 C warming level: south (<=15N) +43.6 d, north +21.5 d
+%  Area under severe drought (SPEI < -1.5, >=1 month/yr), % of area:
+%    2020: 83.9 [71.9-96.8] | 2030: ~96 in all scenarios
+%    2050: o_2c 98.5 [84.9-100] | h_cpol 99.7 [95.6-100]
+%    2100: o_2c 97.8 [81.1-100] | h_cpol 100 [97.6-100] | o_1p5c 86.6 [66.1-99.6]
+%  Annual max 5-day precipitation, % change vs 1995-2014:
+%    2020: +8.1 [-6.6,+29.0]
+%    2050: o_2c +18.1 [-0.1,+55.0] | h_cpol +23.7 [-1.0,+67.4]
+%    2100: o_2c +16.7 [-1.1,+53.8] | h_cpol +43.4 [+4.5,+109.6] | o_1p5c +9.3
 % ---------------------------------------------------------------------
 
 \usepackage[T1]{fontenc}
@@ -86,7 +72,7 @@
 
 % ---- placeholder macro
 \iffinal
-  \newcommand{\todo}[1]{??}
+  \newcommand{\todo}[1]{}
 \else
   \newcommand{\todo}[1]{\begingroup\setlength{\fboxsep}{1pt}%
     \colorbox{yellow}{\textbf{\strut#1}}\endgroup}
@@ -110,8 +96,7 @@
 \fancyfoot[R]{\scriptsize\color{gray}\thepage}
 
 \newcommand{\degC}{\,\textdegree C}
-\newcommand{\lowscen}{a below-2\degC{} world}
-\newcommand{\highscen}{current policies}
+\newcommand{\rng}[1]{{\scriptsize\color{black!65}[#1]}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
@@ -142,77 +127,72 @@
 \begin{tcolorbox}[colback=msgbg,colframe=brick,boxrule=0pt,leftrule=3pt,arc=0pt,
                   left=7pt,right=7pt,top=4pt,bottom=4pt]
 {\color{brick}\small\bfseries KEY MESSAGE}\\[1pt]
-\textbf{Heat is becoming the defining threat to Niger's economy, which rests on outdoor, rain-fed
-farming and herding: almost 40\% of GDP and more than 80\% of jobs.}
-Under current global policies, Niger would face about \HeatHigh{} days a year of dangerous heat by
-\Horizon{}, against \HeatNow{} today; holding warming below 2\degC{} would limit this to about
-\HeatLow{} days. Hotter air also dries soils and pastures, so the share of the country in severe
-drought rises from \DroughtNow\% to \DroughtHigh\% under current policies.
-\textbf{Niger emits a negligible share of global greenhouse gases yet faces some of the largest losses:
-pressing for a rapid global phase-out of emissions is a matter of national interest, not charity.}
+\textbf{Under current global policies, Niger would face about 91 days a year of dangerous heat by 2100,
+three times today's 31; if the world holds warming below 2\degC, that number stabilises at around 42.}
+In an economy where farming and herding employ more than 80\% of people, mostly outdoors, this is the
+largest avoidable loss. Current policies would also make the heaviest multi-day rains about 43\% more
+intense, against 17\% below 2\degC. Severe drought months, however, will touch almost the whole country by 2030
+in every scenario, so \textbf{Niger must both push for a rapid global phase-out of emissions and invest in
+adaptation now.}
 \end{tcolorbox}
 
 % =====================================================================
 %  WHY NIGER IS EXPOSED
 % =====================================================================
-\section{Why Niger is unusually exposed}
+\section{Why Niger is unusually exposed, and not responsible}
 \begin{itemize}
   \item \textbf{An open-air economy.} Agriculture and livestock account for almost 40\% of GDP and
         over 80\% of jobs, and depend overwhelmingly on rainfall (World Bank, 2024).
   \item \textbf{Shocks are already frequent and costly.} The 2005 and 2010 droughts triggered national
         food crises; the 2024 floods killed 339 people and affected more than 1.1~million (AFP, 2024).
-  \item \textbf{Demand is growing fast.} With one of the fastest-growing populations in the world,
-        Niger needs more food, water and jobs every year, from a climate that makes each harder to secure.
+  \item \textbf{A negligible contributor.} Niger emits a tiny share of global greenhouse gases: the losses
+        below are driven by others' emissions, and can only be limited by others' cuts.
 \end{itemize}
 
 % =====================================================================
 %  b) THREE PRIORITY IMPACTS
 % =====================================================================
 \section{Three priority impacts: below 2\degC{} versus current policies}
-{\footnotesize\itshape Source: Climate Impact Explorer (Climate Analytics), Niger, annual, area-weighted
-average; NGFS ``Below 2\degC'' and ``Current policies'' scenarios (the latter leads to roughly 3\degC{} of
-global warming by 2100). Median of the models; model range in brackets.\par}
+{\footnotesize\itshape Source: Climate Impact Explorer (CIE), Niger, annual, area-weighted average. NGFS
+``Below 2\degC'' (1.6\degC{} of global warming in 2100) vs.\ ``Current policies'' (2.9\degC). Median of five
+climate models; 5--95\% range in brackets. The CIE flags results after 2060 as indicative.\par}
 \vspace{3pt}
 
 {\small
-\renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\linewidth}{@{}L{2.75cm} C{1.25cm} C{1.75cm} C{1.75cm} Y@{}}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}L{2.55cm} C{1.35cm} C{2.45cm} C{2.45cm} Y@{}}
 \rowcolor{navy}
 \color{white}\bfseries Impact (CIE indicator) &
-\color{white}\bfseries Today &
-\color{white}\bfseries \Horizon:\newline Below 2\degC &
-\color{white}\bfseries \Horizon:\newline Current policies &
+\color{white}\bfseries Today\newline (2020) &
+\color{white}\bfseries Below 2\degC &
+\color{white}\bfseries Current policies &
 \color{white}\bfseries Why it matters for Niger \\[2pt]
 %
 \textbf{1. Dangerous heat}\newline{\footnotesize\itshape Days per year with heat index above 40\degC} &
-\cellcolor{nowbg}\textbf{\HeatNow}\newline{\footnotesize days} &
-\cellcolor{lowbg}\textbf{\HeatLow}\newline{\footnotesize [\HeatLowRange]} &
-\cellcolor{highbg}\textbf{\HeatHigh}\newline{\footnotesize [\HeatHighRange]} &
-Above this threshold, sustained work outdoors risks heat exhaustion and heat stroke. Most Nigeriens farm,
-herd or build outdoors, mostly without electricity or cooling. WASCAL researchers project that even at
-1.5--2\degC{} of global warming, more than half the population of most of West Africa would face heat
-discomfort seasonally (Sylla et al., 2018); the deadly April 2024 Sahel heatwave would have been impossible
-without the warming observed so far (WWA, 2024). \\
+\cellcolor{nowbg}\textbf{31 days}\newline\rng{25--38} &
+\cellcolor{lowbg}2050: \textbf{45}\newline\rng{33--69}\par\vspace{2pt}2100: \textbf{42}\newline\rng{29--72} &
+\cellcolor{highbg}2050: \textbf{54}\newline\rng{41--84}\par\vspace{2pt}2100: \textbf{91}\newline\rng{59--134} &
+Above this threshold, sustained outdoor work risks heat exhaustion and heat stroke, and most Nigeriens farm,
+herd or build outdoors without cooling. CIE maps show the rise is about twice as large in the populated
+south as in the north (+44 vs.\ +21 days at 2\degC{} compared with 1\degC{} of global warming). WASCAL researchers project heat discomfort
+for over half of West Africa's population even at 1.5--2\degC{} (Sylla et al., 2018). \\
 \midrule
-\textbf{2. Severe drought}\newline{\footnotesize\itshape Share of land area with SPEI below $-1.5$ (\%)} &
-\cellcolor{nowbg}\textbf{\DroughtNow}\newline{\footnotesize \%} &
-\cellcolor{lowbg}\textbf{\DroughtLow\%}\newline{\footnotesize [\DroughtLowRange]} &
-\cellcolor{highbg}\textbf{\DroughtHigh\%}\newline{\footnotesize [\DroughtHighRange]} &
-This index counts evaporation as well as rain, so it captures what heat does to soils and pastures.
-Millet and sorghum feed the country. WASCAL crop modelling for three Nigerien zones projects a steady
-decline in millet yields in most scenarios, worst under very high emissions late in the century
-(Mohamed et al., 2025); beyond about +2\degC{} of local warming, no plausible rise in rainfall offsets
-heat losses (Sultan et al., 2013). A drought year means higher grain prices, malnutrition and distress
-sales of livestock. \\
+\textbf{2. Severe drought}\newline{\footnotesize\itshape Share of land with at least one month of SPEI below $-1.5$ (\%)} &
+\cellcolor{nowbg}\textbf{84\%}\newline\rng{72--97} &
+\cellcolor{lowbg}2050: \textbf{98\%}\newline\rng{85--100}\par\vspace{2pt}2100: \textbf{98\%}\newline\rng{81--100} &
+\cellcolor{highbg}2050: \textbf{$\approx$100\%}\newline\rng{96--100}\par\vspace{2pt}2100: \textbf{100\%}\newline\rng{98--100} &
+SPEI counts evaporation as well as rain, so it captures what heat does to soils, crops and pastures. By
+2030, about 96\% of the country is affected in every scenario: severe drought months become the norm
+whatever the world does. Only a 1.5\degC{} pathway brings this back down (87\% by 2100). WASCAL crop
+modelling projects falling millet yields in most scenarios (Mohamed et al., 2025). \\
 \midrule
-\textbf{3. Extreme rainfall}\newline{\footnotesize\itshape Annual maximum 5-day precipitation (mm)} &
-\cellcolor{nowbg}\textbf{\RainNow}\newline{\footnotesize mm} &
-\cellcolor{lowbg}\textbf{\RainLow}\newline{\footnotesize [\RainLowRange]} &
-\cellcolor{highbg}\textbf{\RainHigh}\newline{\footnotesize [\RainHighRange]} &
-Extreme Sahelian storms have tripled in frequency since 1982 as land temperatures rose (Taylor et al.,
-2017), and climate change made the deadly 2022 rains in Niger, Nigeria and Chad about 80 times more likely
-(WWA, 2022). Downpours on bare, crusted soils flood Niamey and the Niger River valley, where people,
-infrastructure and irrigated rice are concentrated. Niger must prepare for droughts \emph{and} floods. \\
+\textbf{3. Extreme rainfall}\newline{\footnotesize\itshape Annual maximum 5-day precipitation, change vs.\ 1995--2014 (\%)} &
+\cellcolor{nowbg}\textbf{+8\%}\newline\rng{$-$7 to +29} &
+\cellcolor{lowbg}2050: \textbf{+18\%}\newline\rng{0 to +55}\par\vspace{2pt}2100: \textbf{+17\%}\newline\rng{$-$1 to +54} &
+\cellcolor{highbg}2050: \textbf{+24\%}\newline\rng{$-$1 to +67}\par\vspace{2pt}2100: \textbf{+43\%}\newline\rng{+5 to +110} &
+Heavier downpours on bare, crusted soils flood Niamey and the Niger River valley, where people,
+infrastructure and irrigated rice are concentrated. Under current policies, even the low end of the model range shows an
+increase by 2100. Extreme Sahelian storms have already tripled in frequency since 1982 (Taylor et al., 2017). \\
 \bottomrule
 \end{tabularx}}
 \vspace{2pt}
@@ -222,26 +202,14 @@ infrastructure and irrigated rice are concentrated. Niger must prepare for droug
 % =====================================================================
 \begin{figure}[H]
 \centering
-\IfFileExists{cie_figure.png}{%
-  \includegraphics[width=0.86\linewidth,height=6.6cm,keepaspectratio]{cie_figure.png}%
-}{%
-  \fcolorbox{gray}{gray!8}{\parbox[c][5.6cm][c]{0.84\linewidth}{\centering\small
-  \todo{Save your Climate Impact Explorer screenshot as \textsf{cie\_figure.png}}\\[4pt]
-  Niger -- days per year with dangerous heat risk (HI $>$ 40\degC) --
-  NGFS below 2\degC{} vs.\ NGFS current policies}}%
-}
+\includegraphics[width=\linewidth,height=8.2cm,keepaspectratio]{cie_figure.png}
 \vspace{-2pt}
-\caption*{\footnotesize\textbf{Figure 1. Days of dangerous heat per year in Niger: the gap between the
-two curves is what limiting warming saves.} By \Horizon, current policies would bring about \HeatHigh{}
-dangerous-heat days a year, against \HeatLow{} in \lowscen{} and \HeatNow{} today.
-\ifbandsseparate
-  The hatched bands show model uncertainty and do not overlap by the end of the century: the models
-  disagree on the exact number of days, but not on the size of the difference between the two paths.
-\else
-  The hatched bands show model uncertainty and partly overlap: the exact number of days is uncertain,
-  but every model shows more dangerous-heat days under current policies.
-\fi
-Source: Climate Impact Explorer, Climate Analytics.}
+\caption*{\footnotesize\textbf{Figure 1. Days of dangerous heat per year in Niger: the gap between the two
+curves is what limiting warming saves.} The two paths are identical until about 2030, then diverge: by 2100,
+current policies (blue) lead to about 91 days a year, against 42 below 2\degC{} (green) and 31 today. The
+shaded bands (model uncertainty) overlap, but even the low end of the current-policies range (59 days) exceeds the
+central below-2\degC{} estimate. Hatched area: results after 2060 are indicative. Source: Climate Impact
+Explorer, Climate Analytics (ISIMIP data).}
 \end{figure}
 \vspace{-10pt}
 
@@ -250,41 +218,40 @@ Source: Climate Impact Explorer, Climate Analytics.}
 % =====================================================================
 \section{Implications for Niger's national interest}
 
-\textbf{1. The cost is counted in GDP points.} The World Bank (2022) estimates that by 2050 climate
-change would reduce Niger's annual GDP by 2.2\% in a wet, optimistic scenario but by 11.9\% in a dry,
-pessimistic one, the largest loss among the five G5 Sahel countries. These figures are probably
-\emph{under}estimates: they leave out migration, conflict and ecosystem degradation.
+\textbf{1. Heat is the largest avoidable loss.} Moving from current policies to a below-2\degC{} world avoids
+roughly 50 days of dangerous heat a year by 2100, nearly two months in which outdoor work, livestock and health
+are at risk. The World Bank (2022) estimates that climate change could cut Niger's annual GDP by 2.2\% (wet,
+optimistic scenario) to 11.9\% (dry, pessimistic scenario) by 2050, before counting migration or conflict.
 
-\textbf{2. The real danger is a cascade, not a single number.} A hot, dry year $\rightarrow$ failed
-harvests and pastures $\rightarrow$ higher grain prices and forced sales of livestock $\rightarrow$
-malnutrition, household debt, migration to cities and farmer--herder tensions $\rightarrow$ emergency
-spending that crowds out investment. Heat makes each step worse, and current policies make such years
-far more frequent.
+\textbf{2. Drought makes adaptation unavoidable in every scenario.} Since severe drought months spread to almost
+the whole country by 2030 regardless of emissions, Niger cannot wait: drought-tolerant millet and sorghum, water
+harvesting, early warning and protection of herders' mobility are needed now. The risk is a cascade: hot, dry
+year $\rightarrow$ failed harvests and pastures $\rightarrow$ higher grain prices and distress sales of
+livestock $\rightarrow$ malnutrition, debt and farmer--herder tensions $\rightarrow$ emergency spending that
+crowds out investment.
 
-\textbf{3. Adaptation has limits that only global mitigation can push back.} Irrigation, drought-tolerant
-seeds, early warning and crop insurance are essential but costly, and outdoor work cannot be ``adapted''
-away from a heat index above 40\degC. Every tenth of a degree avoided lowers an adaptation bill that
-Niger cannot pay alone.
+\textbf{3. Floods grow with every tenth of a degree.} Extreme rainfall keeps intensifying under current
+policies (+43\% by 2100) but levels off below 2\degC{} (+17\%). Limiting warming directly reduces the flood risk
+facing Niamey and the river valley.
 
 \begin{tcolorbox}[colback=lowbg,colframe=lowtxt,boxrule=0pt,leftrule=3pt,arc=0pt,
                   left=7pt,right=7pt,top=3pt,bottom=3pt]
 \textbf{Recommended negotiating position.}
-(i)~Defend the 1.5\degC{} goal and press major emitters for NDCs consistent with a rapid fossil-fuel
-phase-out; (ii)~tie Niger's support to scaled-up, accessible adaptation finance with simplified access
-for Least Developed Countries; (iii)~use the Loss and Damage Fund for droughts and floods, in coalition
-with the African Group and the LDC group.
+(i)~Defend the 1.5\degC{} goal: it is the only pathway that brings heat days back to today's level (32 by 2100)
+and reverses drought spread; press major emitters for NDCs consistent with a rapid fossil-fuel phase-out.
+(ii)~Tie Niger's support to scaled-up, accessible adaptation finance for LDCs. (iii)~Use the Loss and Damage
+Fund for droughts and floods, in coalition with the African Group and the LDC group.
 \end{tcolorbox}
 
 \section{What the evidence does, and does not, say}
 {\small
-Rising heat is the most robust signal: all models agree on its direction. \textbf{Rainfall is far less
-certain}: models disagree on whether the Sahel gets wetter or drier, so the drought and extreme-rainfall
-figures carry wider ranges, and some studies even project small millet yield gains from CO$_2$
-fertilisation (GIZ/PIK, 2021). Conversely, observed storm intensification is faster than most models
-simulate (Taylor et al., 2017), so the extreme-rainfall figures may be conservative. The tool's only crop indicators (maize, rice, soy) were set aside because
-Niger's staples, millet and sorghum, are not modelled. These figures are projections, not forecasts, and
-they describe hazards only: Niger's high social vulnerability means actual impacts are likely to be larger
-than the physical numbers suggest.\par}
+The direction of change is robust for heat; the size is not: by 2100 under current policies, models span 59 to
+134 dangerous-heat days. Heat-index values rely on an approximation of humidity during the hottest hour, a
+limitation the tool itself notes. The drought indicator counts a single month of severe drought, so it saturates
+and barely separates scenarios. For extreme rainfall, ranges include no change under low warming but not
+under current policies by 2100. The tool's only crop indicators (maize, rice, soy) were set aside: Niger's
+staples, millet and sorghum, are not modelled. Finally, these are hazard projections, not forecasts; Niger's
+high social vulnerability means real impacts are likely to be larger.\par}
 
 % =====================================================================
 %  REFERENCES (page 3 -- outside the 2-page limit)
@@ -297,17 +264,11 @@ than the physical numbers suggest.\par}
       \emph{Inquirer.net}. \url{https://globalnation.inquirer.net/251812/niger-ups-flood-toll-to-339-dead-more-than-1-million-affected}
 \item Climate Analytics (2026). \emph{Climate Impact Explorer}: Niger. Indicators: days per year with
       dangerous heat risk (HI $>$ 40\degC), area under severe drought (SPEI $< -1.5$), annual maximum
-      5-day precipitation; NGFS Below 2\degC{} and Current Policies scenarios.
-      \url{https://climate-impact-explorer.climateanalytics.org} (accessed \CIEAccessDate).
-\item GIZ \& PIK (2021). \emph{Climate Risk Profile: Niger}. Bonn and Potsdam: Deutsche Gesellschaft für
-      Internationale Zusammenarbeit and Potsdam Institute for Climate Impact Research.
-      \url{https://www.adaptationcommunity.net/wp-content/uploads/2021/02/GIZ_Climate-risk-profile-Niger_EN_final.pdf}
+      5-day precipitation; NGFS Below 2\degC, Current Policies and Net Zero 2050 scenarios; ISIMIP data.
+      \url{https://climate-impact-explorer.climateanalytics.org} (accessed 9 October 2026).
 \item Mohamed, A. M. L., Salack, S., Mkuhlani, S., Chemura, A., et al. (2025). Impact of climate change on
       millet yield under different fertilization levels in three agroecological zones of Niger Republic.
       \emph{PLOS ONE}, 20(10), e0333963. \url{https://doi.org/10.1371/journal.pone.0333963}
-\item Sultan, B., Roudier, P., Quirion, P., Alhassane, A., Muller, B., Dingkuhn, M., Ciais, P., Guimberteau, M.,
-      Traore, S., \& Baron, C. (2013). Assessing climate change impacts on sorghum and millet yields in the
-      Sudanian and Sahelian savannas of West Africa. \emph{Environmental Research Letters}, 8, 014040.
 \item Sylla, M. B., Faye, A., Giorgi, F., Diedhiou, A., \& Kunstmann, H. (2018). Projected heat stress
       under 1.5\degC{} and 2\degC{} global warming scenarios creates unprecedented discomfort for humans in
       West Africa. \emph{Earth's Future}, 6(7), 1029--1044. \url{https://doi.org/10.1029/2018EF000873}
@@ -319,12 +280,6 @@ than the physical numbers suggest.\par}
 \item World Bank (2024, 28 June). The World Bank supports food security and climate resilience for households
       in Niger [Press release].
       \url{https://www.worldbank.org/en/news/press-release/2024/07/01/the-world-bank-supports-food-security-and-climate-resilience-for-households-in-niger}
-\item World Weather Attribution (2022). Climate change exacerbated heavy rainfall leading to large scale
-      flooding in highly vulnerable communities in West Africa.
-      \url{https://www.worldweatherattribution.org/climate-change-exacerbated-heavy-rainfall-leading-to-large-scale-flooding-in-highly-vulnerable-communities-in-west-africa}
-\item World Weather Attribution (2024). Extreme Sahel heatwave that hit highly vulnerable population at the end
-      of Ramadan would not have occurred without climate change.
-      \url{https://www.worldweatherattribution.org/extreme-sahel-heatwave-that-hit-highly-vulnerable-population-at-the-end-of-ramadan-would-not-have-occurred-without-climate-change}
 \end{list}}
 
 \end{document}

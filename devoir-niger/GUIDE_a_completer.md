@@ -1,57 +1,42 @@
-# Devoir 1 — Niger : guide pour le Climate Impact Explorer et la note LaTeX
+# Devoir 1 — Niger : il ne reste qu'à mettre votre nom
 
-Fichier de la note : `latex/niger_climate_memo.tex`, en anglais. Les éléments surlignés en jaune dans le PDF
-sont les seules valeurs à compléter.
+La note `latex/niger_climate_memo.tex` contient maintenant **vos vraies données du Climate Impact Explorer**
+(fichiers CSV téléchargés le 9 octobre 2026, copiés dans `donnees_cie/`). Le graphique est votre capture
+`1.png`, copiée sous `latex/cie_figure.png`.
 
-## Réglages communs aux 3 indicateurs
+## Pour finaliser (5 minutes)
 
-| Champ | Valeur |
-|---|---|
-| Country | **Niger** (laissez *Province* vide) |
-| Scenario | **NGFS below 2 degree** |
-| Alternative scenario | **NGFS current policies** |
-| Temporal average | **Annual** |
-| Spatial aggregation method | **Area-weighted average** |
+1. Dans le haut du `.tex`, remplacez `\todo{Your name}` par votre nom :
+   `\newcommand{\AuthorName}{Prénom Nom}`.
+2. Remplacez `\finalfalse` par `\finaltrue`.
+3. Compilez : sur Overleaf, importez `niger_climate_memo.tex` **et** `cie_figure.png`, avec le compilateur
+   pdfLaTeX ; en local, lancez `pdflatex` deux fois.
+4. Remettez le PDF dans « Assignment 1. Due Oct 14 ».
 
-## Les 3 indicateurs retenus
+## Chiffres utilisés
 
-| # | Catégorie → indicateur | Macros dans le .tex | Unité |
-|---|---|---|---|
-| 1 | Heat → **Days per year with dangerous heat risk (HI > 40 °C)** | `\HeatNow`, `\HeatLow`, `\HeatHigh` | jours |
-| 2 | Drought → **Area under severe drought (SPEI < -1.5)** | `\DroughtNow`, `\DroughtLow`, `\DroughtHigh` | % de la superficie |
-| 3 | Extreme precipitation → **Annual Maximum 5-day Precipitation** | `\RainNow`, `\RainLow`, `\RainHigh` | mm |
+Médiane des modèles ; entre crochets, la fourchette 5–95 %.
 
-Pour chaque indicateur, relevez :
+| Indicateur | Aujourd'hui (2020) | Below 2 °C, 2050 / 2100 | Current policies, 2050 / 2100 | Net Zero 2050 (1,5 °C), 2100 |
+|---|---|---|---|---|
+| Jours de chaleur dangereuse (HI > 40 °C) | 31 [25–38] | 45 [33–69] / 42 [29–72] | 54 [41–84] / 91 [59–134] | 32 [24–50] |
+| Superficie avec au moins 1 mois de sécheresse sévère (SPEI < -1,5) | 84 % [72–97] | 98 % / 98 % [81–100] | ≈100 % / 100 % [98–100] | 87 % [66–100] |
+| Pluie maximale sur 5 jours (variation par rapport à 1995–2014) | +8 % [−7 ; +29] | +18 % / +17 % [−1 ; +54] | +24 % / +43 % [+5 ; +110] | +9 % |
 
-- **Now** : la valeur de la première année du graphique (≈ 2020) ;
-- **Low** : la valeur en **2100** avec *NGFS below 2 degree* (courbe médiane) ;
-- **High** : la valeur en **2100** avec *NGFS current policies* ;
-- **…Range** : le bas et le haut de la bande hachurée en 2100, par exemple `85--140`.
+Réchauffement mondial en 2100 : 1,6 °C (Below 2 °C), 2,9 °C (Current policies), 1,3 °C (Net Zero 2050).
 
-Le plus précis est le bouton **Download** de chaque graphique (fichier de données) : les valeurs exactes y
-figurent.
+Les cartes (fichiers `*_vs_*.csv`) montrent qu'à 2 °C de réchauffement mondial, comparé à 1 °C, la hausse des
+jours de chaleur dangereuse est d'environ **+44 jours dans le sud** (au sud de 15° N, où vit la majorité de la
+population), contre **+21 jours dans le nord**.
 
-## Le graphique
+## Ce que révèlent vos données (et comment la note l'exploite)
 
-Faites une capture du graphique **Heat** (les deux courbes visibles, avec la légende) et enregistrez-la sous
-`latex/cie_figure.png`. Si les bandes hachurées **se chevauchent** en 2100, remplacez `\bandsseparatetrue`
-par `\bandsseparatefalse`.
-
-## Finaliser
-
-1. Remplissez `\AuthorName` et `\CIEAccessDate`.
-2. Passez `\finalfalse` à `\finaltrue`.
-3. Compilez (Overleaf → pdfLaTeX).
-4. Vérifiez : 2 pages, plus la page de références, et aucun « ?? ».
-5. Remettez le PDF.
-
-## Pourquoi ces 3 indicateurs (argument de « Judgment »)
-
-- **Chaleur dangereuse** : c'est le signal le plus robuste, et la majorité des actifs travaillent dehors,
-  sans climatisation.
-- **Sécheresse sévère (SPEI)** : l'indice tient compte de l'évaporation. Il montre donc l'effet de la chaleur
-  sur les sols et les pâturages, même si la pluie change peu.
-- **Pluies extrêmes sur 5 jours** : elles sont à l'origine des inondations de Niamey et de la vallée du fleuve
-  (2020, 2024).
-- **Rendements de maïs, riz et soja écartés** : ce ne sont pas les aliments de base du Niger (mil, sorgho).
-  La note le dit explicitement.
+- **Chaleur :** c'est la plus grande perte évitable. Limiter le réchauffement sous 2 °C évite environ 50 jours
+  de chaleur dangereuse par an en 2100.
+- **Sécheresse :** l'indicateur **sature**. Environ 96 % du territoire est touché dès 2030, quel que soit le
+  scénario. La note le présente comme un argument pour l'**adaptation immédiate** plutôt que de cacher le
+  résultat : c'est le critère « Judgment ».
+- **Pluies extrêmes :** sous les politiques actuelles, même le bas de la fourchette montre une hausse en 2100.
+  La hausse est donc robuste.
+- **Incertitude :** l'outil qualifie les résultats après 2060 d'« indicatifs ». La note le signale, avec les
+  limites de l'indice de chaleur et de l'indicateur de sécheresse.
