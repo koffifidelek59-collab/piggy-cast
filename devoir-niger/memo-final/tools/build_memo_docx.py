@@ -4,7 +4,7 @@ Pipeline: LaTeX (pre-processed for pandoc) -> pandoc + Lua filter -> .docx
           -> python-docx post-processing (header/footer, tables, fonts).
 Equations are converted by pandoc into native, editable Word equations.
 
-Usage: python3 build_docx.py <latex_dir> <output.docx>
+Usage: python3 build_memo_docx.py <latex_dir> <output.docx> [source.tex] [margin_cm] [col widths, comma-separated]
 """
 import copy
 import os
@@ -23,7 +23,9 @@ from docx.shared import Cm, Pt, RGBColor
 
 LATEX_DIR, OUT = os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])
 TOOLS = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(LATEX_DIR, "niger_policy_memo.tex")
+SRC = os.path.join(LATEX_DIR, sys.argv[3] if len(sys.argv) > 3 else "niger_policy_memo.tex")
+MARGIN = float(sys.argv[4]) if len(sys.argv) > 4 else 2.5
+COLS = [float(x) for x in sys.argv[5].split(",")] if len(sys.argv) > 5 else [2.4, 1.4, 2.35, 2.35, 7.5]
 
 FONT = "Times New Roman"
 GREEN = RGBColor(0x1E, 0x6B, 0x32)
@@ -72,7 +74,7 @@ def preprocess(tex):
     tex = re.sub(r"\{\\footnotesize\\itshape ([^}]*)\}", r"\\textit{\1}", tex)
     tex = tex.replace("\\par\\vspace{2pt}", " LBRK ")
     tex = tex.replace("\\newline", " LBRK ")
-    for a, b in (("$< -1.5$", "< \u22121.5"), ("$-1.5$", "\u22121.5"), ("$>$", ">"), ("$-$", "\u2212")):
+    for a, b in (("$< -1.5$", "< \u22121.5"), ("$-1.5$", "\u22121.5"), ("$>$", ">"), ("$-$", "\u2212"), ("${\\geq}$", "\u2265"), ("$<-1.5$", "< \u22121.5")):
         tex = tex.replace(a, b)
 
     def tabx(m):
@@ -236,8 +238,8 @@ os.remove(pre)
 doc = Document(raw)
 sec = doc.sections[0]
 sec.page_height, sec.page_width = Cm(29.7), Cm(21.0)
-sec.top_margin = sec.bottom_margin = Cm(2.5)
-sec.left_margin = sec.right_margin = Cm(2.5)
+sec.top_margin = sec.bottom_margin = Cm(MARGIN)
+sec.left_margin = sec.right_margin = Cm(MARGIN)
 TEXT_W = sec.page_width - sec.left_margin - sec.right_margin
 
 
@@ -299,7 +301,7 @@ def booktabs(table):
 
 
 WIDTHS = {  # first header cell -> column widths (cm), text width 17.2 cm
-    "Impact (CIE indicator)": [2.4, 1.4, 2.35, 2.35, 7.5],
+    "Impact (CIE indicator)": COLS,
 }
 
 
@@ -341,7 +343,8 @@ for t in doc.tables:
             tcPr = cell._tc.get_or_add_tcPr()
             for b in tcPr.findall(qn("w:tcBorders")):
                 tcPr.remove(b)
-        set_widths(t, [8.0, 8.0])
+        half = (21.0 - 2 * MARGIN) / 2
+        set_widths(t, [half, half])
         continue
     if key in WIDTHS and len(WIDTHS[key]) == len(t.columns):
         set_widths(t, WIDTHS[key])
@@ -356,6 +359,13 @@ for p in doc.paragraphs:
         p.alignment = WD_ALIGN_PARAGRAPH.LEFT if in_refs else WD_ALIGN_PARAGRAPH.JUSTIFY
         p.paragraph_format.line_spacing = 1.0
         p.paragraph_format.space_after = Pt(6)
+
+# table source notes: small, single spacing
+for p in doc.paragraphs:
+    if p.text.startswith("Source: "):
+        p.paragraph_format.line_spacing = 1.0
+        for r in p.runs:
+            r.font.size = Pt(10)
 
 # images: limit width
 for shape in doc.inline_shapes:
