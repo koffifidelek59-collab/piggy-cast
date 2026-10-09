@@ -67,6 +67,9 @@ def preprocess(tex):
     # boxes -> quote blocks (styled as "Key Box" by the Lua filter)
     tex = re.sub(r"\\begin\{graybox\}\{([^}]*)\}", r"\\begin{quote}\n\\textbf{\1}\n", tex)
     tex = tex.replace("\\end{graybox}", "\\end{quote}")
+    # list labels in a syntax pandoc understands
+    tex = tex.replace("[label=(\\alph*)]", "[(a)]")
+    tex = re.sub(r"\[label=\\arabic\*\.(,start=\d+)?\]", "", tex)
     # page breaks via a marker paragraph
     tex = tex.replace("\\clearpage", "\n\nPAGEBREAKMARKER\n\n")
     # table cell helpers
@@ -216,7 +219,7 @@ cen.paragraph_format.space_after = Pt(4)
 cen.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
 cen.paragraph_format.space_after = Pt(8)
 hl = S("Hyperlink")
-hl.font.color.rgb = RGBColor(0x1F, 0x4E, 0x9A)
+hl.font.color.rgb = RGBColor(0, 0, 0)
 hl.font.underline = False
 en = styles.add_style("End Note", WD_STYLE_TYPE.PARAGRAPH)
 en.base_style = S("Normal")
@@ -349,11 +352,12 @@ for t in doc.tables:
     if key in WIDTHS and len(WIDTHS[key]) == len(t.columns):
         set_widths(t, WIDTHS[key])
 
-# references and captions: left-aligned, single spacing
+# references and captions: left-aligned, single spacing; references on a new page
 in_refs = False
 for p in doc.paragraphs:
     if p.style.name.startswith("Heading") and p.text.strip() == "References":
         in_refs = True
+        p.paragraph_format.page_break_before = True
         continue
     if in_refs or p.style.name in ("Image Caption", "Caption"):
         p.alignment = WD_ALIGN_PARAGRAPH.LEFT if in_refs else WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -362,7 +366,7 @@ for p in doc.paragraphs:
 
 # table source notes: small, single spacing
 for p in doc.paragraphs:
-    if p.text.startswith("Source: "):
+    if p.text.startswith(("Source: ", "Table 1.")):
         p.paragraph_format.line_spacing = 1.0
         for r in p.runs:
             r.font.size = Pt(10)

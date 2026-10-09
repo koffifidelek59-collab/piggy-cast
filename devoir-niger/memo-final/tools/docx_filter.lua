@@ -55,7 +55,7 @@ end
 
 function Para(el)
   if pandoc.utils.stringify(el) == "PAGEBREAKMARKER" then
-    return pandoc.RawBlock("openxml", '<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
+    return {}  -- the References heading gets "page break before" in post-processing
   end
 end
 
@@ -85,4 +85,15 @@ function Inlines(inlines)
     end
   end
   return out
+end
+
+-- Numbered paragraphs run continuously through the memo (1, 2, 3, ...);
+-- lettered lists (recommendations) keep their own numbering.
+local para_counter = 0
+function OrderedList(el)
+  if el.listAttributes.style == "Decimal" or el.listAttributes.style == "DefaultStyle" then
+    el.listAttributes.start = para_counter + 1
+    para_counter = para_counter + #el.content
+  end
+  return el
 end
