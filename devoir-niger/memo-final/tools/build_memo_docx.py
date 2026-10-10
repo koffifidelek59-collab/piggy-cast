@@ -95,6 +95,7 @@ def preprocess(tex):
                       r"\newcommand{\pts}[1]{\quad\textbf{(#1)}}")
     tex = re.sub(r"\\needspace\{[^}]*\}", "", tex)
     tex = tex.replace("flow_kasso.pdf", "flow_kasso.png")
+    tex = tex.replace("fig_heat.pdf", "fig_heat.png")
     tex = re.sub(r"\\renewcommand\{\\arraystretch\}\{[\d.]+\}", "", tex)
     # simple inline chemistry and symbols -> Unicode (robust, matches body font)
     sub = str.maketrans("0123456789+-", "₀₁₂₃₄₅₆₇₈₉₊₋")
