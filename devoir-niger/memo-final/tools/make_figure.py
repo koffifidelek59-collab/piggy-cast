@@ -54,7 +54,7 @@ def value_at(sc, year):
     return med[-1]
 
 
-fig, ax = plt.subplots(figsize=(6.3, 2.9))   # 16 cm wide
+fig, ax = plt.subplots(figsize=(6.3, 2.55))   # 16 cm wide
 ax.axvspan(2060, 2100, color="#f1f0ec", zorder=0, lw=0)
 ax.text(2080, 133, "Indicative model results after 2060", ha="center", va="top", fontsize=8.5, color=MUTED)
 
@@ -96,7 +96,7 @@ ax.tick_params(colors=TEXT, labelsize=9)
 ax.spines["left"].set_color(MUTED)
 ax.spines["bottom"].set_color(MUTED)
 
-fig.subplots_adjust(left=0.105, right=0.77, top=0.97, bottom=0.11)
+fig.subplots_adjust(left=0.105, right=0.77, top=0.97, bottom=0.12)
 os.makedirs(OUT, exist_ok=True)
 fig.savefig(os.path.join(OUT, "fig_heat.pdf"))
 fig.savefig(os.path.join(OUT, "fig_heat.png"), dpi=300)
