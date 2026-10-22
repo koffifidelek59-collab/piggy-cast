@@ -1,0 +1,150 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Exercice de maison}
+\fancyhead[R]{\small Suites arithmétiques}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\newtcolorbox{resultat}{colback=gray!8,colframe=black,boxrule=0.5pt,arc=1pt,
+  left=6pt,right=6pt,top=3pt,bottom=3pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Exercice de maison}\\[4pt]
+{\large Suite arithmétique}
+\end{center}
+
+\vspace{4pt}
+\noindent Nom et prénom : \dotfill \quad Classe : \dotfill
+
+\vspace{6pt}
+\begin{tcolorbox}[colback=white,colframe=black,boxrule=0.5pt,arc=1pt,title=\textbf{Énoncé},
+  coltitle=black,colbacktitle=gray!15]
+On donne la suite $(U_n)$ définie par :
+\[
+\begin{cases}
+U_0 = 3\\
+U_{n+1} = U_n - 7
+\end{cases}
+\]
+\begin{enumerate}[nosep]
+  \item Calculer $U_1$ et $U_2$.
+  \item Montrer que $(U_n)$ est une suite arithmétique dont on précisera la raison et le premier terme.
+  \item Exprimer $U_n$ en fonction de $n$.
+  \item Donner le sens de variation de $(U_n)$.
+  \item Calculer $S = U_0 + U_1 + \dots + U_{100}$.
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{Solution}
+
+\subsection*{1. Calcul de $U_1$ et $U_2$}
+On utilise la relation de récurrence $U_{n+1} = U_n - 7$.
+
+Pour calculer $U_1$, on remplace $n$ par $0$, on obtient :
+\quad $U_{0+1} = U_1 = U_0 - 7 = 3 - 7 = -4$.
+
+Pour calculer $U_2$, on remplace $n$ par $1$, on obtient :
+\quad $U_{1+1} = U_2 = U_1 - 7 = -4 - 7 = -11$.
+
+\begin{resultat}
+$U_1 = -4$ \qquad et \qquad $U_2 = -11$.
+\end{resultat}
+
+\subsection*{2. Nature de la suite $(U_n)$}
+\textbf{Rappel du cours (définition).} Une suite numérique $(U_n)_{n\in\mathbb{N}}$ est dite arithmétique
+si, $U_0$ étant donné, il existe un nombre réel $r$ tel que pour tout entier naturel $n$ :
+$U_{n+1} = U_n + r$. Le réel $r$ est appelé la raison. Autrement dit, $(U_n)$ est arithmétique de
+raison $r$ lorsque pour tout entier naturel $n$ : $U_{n+1} - U_n = r$.
+
+Pour tout entier naturel $n$, on a :
+\[
+U_{n+1} = U_n - 7 = U_n + (-7),
+\qquad \text{c'est-à-dire} \qquad
+U_{n+1} - U_n = (U_n - 7) - U_n = -7.
+\]
+La différence entre deux termes consécutifs est égale à la constante $-7$, qui ne dépend pas de $n$.
+D'après la définition, la suite $(U_n)$ est donc une suite arithmétique.
+
+\begin{resultat}
+$(U_n)$ est la suite arithmétique de raison $r = -7$ et de premier terme $U_0 = 3$.
+\end{resultat}
+
+\subsection*{3. Expression de $U_n$ en fonction de $n$}
+\textbf{Rappel du cours (propriété).} Si $(U_n)_{n\in\mathbb{N}}$ est la suite arithmétique de premier
+terme $U_0$ et de raison $r$, alors pour tout entier naturel $n$ : $U_n = U_0 + n\,r$.
+Plus généralement, pour tous entiers naturels $n$ et $p$ : $U_n = U_p + (n - p)\,r$.
+
+Ici $U_0 = 3$ et $r = -7$. En appliquant la propriété avec $p = 0$, on a pour tout entier naturel $n$ :
+\[
+U_n = U_0 + (n - 0)\,r = 3 + n \times (-7) = 3 - 7n.
+\]
+\emph{Vérification :} $U_1 = 3 - 7 \times 1 = -4$ et $U_2 = 3 - 7 \times 2 = -11$, ce qui correspond
+aux résultats de la question 1.
+
+\begin{resultat}
+Pour tout entier naturel $n$ : \quad $U_n = 3 - 7n$.
+\end{resultat}
+
+\subsection*{4. Sens de variation de $(U_n)$}
+\textbf{Rappel du cours (propriété).}
+\begin{itemize}[nosep]
+  \item Une suite arithmétique est croissante si sa raison est positive.
+  \item Une suite arithmétique est décroissante si sa raison est négative.
+  \item Une suite arithmétique est constante si sa raison est nulle.
+\end{itemize}
+
+La suite $(U_n)$ est arithmétique de raison $r = -7$. Comme $-7 < 0$, sa raison est négative.
+On le retrouve directement : pour tout entier naturel $n$, $U_{n+1} - U_n = -7 < 0$, donc $U_{n+1} < U_n$.
+
+\begin{resultat}
+Comme $r = -7$ et $-7 < 0$, alors la suite $(U_n)$ est décroissante (strictement, car $r \neq 0$).
+\end{resultat}
+
+\subsection*{5. Calcul de $S = U_0 + U_1 + \dots + U_{100}$}
+\textbf{Rappel du cours (propriété).} Si $(U_n)_{n\in\mathbb{N}}$ est une suite arithmétique, alors pour
+tout entier naturel $n$ :
+\[
+U_0 + U_1 + \dots + U_n = (n + 1) \times \frac{U_0 + U_n}{2}.
+\]
+Autrement dit, la somme de termes consécutifs d'une suite arithmétique est égale à :
+\[
+S = (\text{nombre de termes}) \times \frac{\text{premier terme} + \text{dernier terme}}{2}.
+\]
+
+\begin{itemize}[nosep]
+  \item Nombre de termes : de $U_0$ à $U_{100}$, il y a $100 - 0 + 1 = 101$ termes.
+  \item Premier terme : $U_0 = 3$.
+  \item Dernier terme : d'après la question 3, $U_{100} = 3 - 7 \times 100 = 3 - 700 = -697$.
+\end{itemize}
+
+On applique la propriété avec $n = 100$ :
+\[
+S = (100 + 1) \times \frac{U_0 + U_{100}}{2}
+  = 101 \times \frac{3 + (-697)}{2}
+  = 101 \times \frac{-694}{2}
+  = 101 \times (-347)
+  = -35\,047.
+\]
+
+\begin{resultat}
+$S = U_0 + U_1 + \dots + U_{100} = -35\,047$.
+\end{resultat}
+
+\end{document}
