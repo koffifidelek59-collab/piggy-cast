@@ -5,36 +5,66 @@
 \usepackage[french]{babel}
 \usepackage[a4paper,margin=2.3cm]{geometry}
 \usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet,nosep}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \pagestyle{empty}
+\newcommand{\question}[1]{\par\medskip{\large\bfseries #1}\par\smallskip}
 \begin{document}
 
 \begin{center}{\Large\bfseries Exercice de maison}\end{center}
 
-\textbf{1)} Pour $n = 0$ : $U_1 = U_0 - 7 = 3 - 7 = -4$.\\
-Pour $n = 1$ : $U_2 = U_1 - 7 = -4 - 7 = -11$.\\
-Donc $U_1 = -4$ et $U_2 = -11$.
+On considère la suite $(U_n)$ définie par $U_0 = 3$ et, pour tout entier naturel $n$,
+$U_{n+1} = U_n - 7$.
 
-\textbf{2)} Pour tout entier naturel $n$ :
-$U_{n+1} - U_n = (U_n - 7) - U_n = -7$.\\
-La différence $U_{n+1} - U_n$ est constante, donc $(U_n)$ est une suite arithmétique
-de raison $r = -7$ et de premier terme $U_0 = 3$.
+\question{1. Calcul de $U_1$ et $U_2$}
+On utilise la relation $U_{n+1} = U_n - 7$.
 
-\textbf{3)} $(U_n)$ est arithmétique de premier terme $U_0 = 3$ et de raison $r = -7$, donc pour tout
-entier naturel $n$ :
-$U_n = U_0 + n\,r = 3 + n \times (-7)$.\\
-Donc $U_n = 3 - 7n$.
+Pour calculer $U_1$, on remplace $n$ par $0$ : \quad $U_1 = U_0 - 7 = 3 - 7 = -4$.
 
-\textbf{4)} Comme $r = -7$ et $-7 < 0$, alors la suite $(U_n)$ est décroissante.
+Pour calculer $U_2$, on remplace $n$ par $1$ : \quad $U_2 = U_1 - 7 = -4 - 7 = -11$.
 
-\textbf{5)} $S = U_0 + U_1 + \dots + U_{100}$ est la somme de $100 - 0 + 1 = 101$ termes consécutifs
-d'une suite arithmétique.\\
-On a $U_0 = 3$ et $U_{100} = 3 - 7 \times 100 = -697$.
+Donc $\boxed{U_1 = -4 \ \text{ et } \ U_2 = -11}$.
+
+\question{2. Montrons que $(U_n)$ est une suite arithmétique}
+Pour tout entier naturel $n$, on a :
 \[
-S = (100 + 1) \times \frac{U_0 + U_{100}}{2} = 101 \times \frac{3 + (-697)}{2}
-  = 101 \times \frac{-694}{2} = 101 \times (-347)
+U_{n+1} - U_n = (U_n - 7) - U_n = -7.
 \]
-Donc $S = -35\,047$.
+La différence entre deux termes consécutifs est constante et égale à $-7$.
+D'après la définition, $(U_n)$ est donc une suite arithmétique.
+
+Donc $(U_n)$ est la suite arithmétique de \textbf{raison} $\boxed{r = -7}$ et de
+\textbf{premier terme} $\boxed{U_0 = 3}$.
+
+\question{3. Expression de $U_n$ en fonction de $n$}
+$(U_n)$ est une suite arithmétique de premier terme $U_0 = 3$ et de raison $r = -7$.
+Donc, pour tout entier naturel $n$ :
+\[
+U_n = U_0 + n\,r = 3 + n \times (-7).
+\]
+Donc, pour tout entier naturel $n$ : \quad $\boxed{U_n = 3 - 7n}$.
+
+\question{4. Sens de variation de $(U_n)$}
+$(U_n)$ est une suite arithmétique de raison $r = -7$.
+
+Comme $r = -7$ et $-7 < 0$, alors la suite $(U_n)$ est \textbf{décroissante}.
+
+\question{5. Calcul de $S = U_0 + U_1 + \dots + U_{100}$}
+$S$ est la somme de termes consécutifs de la suite arithmétique $(U_n)$.
+\begin{itemize}
+  \item Nombre de termes : $100 - 0 + 1 = 101$.
+  \item Premier terme : $U_0 = 3$.
+  \item Dernier terme : $U_{100} = 3 - 7 \times 100 = 3 - 700 = -697$.
+\end{itemize}
+On a donc :
+\[
+S = (100 + 1) \times \frac{U_0 + U_{100}}{2}
+  = 101 \times \frac{3 + (-697)}{2}
+  = 101 \times \frac{-694}{2}
+  = 101 \times (-347).
+\]
+Donc $\boxed{S = -35\,047}$.
 
 \end{document}
