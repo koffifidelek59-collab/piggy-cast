@@ -1,0 +1,67 @@
+\input{preambule_geo}
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Corrigé}\\[4pt]
+{\large Exercice de maison : suite géométrique}
+\end{center}
+
+On considère la suite $(V_n)$ définie par $V_0 = 5$ et, pour tout entier naturel $n$,
+$V_{n+1} = 2V_n$.
+
+\question{1. Calcul de $V_1$ et $V_2$}
+On utilise la relation $V_{n+1} = 2V_n$.
+
+Pour calculer $V_1$, on remplace $n$ par $0$ : \quad $V_1 = 2 \times V_0 = 2 \times 5 = 10$.
+
+Pour calculer $V_2$, on remplace $n$ par $1$ : \quad $V_2 = 2 \times V_1 = 2 \times 10 = 20$.
+
+Donc $\boxed{V_1 = 10 \ \text{ et } \ V_2 = 20}$.
+
+\question{2. Montrons que $(V_n)$ est une suite géométrique}
+On a $V_0 = 5$ et, pour tout entier naturel $n$ :
+\[
+V_{n+1} = 2 \times V_n.
+\]
+Chaque terme est le produit du terme qui le précède par la constante $2$, qui ne dépend pas de $n$.
+D'après la définition, $(V_n)$ est donc une suite géométrique.
+
+Donc $(V_n)$ est la suite géométrique de \textbf{raison} $\boxed{q = 2}$ et de
+\textbf{premier terme} $\boxed{V_0 = 5}$.
+
+\question{3. Expression de $V_n$ en fonction de $n$}
+$(V_n)$ est une suite géométrique de premier terme $V_0 = 5$ et de raison $q = 2$ (non nulle).
+Donc, pour tout entier naturel $n$ :
+\[
+V_n = V_0 \times q^{\,n} = 5 \times 2^{\,n}.
+\]
+\emph{Vérification :} $V_1 = 5 \times 2^1 = 10$ et $V_2 = 5 \times 2^2 = 20$.
+
+Donc, pour tout entier naturel $n$ : \quad $\boxed{V_n = 5 \times 2^{\,n}}$.
+
+\question{4. Sens de variation de $(V_n)$}
+$(V_n)$ est une suite géométrique de premier terme $V_0 = 5$ et de raison $q = 2$.
+
+Comme le premier terme et la raison sont tous deux supérieurs à zéro, la suite $(V_n)$ est une
+suite à termes positifs.
+
+Comme $q = 2$ et $2 > 1$, alors la suite $(V_n)$ est \textbf{croissante}.
+
+\question{5. Calcul de $S = V_0 + V_1 + \dots + V_9$}
+$S$ est la somme de termes consécutifs de la suite géométrique $(V_n)$, de raison $q = 2 \neq 1$.
+\begin{itemize}
+  \item Premier terme : $V_0 = 5$.
+  \item Nombre de termes : $9 - 0 + 1 = 10$.
+  \item Raison : $q = 2$.
+\end{itemize}
+On a donc :
+\[
+S = V_0 \times \frac{1 - q^{\,10}}{1 - q}
+  = 5 \times \frac{1 - 2^{10}}{1 - 2}
+  = 5 \times \frac{1 - 1024}{-1}
+  = 5 \times \frac{-1023}{-1}
+  = 5 \times 1023.
+\]
+Donc $\boxed{S = 5\,115}$.
+
+\end{document}
