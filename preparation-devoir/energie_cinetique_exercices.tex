@@ -1,0 +1,211 @@
+\newcommand{\matiere}{Physique : théorème de l'énergie cinétique}
+\input{preambule}
+\begin{document}
+
+\entete{Série d'exercices}{Physique : théorème de l'énergie cinétique}
+
+\vspace{2pt}
+Nom et prénom : \dotfill \quad Classe : \dotfill
+
+%-------------------------------------------------------------------------------
+\exercice{Activité d'application}
+\begin{minipage}[t]{0.56\textwidth}
+\vspace{0pt}
+Un objet de masse $m = 85$ kg descend une piste $ABC$ sans vitesse initiale avant de s'arrêter
+en $C$. La partie $AB$ est un plan incliné d'un angle $\alpha$ par rapport à l'horizontale, sur
+lequel les frottements sont négligeables. La partie $BC$ est horizontale.
+
+\textbf{Données :} $\alpha = 30^\circ$ ; $AB = 20$ m ; $BC = 30$ m ; $g = 10$ N/kg.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\textwidth}
+\vspace{4pt}
+\centering
+\begin{tikzpicture}[scale=0.75]
+  \coordinate (A) at (0,2.3); \coordinate (B) at (4,0); \coordinate (C) at (6.6,0);
+  \coordinate (H) at (2,0);
+  \draw[thick] (A) -- (B) -- (C);
+  \draw[dashed] (B) -- (H);
+  \pic[draw,"$\alpha$",angle radius=0.9cm,angle eccentricity=1.35] {angle = A--B--H};
+  \fill (A) circle (1.5pt) node[above] {$A$};
+  \fill (B) circle (1.5pt) node[below] {$B$};
+  \fill (C) circle (1.5pt) node[below] {$C$};
+\end{tikzpicture}
+\end{minipage}
+
+\begin{enumerate}
+  \item Détermine la vitesse $V_B$ de l'objet au point $B$.
+  \item Détermine la valeur $f$ des forces de frottement sur le parcours $BC$, supposées constantes.
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\exercice{Situation d'évaluation}
+Un samedi matin des congés de Noël, tu effectues un voyage avec tes camarades de classe pour une
+randonnée. La voiture chargée (voiture et passagers) a une masse totale $m = 1\,300$ kg.
+
+Le conducteur démarre la voiture, aborde une côte avec la vitesse $v_1 = 3$ m.s$^{-1}$, puis atteint
+son sommet avec la vitesse $v_2 = 12$ m.s$^{-1}$. La distance parcourue sur cette côte, dont la
+ligne de plus grande pente fait un angle $\beta = 15^\circ$ avec le plan horizontal, est $L = 50$ m.
+
+Du sommet de la côte, la voiture aborde une partie horizontale de la route en maintenant sa vitesse
+constante sur une distance $d$, puis elle freine (moteur débrayé) et s'arrête sur une distance
+$d' = 40$ m pour éviter de heurter un chien errant.
+
+Durant tout le mouvement, les forces de frottement sont assimilées à une force unique $\vv{f}$ de
+valeur constante $f = 780$ N. On prendra $g = 10$ N.kg$^{-1}$.
+
+Tu es désigné par tes camarades pour montrer que les élèves de votre classe sont capables d'évaluer
+les forces appliquées à la voiture.
+\begin{enumerate}
+  \item Énonce le théorème de l'énergie cinétique.
+  \item Détermine la valeur $F$ de la force motrice $\vv{F}$ (force de propulsion exercée par le sol
+        sur les roues de la voiture) :
+  \begin{enumerate}[label=2.\arabic*.]
+    \item durant son trajet sur la côte ;
+    \item sur le plan horizontal, pendant que sa vitesse est constante.
+  \end{enumerate}
+  \item Détermine la valeur $F'$ de la force de freinage de la voiture.
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\clearpage
+\exercice{Exercice 1}
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+Un petit objet $(S)$ de masse $m = 100$ g, assimilable à un point matériel, peut glisser à
+l'intérieur d'une cuvette demi-sphérique de rayon $r = 0,5$ m. On le lâche sans vitesse initiale
+du bord $A$ de cette cuvette. Il atteint le fond $B$ avec une vitesse $V_B$.
+On prendra $g = 10$ N/kg.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\textwidth}
+\vspace{2pt}
+\centering
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick] (-2,0) arc (180:360:2);
+  \draw[dashed] (0,0) -- node[right] {$r$} (0,-2);
+  \fill (0,0) circle (1.2pt) node[above] {$O$};
+  \fill (-2,0) circle (1.5pt) node[left] {$A$};
+  \fill (0,-2) circle (1.5pt) node[below] {$B$};
+  \fill[black] (-1.93,-0.35) rectangle ++(0.22,0.22);
+\end{tikzpicture}
+\end{minipage}
+
+\begin{enumerate}
+  \item Calcule la vitesse $V_B$ de l'objet au point $B$, en supposant les frottements négligeables.
+  \item En réalité, l'objet atteint le fond $B$ avec la vitesse $V'_B = 2,5$ m.s$^{-1}$.
+        Précise si l'objet est soumis à des forces de frottement. Justifie ta réponse.
+  \item Détermine :
+  \begin{enumerate}[label=3.\arabic*.]
+    \item le travail total $W(\vv{f})$ des forces de frottement au cours du mouvement de $A$ à $B$ ;
+    \item l'intensité $f$ de ces forces, supposée constante.
+  \end{enumerate}
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 2}
+Recopie les groupes de mots ci-dessous dans l'ordre, de manière à obtenir une phrase correcte en
+rapport avec le théorème de l'énergie cinétique :
+
+\begin{center}
+/ d'un solide / entre ces deux instants. / somme algébrique / La variation de l'énergie cinétique /
+entre deux instants / des travaux de / toutes les forces extérieures appliquées / est égale à la /
+\end{center}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 3}
+Un volant en fonte est constitué d'un cylindre homogène de rayon $R = 50$ cm et de hauteur
+$h = 1$ m. La masse volumique de la fonte est $\rho = 7\,600$ kg.m$^{-3}$.
+
+\emph{Rappel :} le moment d'inertie d'un cylindre homogène de masse $m$ et de rayon $R$ par rapport
+à son axe est $J_\Delta = \frac{1}{2} m R^2$.
+\begin{enumerate}
+  \item Détermine le moment d'inertie $J_\Delta$ du cylindre par rapport à son axe.
+  \item Calcule son énergie cinétique $E_C$ lorsqu'il tourne à la vitesse
+        $N_1 = 1\,400$ tr.min$^{-1}$.
+  \item Sa vitesse diminue jusqu'à $N_2 = 1\,300$ tr.min$^{-1}$ en $\Delta t = 4$ s.
+        Calcule la puissance moyenne restituée par la diminution de l'énergie cinétique du volant.
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 4}
+Au cours d'une séance de révision dans ta salle d'étude, ton voisin de classe te propose
+d'appliquer vos connaissances sur l'énergie cinétique pour déterminer la hauteur maximale atteinte
+par un projectile lancé à partir du jouet de ton petit frère. Ce jouet est constitué d'un canon à
+ressort de longueur à vide $l_0$, capable de lancer un petit projectile de masse $m$ vers le haut.
+Ton voisin place le canon verticalement, comprime le ressort jusqu'à la longueur $l$, puis le lâche.
+
+\textbf{Données :}
+\begin{itemize}
+  \item $m = 0,030$ kg ; $l_0 = 10$ cm ; $l = 5$ cm ; $g = 10$ N/kg ;
+  \item une force d'intensité $F = 10$ N provoque un raccourcissement $x = 0,5$ cm du ressort ;
+  \item pendant la détente du ressort, le poids du projectile est négligeable devant la force
+        exercée par le ressort ; les frottements sont négligeables.
+\end{itemize}
+\begin{enumerate}
+  \item Énonce le théorème de l'énergie cinétique.
+  \item
+  \begin{enumerate}[label=2.\arabic*.]
+    \item Donne l'expression de la constante de raideur $k$ du ressort en fonction de $F$ et de $x$.
+    \item Calcule la valeur de $k$.
+  \end{enumerate}
+  \item Détermine :
+  \begin{enumerate}[label=3.\arabic*.]
+    \item la vitesse $v_1$ du projectile à la sortie du canon ;
+    \item la hauteur maximale atteinte par le projectile au-dessus de la sortie du canon.
+  \end{enumerate}
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 5 (Première C)}
+Un groupe d'élèves de Première scientifique se propose de déterminer la compression du ressort
+utilisé dans un jeu d'enfant. La piste de jeu comporte une partie $AB$ en forme d'arc de cercle de
+centre $O$ et de rayon $R$, prolongée par une partie horizontale $BCD$. Un ressort de raideur $k$,
+dont l'extrémité libre est en $C$, est fixé sur la partie horizontale (voir la figure).
+
+\begin{center}
+\begin{tikzpicture}[scale=1.15]
+  \coordinate (O) at (0,0); \coordinate (A) at (210:2); \coordinate (B) at (0,-2);
+  \coordinate (C) at (3.6,-2); \coordinate (D) at (4.3,-2);
+  \draw[thick] (A) arc (210:270:2) -- (7,-2);
+  \draw[dashed] (O) -- (A); \draw[dashed] (O) -- (B);
+  \pic[draw,"$\alpha$",angle radius=0.6cm,angle eccentricity=1.4] {angle = A--O--B};
+  \fill (O) circle (1.3pt) node[above] {$O$};
+  \fill (A) circle (1.5pt) node[below left] {$A$};
+  \fill (B) circle (1.5pt) node[below] {$B$};
+  \fill (240:2) circle (1.5pt) node[below left] {$M$};
+  \fill (1.8,-2) circle (1.5pt) node[below] {$M'$};
+  \node[below] at (C) {$C$}; \node[below] at (D) {$D$};
+  \draw (D) -- ++(0,0.12);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=2mm,amplitude=1.8mm}]
+       (3.6,-1.8) -- (6.6,-1.8);
+  \fill[pattern=north east lines] (6.6,-2) rectangle (6.85,-1.35);
+  \draw (6.6,-2) -- (6.6,-1.35);
+  \shade[ball color=black!70] ($(A)+(0,1.2)$) circle (0.12);
+  \draw[<->] ($(A)+(-0.9,0)$) -- node[left] {$H$} ($(A)+(-0.9,1.2)$);
+  \draw[densely dotted] (A) -- ++(-1.05,0);
+  \draw[densely dotted] ($(A)+(0,1.2)$) -- ++(-1.05,0);
+\end{tikzpicture}
+\end{center}
+
+Pour jouer, on laisse tomber sans vitesse initiale une bille ponctuelle de masse $m$, située à la
+hauteur $H$ au-dessus du point $A$. La bille arrive en $A$ et se déplace alors sur la piste $ABC$.
+Elle vient heurter l'extrémité libre du ressort, qui se comprime d'une longueur $x$, et elle
+s'arrête en $D$. Au cours de son mouvement sur la piste, la bille est soumise à des forces de
+frottement d'intensité $f$ constante, qui s'annulent au-delà du point $C$. On néglige la résistance
+de l'air pendant la chute.
+
+\textbf{Données :} $m = 30$ g ; $k = 20$ N.m$^{-1}$ ; $g = 10$ N/kg ; $H = 50$ cm ; $R = 50$ cm ;
+$\alpha = 60^\circ$ ; $BC = 50$ cm ; $f = 4,3 \times 10^{-2}$ N.
+
+Tu es désigné pour rédiger le compte rendu.
+\begin{enumerate}
+  \item Énonce le théorème de l'énergie cinétique.
+  \item Calcule l'énergie cinétique de la bille lorsqu'elle arrive au point $A$.
+  \item Représente les forces qui s'exercent sur la bille :
+  \begin{enumerate}[label=3.\arabic*.]
+    \item au point $M$ de l'arc $AB$ et au point $M'$ de la partie $BC$ ;
+    \item lorsqu'elle est en contact avec le ressort comprimé de $x$.
+  \end{enumerate}
+  \item Calcule $x$, puis explique ce qui se passe après l'instant d'arrêt en $D$.
+\end{enumerate}
+
+\end{document}

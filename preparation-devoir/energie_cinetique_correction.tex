@@ -1,0 +1,391 @@
+\newcommand{\matiere}{Physique : théorème de l'énergie cinétique (correction)}
+\input{preambule}
+\tikzset{force/.style={-{Stealth[length=2.2mm]},thick}}
+\begin{document}
+
+\entete{Correction}{Physique : théorème de l'énergie cinétique}
+
+\begin{donnees}
+\textbf{Rappel du théorème de l'énergie cinétique.} Dans un référentiel galiléen, la variation de
+l'énergie cinétique d'un solide entre deux instants $t_1$ et $t_2$ est égale à la somme algébrique
+des travaux des forces extérieures qui s'exercent sur le solide entre ces deux instants :
+\[
+\Delta E_C = E_C(t_2) - E_C(t_1) = \sum W_{1 \to 2}\big(\vv{F}_{\text{ext}}\big).
+\]
+\textbf{Méthode :} préciser le système, faire l'inventaire des forces, préciser les deux instants
+(ou les deux positions) entre lesquels on applique le théorème.
+\end{donnees}
+
+%-------------------------------------------------------------------------------
+\exercice{Activité d'application}
+
+\question{1. Vitesse $V_B$}
+\textbf{Système :} l'objet. \textbf{Forces sur $AB$ :} le poids $\vv{P}$ et la réaction normale
+$\vv{R}$ de la piste (pas de frottement).
+
+Théorème de l'énergie cinétique entre $A$ et $B$ :
+\[
+\tfrac{1}{2} m V_B^2 - \tfrac{1}{2} m V_A^2 = W_{AB}(\vv{P}) + W_{AB}(\vv{R})
+\]
+avec $V_A = 0$, $W_{AB}(\vv{R}) = 0$ ($\vv{R}$ est perpendiculaire au déplacement) et
+$W_{AB}(\vv{P}) = m g h = m g \cdot AB \sin\alpha$ (la descente fait gagner la hauteur
+$h = AB\sin\alpha$). Donc :
+\[
+\tfrac{1}{2} m V_B^2 = m g \cdot AB \sin\alpha
+\;\Longrightarrow\;
+V_B = \sqrt{2 g \cdot AB \sin\alpha} = \sqrt{2 \times 10 \times 20 \times 0,5} = \sqrt{200}.
+\]
+\begin{resultat}
+$V_B \approx 14,1$ m.s$^{-1}$.
+\end{resultat}
+
+\question{2. Valeur des forces de frottement sur $BC$}
+\textbf{Forces sur $BC$ :} le poids $\vv{P}$, la réaction normale $\vv{R}$ et la force de frottement
+$\vv{f}$, opposée au mouvement.
+
+Théorème de l'énergie cinétique entre $B$ et $C$ ($V_C = 0$, l'objet s'arrête en $C$) :
+\[
+\tfrac{1}{2} m V_C^2 - \tfrac{1}{2} m V_B^2 = W_{BC}(\vv{P}) + W_{BC}(\vv{R}) + W_{BC}(\vv{f})
+\]
+$BC$ est horizontal, donc $W_{BC}(\vv{P}) = 0$ ; $W_{BC}(\vv{R}) = 0$ ; $W_{BC}(\vv{f}) = -f \cdot BC$.
+\[
+0 - \tfrac{1}{2} m V_B^2 = - f \cdot BC
+\;\Longrightarrow\;
+f = \frac{m V_B^2}{2\,BC} = \frac{85 \times 200}{2 \times 30}.
+\]
+\begin{resultat}
+$f \approx 283,3$ N.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Situation d'évaluation}
+
+\question{1. Énoncé du théorème de l'énergie cinétique}
+Dans un référentiel galiléen, la variation de l'énergie cinétique d'un solide entre deux instants est
+égale à la somme algébrique des travaux des forces extérieures qui lui sont appliquées entre ces
+deux instants : $\Delta E_C = \sum W(\vv{F}_{\text{ext}})$.
+
+\question{2.1. Force motrice $F$ sur la côte}
+\begin{minipage}[t]{0.55\textwidth}
+\vspace{0pt}
+\textbf{Système :} la voiture chargée, de masse $m = 1\,300$ kg, donc de poids
+$P = m g = 13\,000$ N.
+
+\textbf{Inventaire des forces :}
+\begin{itemize}
+  \item $\vv{F}$ : force motrice, dans le sens du mouvement ;
+  \item $\vv{f}$ : force de frottement, opposée au mouvement ;
+  \item $\vv{P}$ : poids de la voiture ;
+  \item $\vv{R}$ : réaction normale de la route.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[scale=1.05]
+  \coordinate (X) at (0,0); \coordinate (Y) at (5,0); \coordinate (Z) at (5,1.34);
+  \draw[thick] (X) -- (Y) -- (Z) -- cycle;
+  \pic[draw,"$\beta$",angle radius=1.1cm,angle eccentricity=1.3] {angle = Y--X--Z};
+  \begin{scope}[shift={(2.5,0.67)},rotate=15]
+    \draw[fill=gray!25] (-0.5,0) rectangle (0.5,0.45);
+    \coordinate (G) at (0,0.22);
+    \draw[force] (G) -- ++(1.4,0) node[above] {$\vv{F}$};
+    \draw[force] (G) -- ++(-1.2,0) node[above] {$\vv{f}$};
+    \draw[force] (G) -- ++(0,1.1) node[left] {$\vv{R}$};
+  \end{scope}
+  \draw[force] ($(2.5,0.67)+(105:0.22)$) -- ++(0,-1.3) node[right] {$\vv{P}$};
+\end{tikzpicture}
+\end{minipage}
+
+Théorème de l'énergie cinétique entre le bas et le sommet de la côte (distance $L$) :
+\[
+\tfrac{1}{2} m v_2^2 - \tfrac{1}{2} m v_1^2
+= W(\vv{F}) + W(\vv{f}) + W(\vv{P}) + W(\vv{R})
+= F L - f L - m g L \sin\beta + 0.
+\]
+La voiture monte d'une hauteur $L\sin\beta$, donc le travail du poids est résistant. On en déduit :
+\[
+F = \frac{m\,(v_2^2 - v_1^2)}{2L} + f + m g \sin\beta
+= \frac{1\,300 \times (144 - 9)}{2 \times 50} + 780 + 13\,000 \times \sin 15^\circ
+\]
+\[
+F = 1\,755 + 780 + 3\,364,6 = 5\,899,6 \text{ N.}
+\]
+\begin{resultat}
+Sur la côte : $F \approx 5\,900$ N, soit $F \approx 5,9 \times 10^3$ N.
+\end{resultat}
+
+\question{2.2. Force motrice $F$ sur le plan horizontal à vitesse constante}
+La vitesse est constante, donc $\Delta E_C = 0$. Sur la distance $d$, le poids et la réaction ne
+travaillent pas (ils sont perpendiculaires au déplacement) :
+\[
+0 = F d - f d \;\Longrightarrow\; F = f.
+\]
+\begin{resultat}
+Sur le plan horizontal : $F = f = 780$ N.
+\end{resultat}
+
+\question{3. Force de freinage $F'$}
+Pendant le freinage sur la distance $d'$, la voiture passe de la vitesse $v_2$ à l'arrêt. Les forces
+qui travaillent sont la force de frottement $\vv{f}$ et la force de freinage $\vv{F'}$, toutes deux
+opposées au mouvement :
+\[
+0 - \tfrac{1}{2} m v_2^2 = - f d' - F' d'
+\;\Longrightarrow\;
+F' = \frac{m v_2^2}{2 d'} - f = \frac{1\,300 \times 144}{2 \times 40} - 780 = 2\,340 - 780.
+\]
+\begin{resultat}
+$F' = 1\,560$ N.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 1}
+
+\question{1. Calcul de $V_B$ (sans frottement)}
+\textbf{Système :} l'objet. \textbf{Forces :} le poids $\vv{P}$ et la réaction $\vv{R}$ de la cuvette.
+
+Théorème de l'énergie cinétique entre $A$ et $B$ :
+\[
+\tfrac{1}{2} m V_B^2 - \tfrac{1}{2} m V_A^2 = W_{AB}(\vv{P}) + W_{AB}(\vv{R})
+\]
+avec $V_A = 0$, $W_{AB}(\vv{R}) = 0$ ($\vv{R}$ est perpendiculaire au déplacement) et
+$W_{AB}(\vv{P}) = m g r$ (l'objet descend de la hauteur $r$). Donc :
+\[
+\tfrac{1}{2} m V_B^2 = m g r \;\Longrightarrow\; V_B = \sqrt{2 g r} = \sqrt{2 \times 10 \times 0,5} = \sqrt{10}.
+\]
+\begin{resultat}
+$V_B \approx 3,16$ m.s$^{-1}$.
+\end{resultat}
+
+\question{2. Existence des forces de frottement}
+On a $V'_B = 2,5$ m.s$^{-1} < V_B = 3,16$ m.s$^{-1}$ : l'objet arrive en $B$ moins vite que prévu
+sans frottement. Une partie de l'énergie a été perdue : \textbf{l'objet est soumis à des forces de
+frottement.}
+
+\question{3.1. Travail des forces de frottement}
+\textbf{Forces :} le poids $\vv{P}$, la réaction normale $\vv{R}$ et la force de frottement $\vv{f}$.
+
+Théorème de l'énergie cinétique entre $A$ et $B$, avec $V_A = 0$ et $W_{AB}(\vv{R}) = 0$ :
+\[
+\tfrac{1}{2} m V_B'^2 = m g r + W_{AB}(\vv{f})
+\;\Longrightarrow\;
+W_{AB}(\vv{f}) = \tfrac{1}{2} m V_B'^2 - m g r
+= \tfrac{1}{2} \times 0,1 \times 2,5^2 - 0,1 \times 10 \times 0,5.
+\]
+\[
+W_{AB}(\vv{f}) = 0,3125 - 0,5 = -0,1875 \text{ J.}
+\]
+\begin{resultat}
+$W_{AB}(\vv{f}) \approx -0,19$ J (travail résistant).
+\end{resultat}
+
+\question{3.2. Intensité $f$ des forces de frottement}
+La force $\vv{f}$, d'intensité constante, est toujours opposée au mouvement. Son travail sur l'arc
+$\overset{\frown}{AB}$ (un quart de cercle de longueur $\frac{2\pi r}{4} = \frac{\pi r}{2}$) est :
+\[
+W_{AB}(\vv{f}) = - f \times \frac{\pi r}{2}
+\;\Longrightarrow\;
+f = \frac{-2\,W_{AB}(\vv{f})}{\pi r} = \frac{2 \times 0,1875}{\pi \times 0,5}.
+\]
+\begin{resultat}
+$f \approx 0,24$ N.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 2}
+\begin{resultat}
+La variation de l'énergie cinétique d'un solide entre deux instants est égale à la somme algébrique
+des travaux de toutes les forces extérieures appliquées entre ces deux instants.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 3}
+
+\question{1. Moment d'inertie $J_\Delta$}
+Masse du cylindre : $m = \rho V = \rho\,\pi R^2 h = 7\,600 \times \pi \times 0,5^2 \times 1
+\approx 5\,969$ kg.
+\[
+J_\Delta = \tfrac{1}{2} m R^2 = \tfrac{1}{2} \rho\,\pi h R^4
+= \tfrac{1}{2} \times 7\,600 \times \pi \times 1 \times 0,5^4.
+\]
+\begin{resultat}
+$J_\Delta \approx 746$ kg.m$^2$.
+\end{resultat}
+
+\question{2. Énergie cinétique à $N_1 = 1\,400$ tr.min$^{-1}$}
+Vitesse angulaire : $\omega_1 = \dfrac{2\pi N_1}{60} = \dfrac{2\pi \times 1\,400}{60}
+\approx 146,6$ rad.s$^{-1}$.
+\[
+E_{C1} = \tfrac{1}{2} J_\Delta\, \omega_1^2 = \tfrac{1}{2} \times 746,1 \times 146,6^2.
+\]
+\begin{resultat}
+$E_{C1} \approx 8,02 \times 10^6$ J.
+\end{resultat}
+
+\question{3. Puissance moyenne restituée}
+À $N_2 = 1\,300$ tr.min$^{-1}$ : $\omega_2 = \dfrac{2\pi \times 1\,300}{60} \approx 136,1$ rad.s$^{-1}$,
+donc $E_{C2} = \tfrac{1}{2} J_\Delta\, \omega_2^2 \approx 6,91 \times 10^6$ J.
+\[
+\Delta E_C = E_{C2} - E_{C1} \approx -1,10 \times 10^6 \text{ J.}
+\]
+L'énergie restituée est $E_r = |\Delta E_C| \approx 1,10 \times 10^6$ J, pendant $\Delta t = 4$ s :
+\[
+\mathcal{P}_m = \frac{E_r}{\Delta t} = \frac{1,105 \times 10^6}{4}.
+\]
+\begin{resultat}
+$\mathcal{P}_m \approx 2,76 \times 10^5$ W.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 4}
+
+\question{1. Énoncé du théorème de l'énergie cinétique}
+Dans un référentiel galiléen, la variation de l'énergie cinétique d'un solide entre deux instants est
+égale à la somme algébrique des travaux des forces extérieures qui lui sont appliquées entre ces
+deux instants.
+
+\question{2.1. Expression de $k$}
+D'après la loi de Hooke, $F = k\,x$, donc :
+\begin{resultat}
+$k = \dfrac{F}{x}$.
+\end{resultat}
+
+\question{2.2. Valeur de $k$}
+\[
+k = \frac{10}{0,005}.
+\]
+\begin{resultat}
+$k = 2\,000$ N.m$^{-1}$.
+\end{resultat}
+
+\question{3.1. Vitesse $v_1$ à la sortie du canon}
+\textbf{Système :} le projectile. Pendant la détente, la seule force qui travaille est la tension
+$\vv{T}$ du ressort (le poids est négligé). Le ressort passe de la longueur $l$ à sa longueur à vide
+$l_0$ : le travail de la tension est $W(\vv{T}) = \tfrac{1}{2} k (l_0 - l)^2$.
+
+Théorème de l'énergie cinétique entre le lâcher ($v_0 = 0$) et la sortie du canon :
+\[
+\tfrac{1}{2} m v_1^2 - 0 = \tfrac{1}{2} k (l_0 - l)^2
+\;\Longrightarrow\;
+v_1 = \sqrt{\frac{k (l_0 - l)^2}{m}} = \sqrt{\frac{2\,000 \times (0,10 - 0,05)^2}{0,030}}
+= \sqrt{166,7}.
+\]
+\begin{resultat}
+$v_1 \approx 12,9$ m.s$^{-1}$.
+\end{resultat}
+
+\question{3.2. Hauteur maximale atteinte}
+Après la sortie du canon, le projectile n'est soumis qu'à son poids. Au sommet de la trajectoire, sa
+vitesse est nulle ($v_f = 0$). Théorème de l'énergie cinétique entre la sortie du canon et le
+sommet :
+\[
+0 - \tfrac{1}{2} m v_1^2 = - m g\, h_{\max}
+\;\Longrightarrow\;
+h_{\max} = \frac{v_1^2}{2g} = \frac{166,7}{20}.
+\]
+\begin{resultat}
+$h_{\max} \approx 8,33$ m au-dessus de la sortie du canon.
+\end{resultat}
+
+%-------------------------------------------------------------------------------
+\exercice{Exercice 5 (Première C)}
+
+\question{1. Énoncé du théorème de l'énergie cinétique}
+Dans un référentiel galiléen, la variation de l'énergie cinétique d'un solide entre deux instants est
+égale à la somme algébrique des travaux des forces extérieures qui lui sont appliquées entre ces
+deux instants.
+
+\question{2. Énergie cinétique de la bille en $A$}
+\textbf{Système :} la bille. Pendant la chute de hauteur $H$, elle n'est soumise qu'à son poids
+$\vv{P}$. Théorème de l'énergie cinétique entre le point de départ (vitesse nulle) et $A$ :
+\[
+E_{C_A} - 0 = W(\vv{P}) = m g H = 0,030 \times 10 \times 0,50.
+\]
+\begin{resultat}
+$E_{C_A} = 0,15$ J.
+\end{resultat}
+
+\question{3. Représentation des forces}
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+  % 3.1 : point M sur l'arc
+  \begin{scope}
+    \draw[thick] (200:2) arc (200:280:2);
+    \draw[dashed] (0,0) -- (240:2);
+    \fill (0,0) circle (1.2pt) node[above] {$O$};
+    \coordinate (M) at (240:2);
+    \fill (M) circle (1.8pt);
+    \node at ($(M)+(0.35,-0.25)$) {$M$};
+    \draw[force] (M) -- ++(0,-1.1) node[right] {$\vv{P}$};
+    \draw[force] (M) -- ++(60:1.1) node[right] {$\vv{R}_N$};
+    \draw[force] (M) -- ++(150:0.8) node[above] {$\vv{f}$};
+    \node at (-1,-3.7) {3.1. Au point $M$};
+  \end{scope}
+  % 3.1 : point M' sur BC
+  \begin{scope}[shift={(4,-1.6)}]
+    \draw[thick] (-1.3,0) -- (1.3,0);
+    \coordinate (N) at (0,0);
+    \fill (N) circle (1.8pt);
+    \node at (-0.4,-0.3) {$M'$};
+    \draw[force] (N) -- ++(0,-1.1) node[right] {$\vv{P}$};
+    \draw[force] (N) -- ++(0,1.1) node[right] {$\vv{R}_N$};
+    \draw[force] (N) -- ++(-0.9,0) node[above] {$\vv{f}$};
+    \draw[-{Stealth}] (0.5,-0.45) -- node[below] {\small mouvement} (1.4,-0.45);
+    \node at (0,-2.1) {3.1. Au point $M'$};
+  \end{scope}
+  % 3.2 : contact avec le ressort
+  \begin{scope}[shift={(9.2,-1.6)}]
+    \draw[thick] (-1.2,0) -- (2.4,0);
+    \coordinate (Q) at (0,0.12);
+    \shade[ball color=black!60] (Q) circle (0.12);
+    \draw[decorate,decoration={coil,aspect=0.5,segment length=1.6mm,amplitude=1.5mm}]
+         (0.12,0.12) -- (2,0.12);
+    \fill[pattern=north east lines] (2,0) rectangle (2.2,0.6);
+    \draw (2,0) -- (2,0.6);
+    \draw[force] (Q) -- ++(0,-1.1) node[right] {$\vv{P}$};
+    \draw[force] (Q) -- ++(0,1.1) node[right] {$\vv{R}_N$};
+    \draw[force] (Q) -- ++(-1,0) node[above] {$\vv{T}$};
+    \node at (0.5,-2.1) {3.2. Contact avec le ressort};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+  \item Sur l'arc $AB$ (point $M$) et sur $BC$ (point $M'$) : le poids $\vv{P}$, la réaction normale
+        $\vv{R}_N$ de la piste et la force de frottement $\vv{f}$, opposée au mouvement.
+  \item Au contact du ressort (entre $C$ et $D$) : le poids $\vv{P}$, la réaction normale $\vv{R}_N$
+        et la tension $\vv{T}$ du ressort. Il n'y a plus de frottement au-delà de $C$.
+\end{itemize}
+
+\question{4. Calcul de $x$ et mouvement après l'arrêt}
+\textbf{Grandeurs utiles :}
+\begin{itemize}
+  \item dénivellation entre $A$ et $B$ : $h = R - R\cos\alpha = R(1 - \cos\alpha) = 0,5 \times (1 - 0,5) = 0,25$ m ;
+  \item longueur de l'arc $\overset{\frown}{AB}$ : $R\,\alpha = 0,5 \times \dfrac{\pi}{3} \approx 0,524$ m
+        ($\alpha$ en radian).
+\end{itemize}
+Théorème de l'énergie cinétique entre $A$ et $D$ ($E_{C_D} = 0$ car la bille s'arrête en $D$) :
+\[
+E_{C_D} - E_{C_A} = W_{A \to D}(\vv{P}) + W_{A \to D}(\vv{R}_N) + W_{A \to C}(\vv{f}) + W_{C \to D}(\vv{T})
+\]
+\[
+0 - E_{C_A} = m g h + 0 - f\left(\overset{\frown}{AB} + BC\right) - \tfrac{1}{2} k x^2
+\]
+\[
+\tfrac{1}{2} k x^2 = E_{C_A} + m g h - f\left(\overset{\frown}{AB} + BC\right)
+= 0,15 + 0,075 - 4,3 \times 10^{-2} \times (0,524 + 0,50) \approx 0,181 \text{ J}
+\]
+\[
+x = \sqrt{\frac{2 \times 0,181}{k}} = \sqrt{\frac{2 \times 0,181}{20}} \approx 0,135 \text{ m.}
+\]
+\begin{resultat}
+$x \approx 13,5$ cm.
+\end{resultat}
+
+\textbf{Après l'instant d'arrêt :} en $D$, le ressort comprimé exerce sur la bille la tension
+$T = k x \approx 20 \times 0,135 \approx 2,7$ N, dirigée vers $C$, et aucune force de frottement ne
+s'y oppose (les frottements s'annulent au-delà de $C$). La bille ne peut donc pas rester en $D$ :
+le ressort se détend et la renvoie vers $C$. Elle repart sur la piste en sens inverse avec l'énergie
+cinétique $\tfrac{1}{2} k x^2 \approx 0,18$ J, puis elle perd progressivement de l'énergie à cause
+des frottements sur $BC$ et sur l'arc $AB$.
+
+\end{document}

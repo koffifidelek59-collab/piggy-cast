@@ -1,0 +1,60 @@
+% Préambule commun aux fiches d'exercices et de correction
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{icomma}
+\usepackage[version=4]{mhchem}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,arrows.meta,calc,patterns,angles,quotes}
+\usepackage{enumitem}
+\setlist[itemize]{label=\textbullet,nosep}
+\setlist[enumerate]{nosep}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{needspace}
+\newcommand{\vv}[1]{\overrightarrow{#1}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setchemfig{atom sep=2.1em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Préparation du devoir}
+\fancyhead[R]{\small\matiere}
+\fancyfoot[C]{\small Page \thepage\ sur \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Titre d'un exercice
+\newcommand{\exercice}[1]{%
+  \par\bigskip\needspace{9\baselineskip}
+  \begin{tcolorbox}[colback=gray!12,colframe=black,boxrule=0.5pt,arc=1pt,
+    left=6pt,right=6pt,top=2pt,bottom=2pt]
+  \textbf{#1}
+  \end{tcolorbox}\par\smallskip}
+
+% Titre d'une question dans la correction
+\newcommand{\question}[1]{\par\medskip\textbf{#1}\par}
+
+% Résultat encadré dans la correction
+\newtcolorbox{resultat}{colback=gray!6,colframe=black,boxrule=0.4pt,arc=1pt,
+  left=6pt,right=6pt,top=2pt,bottom=2pt}
+
+% Données encadrées
+\newtcolorbox{donnees}{colback=white,colframe=black!60,boxrule=0.4pt,arc=1pt,
+  left=6pt,right=6pt,top=2pt,bottom=2pt}
+
+% Page de titre
+\newcommand{\entete}[2]{%
+  \begin{center}
+  {\LARGE\bfseries #1}\\[4pt]
+  {\large #2}\\[2pt]
+  {\normalsize Classe de Première}
+  \end{center}}
