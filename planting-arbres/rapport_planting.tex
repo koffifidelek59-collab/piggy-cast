@@ -2,17 +2,20 @@
 %  Rapport : Energie et planting d'arbres
 %  Compilation : pdflatex (deux fois, pour les references et la table des matieres)
 %
-%  IMPORTANT - Emplacement des images
-%  ----------------------------------
-%  Les 16 images se trouvent dans le dossier Windows :
+%  IMPORTANT - Emplacement et noms des images
+%  ------------------------------------------
+%  Les images se trouvent dans le dossier Windows :
 %      C:\Users\LENOVO\OneDrive\PLANTING
 %  En LaTeX, on ecrit le chemin avec des barres obliques " / " (et non " \ ").
-%  Le chemin est declare une seule fois ci-dessous avec \graphicspath : il suffit
-%  ensuite d'appeler chaque image par son nom de fichier.
+%  Le chemin est declare une seule fois ci-dessous avec \graphicspath.
 %
-%  Les noms d'images utilises ici sont photo1.jpg, photo2.jpg, ... photo16.jpg.
-%  -> Renomme tes 16 fichiers ainsi, OU remplace les noms dans le document.
-%  Formats acceptes par pdflatex : .jpg, .png, .pdf
+%  Les images sont appelees par leur NUMERO, sans extension : 1, 2, 3, ... 16.
+%  LaTeX trouve tout seul le bon fichier ( .jpg ou .png ).
+%
+%  ATTENTION aux 3 photos nommees "WhatsApp Image 2026-..." : leurs noms
+%  contiennent des espaces et des points, que LaTeX refuse.
+%  -> Renomme ces 3 fichiers en : 14 , 15 , 16  (en gardant leur extension).
+%  Tu auras alors les 16 images numerotees de 1 a 16.
 %==============================================================================
 
 \documentclass[12pt,a4paper]{article}
@@ -60,7 +63,8 @@
 \graphicspath{{C:/Users/LENOVO/OneDrive/PLANTING/}}
 
 %------------------------------------------------------------------ Commande pratique
-% \photo{nom_du_fichier}{legende} insere une image centree, large de 80 % du texte.
+% \photo{numero}{legende} insere une image centree, large de 80 % du texte.
+% On n'ecrit PAS l'extension : LaTeX choisit .jpg ou .png automatiquement.
 \newcommand{\photo}[2]{%
   \begin{figure}[H]
     \centering
@@ -74,14 +78,14 @@
 %------------------------------------------------------------------ PAGE DE TITRE
 \begin{titlepage}
   \centering
-  \vspace*{2cm}
+  \vspace*{1.5cm}
   {\Huge\bfseries\color{vertfeuille} Energie et planting d'arbres\par}
   \vspace{0.5cm}
   {\Large Vers un environnement durable\par}
-  \vspace{2cm}
+  \vspace{1.5cm}
 
-  % Image de couverture (la premiere photo).
-  \includegraphics[width=0.7\textwidth]{photo1.jpg}
+  % Image de couverture : l'affiche du projet (image numero 13).
+  \includegraphics[width=0.65\textwidth]{13}
 
   \vfill
   {\large Presente par : \textbf{KOUAME Koffi Fidele}\par}
@@ -105,6 +109,9 @@ notamment a travers le bois-energie gere de facon responsable.
 Ce rapport presente une activite de planting d'arbres, ses objectifs, son
 deroulement et ses resultats, illustres par une serie de photographies.
 
+%------------------------------------------------------------------ Photo d'introduction
+\photo{3}{Les participants reunis autour du projet de planting.}
+
 %==============================================================================
 \section{Contexte et objectifs}
 %==============================================================================
@@ -125,7 +132,7 @@ la fois dans le climat et dans l'energie de demain.
 \end{itemize}
 
 %------------------------------------------------------------------ Photo de contexte
-\photo{photo2.jpg}{Site choisi pour le planting avant le debut des travaux.}
+\photo{2}{Site choisi pour le planting avant le debut des travaux.}
 
 %==============================================================================
 \section{Materiel et methode}
@@ -158,8 +165,7 @@ la fois dans le climat et dans l'energie de demain.
 \end{enumerate}
 
 %------------------------------------------------------------------ Photos de preparation
-\photo{photo3.jpg}{Preparation du terrain par l'equipe.}
-\photo{photo4.jpg}{Marquage et alignement des emplacements.}
+\photo{12}{Preparation du terrain sur le site.}
 
 %==============================================================================
 \section{Deroulement de l'activite}
@@ -169,17 +175,18 @@ sont presentees deux par deux pour faciliter la lecture.
 
 %------------------------------------------------------------------ GALERIE 2 PAR 2
 % Chaque bloc "figure" contient deux images cote a cote (deux "subfigure").
+% On appelle chaque image par son numero, sans extension.
 % Pour ajouter ou retirer une image, copie ou supprime un bloc "subfigure".
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo5.jpg}
-    \caption{Creusage des trous.}
+    \centering\includegraphics[width=\textwidth]{4}
+    \caption{Mise en terre d'un plant.}
   \end{subfigure}\hfill
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo6.jpg}
-    \caption{Mise en terre d'un plant.}
+    \centering\includegraphics[width=\textwidth]{10}
+    \caption{Plantation par les jeunes.}
   \end{subfigure}
   \caption{Les premieres etapes de la plantation.}
 \end{figure}
@@ -187,25 +194,38 @@ sont presentees deux par deux pour faciliter la lecture.
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo7.jpg}
-    \caption{Rebouchage et tassement du sol.}
+    \centering\includegraphics[width=\textwidth]{5}
+    \caption{Transmission du geste aux plus jeunes.}
   \end{subfigure}\hfill
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo8.jpg}
-    \caption{Arrosage des jeunes arbres.}
+    \centering\includegraphics[width=\textwidth]{9}
+    \caption{Les enfants plantent a leur tour.}
   \end{subfigure}
-  \caption{La mise en terre et l'arrosage.}
+  \caption{L'implication des eleves.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo9.jpg}
-    \caption{Travail en equipe.}
+    \centering\includegraphics[width=\textwidth]{8}
+    \caption{Creusage et mise en terre.}
   \end{subfigure}\hfill
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo10.jpg}
-    \caption{Participation de la communaute.}
+    \centering\includegraphics[width=\textwidth]{15}
+    \caption{Rebouchage autour du plant.}
+  \end{subfigure}
+  \caption{Le travail du sol.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{6}
+    \caption{Travail en equipe sur le site.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{11}
+    \caption{Mobilisation de la communaute.}
   \end{subfigure}
   \caption{La mobilisation des participants.}
 \end{figure}
@@ -213,37 +233,24 @@ sont presentees deux par deux pour faciliter la lecture.
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo11.jpg}
-    \caption{Plant protege par un tuteur.}
+    \centering\includegraphics[width=\textwidth]{16}
+    \caption{Finition d'un trou de plantation.}
   \end{subfigure}\hfill
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo12.jpg}
-    \caption{Rangee d'arbres fraichement plantes.}
+    \centering\includegraphics[width=\textwidth]{7}
+    \caption{Un participant engage dans l'activite.}
   \end{subfigure}
-  \caption{Les arbres mis en place.}
+  \caption{Des gestes au service de l'environnement.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo13.jpg}
-    \caption{Vue d'ensemble du site.}
-  \end{subfigure}\hfill
-  \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo14.jpg}
-    \caption{Suivi et entretien.}
-  \end{subfigure}
-  \caption{Le site apres la plantation.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo15.jpg}
+    \centering\includegraphics[width=\textwidth]{14}
     \caption{Photo de groupe des participants.}
   \end{subfigure}\hfill
   \begin{subfigure}{0.48\textwidth}
-    \centering\includegraphics[width=\textwidth]{photo16.jpg}
+    \centering\includegraphics[width=\textwidth]{1}
     \caption{Les arbres, source d'energie durable.}
   \end{subfigure}
   \caption{La cloture de l'activite.}
@@ -253,7 +260,7 @@ sont presentees deux par deux pour faciliter la lecture.
 \section{Resultats et impact}
 %==============================================================================
 \begin{itemize}
-  \item \textbf{Nombre d'arbres plantes :} 16 (a adapter selon ton bilan reel).
+  \item \textbf{Nombre d'arbres plantes :} a completer.
   \item \textbf{Superficie couverte :} a completer.
   \item \textbf{Participants mobilises :} a completer.
 \end{itemize}
