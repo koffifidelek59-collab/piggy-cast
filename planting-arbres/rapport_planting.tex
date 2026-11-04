@@ -1,0 +1,273 @@
+%==============================================================================
+%  Rapport : Energie et planting d'arbres
+%  Compilation : pdflatex (deux fois, pour les references et la table des matieres)
+%
+%  IMPORTANT - Emplacement des images
+%  ----------------------------------
+%  Les 16 images se trouvent dans le dossier Windows :
+%      C:\Users\LENOVO\OneDrive\PLANTING
+%  En LaTeX, on ecrit le chemin avec des barres obliques " / " (et non " \ ").
+%  Le chemin est declare une seule fois ci-dessous avec \graphicspath : il suffit
+%  ensuite d'appeler chaque image par son nom de fichier.
+%
+%  Les noms d'images utilises ici sont photo1.jpg, photo2.jpg, ... photo16.jpg.
+%  -> Renomme tes 16 fichiers ainsi, OU remplace les noms dans le document.
+%  Formats acceptes par pdflatex : .jpg, .png, .pdf
+%==============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+%------------------------------------------------------------------ Encodage et langue
+\usepackage[utf8]{inputenc}      % saisie des caracteres accentues
+\usepackage[T1]{fontenc}         % bonne gestion des accents a l'affichage
+\usepackage{lmodern}             % police vectorielle nette
+\usepackage[french]{babel}       % regles typographiques francaises
+
+%------------------------------------------------------------------ Mise en page
+\usepackage[a4paper,margin=2.5cm]{geometry}  % marges
+\usepackage{setspace}            % interligne
+\onehalfspacing                  % interligne 1,5
+\usepackage{microtype}           % justification plus propre
+
+%------------------------------------------------------------------ Images et tableaux
+\usepackage{graphicx}            % insertion des images
+\usepackage{subcaption}          % plusieurs images cote a cote
+\usepackage{float}               % option [H] pour fixer la position des figures
+\usepackage{booktabs}            % tableaux soignes
+
+%------------------------------------------------------------------ Couleurs et liens
+\usepackage{xcolor}
+\definecolor{vertfeuille}{RGB}{34,110,45}   % vert pour les titres
+\usepackage[colorlinks=true,linkcolor=vertfeuille,urlcolor=vertfeuille]{hyperref}
+
+%------------------------------------------------------------------ Titres de section en vert
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{vertfeuille}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{vertfeuille}}{\thesubsection}{1em}{}
+
+%------------------------------------------------------------------ En-tete et pied de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Energie et planting d'arbres}
+\fancyhead[R]{\small\leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%------------------------------------------------------------------ CHEMIN DES IMAGES
+% Toutes les images sont cherchees dans ce dossier (barres obliques " / ").
+% La barre finale est obligatoire.
+\graphicspath{{C:/Users/LENOVO/OneDrive/PLANTING/}}
+
+%------------------------------------------------------------------ Commande pratique
+% \photo{nom_du_fichier}{legende} insere une image centree, large de 80 % du texte.
+\newcommand{\photo}[2]{%
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{#1}
+    \caption{#2}
+  \end{figure}}
+
+%==============================================================================
+\begin{document}
+
+%------------------------------------------------------------------ PAGE DE TITRE
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\Huge\bfseries\color{vertfeuille} Energie et planting d'arbres\par}
+  \vspace{0.5cm}
+  {\Large Vers un environnement durable\par}
+  \vspace{2cm}
+
+  % Image de couverture (la premiere photo).
+  \includegraphics[width=0.7\textwidth]{photo1.jpg}
+
+  \vfill
+  {\large Presente par : \textbf{KOUAME Koffi Fidele}\par}
+  \vspace{0.3cm}
+  {\large Date : \today\par}
+\end{titlepage}
+
+%------------------------------------------------------------------ TABLE DES MATIERES
+\tableofcontents
+\newpage
+
+%==============================================================================
+\section{Introduction}
+%==============================================================================
+Le rechauffement climatique et la demande croissante en energie poussent a
+rechercher des solutions durables. Le planting d'arbres est l'une des reponses
+les plus accessibles : en absorbant le dioxyde de carbone, les arbres limitent
+l'effet de serre tout en soutenant les besoins energetiques des populations,
+notamment a travers le bois-energie gere de facon responsable.
+
+Ce rapport presente une activite de planting d'arbres, ses objectifs, son
+deroulement et ses resultats, illustres par une serie de photographies.
+
+%==============================================================================
+\section{Contexte et objectifs}
+%==============================================================================
+
+\subsection{Lien entre energie et arbres}
+Les arbres jouent un double role. D'une part, ils stockent le carbone et
+regulent le climat local. D'autre part, ils constituent une source d'energie
+renouvelable lorsqu'ils sont exploites de maniere durable (bois de chauffe,
+charbon de bois ameliore, biomasse). Planter des arbres, c'est donc investir a
+la fois dans le climat et dans l'energie de demain.
+
+\subsection{Objectifs de l'activite}
+\begin{itemize}
+  \item Sensibiliser la communaute a la protection de l'environnement.
+  \item Contribuer a la reduction des emissions de gaz a effet de serre.
+  \item Mettre en place une ressource durable de bois-energie.
+  \item Restaurer les sols et preserver la biodiversite.
+\end{itemize}
+
+%------------------------------------------------------------------ Photo de contexte
+\photo{photo2.jpg}{Site choisi pour le planting avant le debut des travaux.}
+
+%==============================================================================
+\section{Materiel et methode}
+%==============================================================================
+
+\subsection{Materiel utilise}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Materiel} & \textbf{Usage} \\
+    \midrule
+    Plants (jeunes arbres)   & Mise en terre \\
+    Beches et pelles         & Creusage des trous \\
+    Arrosoirs                & Arrosage apres plantation \\
+    Gants                    & Protection des mains \\
+    Piquets et cordes        & Alignement des plants \\
+    \bottomrule
+  \end{tabular}
+  \caption{Materiel mobilise pour l'activite.}
+\end{table}
+
+\subsection{Etapes du planting}
+\begin{enumerate}
+  \item Preparation et nettoyage du terrain.
+  \item Marquage des emplacements a intervalles reguliers.
+  \item Creusage des trous de plantation.
+  \item Mise en terre des plants et rebouchage.
+  \item Arrosage et protection des jeunes arbres.
+\end{enumerate}
+
+%------------------------------------------------------------------ Photos de preparation
+\photo{photo3.jpg}{Preparation du terrain par l'equipe.}
+\photo{photo4.jpg}{Marquage et alignement des emplacements.}
+
+%==============================================================================
+\section{Deroulement de l'activite}
+%==============================================================================
+Cette section rassemble les photographies prises pendant le planting. Les images
+sont presentees deux par deux pour faciliter la lecture.
+
+%------------------------------------------------------------------ GALERIE 2 PAR 2
+% Chaque bloc "figure" contient deux images cote a cote (deux "subfigure").
+% Pour ajouter ou retirer une image, copie ou supprime un bloc "subfigure".
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo5.jpg}
+    \caption{Creusage des trous.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo6.jpg}
+    \caption{Mise en terre d'un plant.}
+  \end{subfigure}
+  \caption{Les premieres etapes de la plantation.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo7.jpg}
+    \caption{Rebouchage et tassement du sol.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo8.jpg}
+    \caption{Arrosage des jeunes arbres.}
+  \end{subfigure}
+  \caption{La mise en terre et l'arrosage.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo9.jpg}
+    \caption{Travail en equipe.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo10.jpg}
+    \caption{Participation de la communaute.}
+  \end{subfigure}
+  \caption{La mobilisation des participants.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo11.jpg}
+    \caption{Plant protege par un tuteur.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo12.jpg}
+    \caption{Rangee d'arbres fraichement plantes.}
+  \end{subfigure}
+  \caption{Les arbres mis en place.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo13.jpg}
+    \caption{Vue d'ensemble du site.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo14.jpg}
+    \caption{Suivi et entretien.}
+  \end{subfigure}
+  \caption{Le site apres la plantation.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo15.jpg}
+    \caption{Photo de groupe des participants.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering\includegraphics[width=\textwidth]{photo16.jpg}
+    \caption{Les arbres, source d'energie durable.}
+  \end{subfigure}
+  \caption{La cloture de l'activite.}
+\end{figure}
+
+%==============================================================================
+\section{Resultats et impact}
+%==============================================================================
+\begin{itemize}
+  \item \textbf{Nombre d'arbres plantes :} 16 (a adapter selon ton bilan reel).
+  \item \textbf{Superficie couverte :} a completer.
+  \item \textbf{Participants mobilises :} a completer.
+\end{itemize}
+
+A terme, les arbres plantes contribueront a capter le dioxyde de carbone,
+a ameliorer la qualite de l'air et a fournir une ressource de bois-energie
+renouvelable, a condition d'un entretien regulier.
+
+%==============================================================================
+\section{Conclusion}
+%==============================================================================
+Le planting d'arbres relie directement la protection de l'environnement et la
+question de l'energie. Chaque arbre plante est un pas vers un cadre de vie plus
+sain et une energie plus durable. La reussite du projet repose desormais sur le
+suivi et l'entretien des plants dans la duree.
+
+\end{document}
