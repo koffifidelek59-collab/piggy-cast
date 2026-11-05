@@ -17,11 +17,11 @@ AFFIRMATIONS = [
     "Deux angles supplémentaires sont deux angles dont la somme des mesures est 90°.",
     "Un angle de mesure 35° et un angle de mesure 55° sont complémentaires.",
     "Un angle de mesure 120° et un angle de mesure 70° sont supplémentaires.",
-    "Le supplément d'un angle de mesure 60° a pour mesure 120°.",
+    "Deux angles complémentaires ont la même mesure.",
     "Deux angles complémentaires peuvent être tous les deux obtus.",
-    "Le complément d'un angle de mesure 45° a pour mesure 45°.",
+    "Un angle de mesure 100° et un angle de mesure 80° sont supplémentaires.",
 ]
-REPONSES = ["VRAI", "FAUX", "VRAI", "VRAI", "FAUX", "VRAI", "FAUX", "VRAI", "FAUX", "VRAI"]
+REPONSES = ["VRAI", "FAUX", "VRAI", "VRAI", "FAUX", "VRAI", "FAUX", "FAUX", "FAUX", "VRAI"]
 JUSTIF = [
     "C'est exactement la définition des angles adjacents (les trois conditions).",
     "Il faut aussi un côté commun et être de part et d'autre de ce côté.",
@@ -30,9 +30,9 @@ JUSTIF = [
     "La somme de deux angles supplémentaires est 180°, pas 90°.",
     "35° + 55° = 90°.",
     "120° + 70° = 190° ≠ 180°.",
-    "180° − 60° = 120°.",
+    "Par exemple 30° et 60° sont complémentaires sans être égaux ; ils sont égaux seulement si chacun mesure 45°.",
     "Un angle obtus dépasse 90° ; deux tels angles dépasseraient 90° à eux seuls.",
-    "90° − 45° = 45°.",
+    "100° + 80° = 180°.",
 ]
 
 FONT = "Times New Roman"
