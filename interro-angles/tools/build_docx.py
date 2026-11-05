@@ -17,7 +17,7 @@ AFFIRMATIONS = [
     "Deux angles supplémentaires sont deux angles dont la somme des mesures est 90°.",
     "Un angle de mesure 35° et un angle de mesure 55° sont complémentaires.",
     "Un angle de mesure 120° et un angle de mesure 70° sont supplémentaires.",
-    "Deux angles complémentaires ont la même mesure.",
+    "Deux angles complémentaires ont toujours la même mesure.",
     "Deux angles complémentaires peuvent être tous les deux obtus.",
     "Un angle de mesure 100° et un angle de mesure 80° sont supplémentaires.",
 ]
