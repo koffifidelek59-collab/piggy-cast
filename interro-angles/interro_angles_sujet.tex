@@ -1,20 +1,20 @@
 %==============================================================================
 %  Interrogation n°2 - Mathematiques - Classe de 5e
 %  Theme : Angles (adjacents, complementaires, supplementaires)
+%  Mise en page : DEUX exemplaires du sujet sur une seule page A4
+%  (pour reduire le cout d'impression). Decouper au milieu.
 %  Compilation : pdflatex
 %==============================================================================
-\documentclass[12pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[french]{babel}
-\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[a4paper,top=1cm,bottom=1cm,left=1.4cm,right=1.4cm]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{array}
-\usepackage{tabularx}            % colonne qui s'adapte a la largeur
-\usepackage{booktabs}
-\renewcommand{\arraystretch}{1.5}
+\usepackage{tabularx}
 
 % Colonne centree de largeur fixe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
@@ -22,54 +22,47 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 
-\begin{document}
+%------------------------------------------------------------------ UN EXEMPLAIRE DU SUJET
+% Tout le sujet est place dans la commande \sujet pour etre imprime deux fois a l'identique.
+\newcommand{\sujet}{%
+\begingroup
+\renewcommand{\arraystretch}{1.25}
 
-%------------------------------------------------------------------ EN-TETE
-\begin{center}
-\begin{tabularx}{\textwidth}{|X|C{4.2cm}|}
+% --- En-tete
+\begin{tabularx}{\textwidth}{|X|C{3.8cm}|}
 \hline
-\textbf{Lycée Mixte 1 de Yamoussoukro} & \textbf{Année scolaire : 2025-2026} \\
-\textbf{Discipline : Mathématiques} & \textbf{Classe : 5\textsuperscript{e}} \\
-\textbf{Professeur : \dotfill} & \textbf{Durée : 15 min} \\
+\textbf{Lycée Mixte 1 de Yamoussoukro} & \textbf{Année scolaire : 2026-2027} \\
+\textbf{Discipline : Mathématiques} & \textbf{Classe : 5\textsuperscript{e}} \quad \textbf{Durée : 15 min} \\
 \hline
 \end{tabularx}
-\end{center}
-
-\vspace{0.4cm}
-\begin{center}
-{\Large\bfseries INTERROGATION ÉCRITE N\textsuperscript{o} 2}\\[2pt]
-{\large \textit{Thème : Les angles}}
-\end{center}
 
 \vspace{0.2cm}
-\noindent\textbf{Nom et prénoms :} \dotfill \hfill \textbf{Note :} \fbox{\rule{1.2cm}{0pt}\rule{0pt}{0.6cm}} / 10
-
-\vspace{0.5cm}
-\hrule
-\vspace{0.5cm}
-
-%------------------------------------------------------------------ CONSIGNE
-\textbf{Consigne.} Pour chacune des affirmations suivantes, mets une croix (\(\times\)) dans la case
-\textbf{VRAI} si l'affirmation est vraie, ou dans la case \textbf{FAUX} si elle est fausse.
-\textit{(Chaque réponse juste vaut 1 point.)}
-
-\vspace{0.4cm}
-
-%------------------------------------------------------------------ TABLEAU VRAI/FAUX
 \begin{center}
-\begin{tabularx}{\textwidth}{|C{0.8cm}|X|C{1.8cm}|C{1.8cm}|}
+{\large\bfseries INTERROGATION ÉCRITE N\textsuperscript{o} 2} \quad \textit{(Thème : Les angles)}
+\end{center}
+
+\vspace{0.1cm}
+\textbf{Nom et prénoms :} \dotfill \hfill \textbf{Note :} \fbox{\rule{1cm}{0pt}\rule{0pt}{0.45cm}} / 10
+
+\vspace{0.15cm}
+\textbf{Consigne.} Mets une croix (\(\times\)) dans la case \textbf{VRAI} si l'affirmation est vraie,
+ou dans la case \textbf{FAUX} si elle est fausse. \textit{(1 point par bonne réponse.)}
+
+\vspace{0.15cm}
+% --- Tableau Vrai/Faux
+\begin{tabularx}{\textwidth}{|C{0.6cm}|X|C{1.3cm}|C{1.3cm}|}
 \hline
 \textbf{N\textsuperscript{o}} & \centering\textbf{Affirmations} & \textbf{VRAI} & \textbf{FAUX} \\
 \hline
-1 & Deux angles adjacents ont le même sommet et un côté commun. & & \\
+1 & Deux angles adjacents ont le même sommet, un côté commun et sont situés de part et d'autre de ce côté commun. & & \\
 \hline
 2 & Si deux angles ont seulement un sommet commun, alors ils sont adjacents. & & \\
 \hline
 3 & Deux angles adjacents sont situés de part et d'autre de leur côté commun. & & \\
 \hline
-4 & Deux angles complémentaires sont deux angles dont la somme des mesures est égale à 90\degres. & & \\
+4 & Deux angles complémentaires sont deux angles dont la somme des mesures est 90\degres. & & \\
 \hline
-5 & Deux angles supplémentaires sont deux angles dont la somme des mesures est égale à 90\degres. & & \\
+5 & Deux angles supplémentaires sont deux angles dont la somme des mesures est 90\degres. & & \\
 \hline
 6 & Un angle de mesure 35\degres{} et un angle de mesure 55\degres{} sont complémentaires. & & \\
 \hline
@@ -82,11 +75,22 @@
 10 & Le complément d'un angle de mesure 45\degres{} a pour mesure 45\degres. & & \\
 \hline
 \end{tabularx}
-\end{center}
+\endgroup}
 
+%==============================================================================
+\begin{document}
+
+% --- Premier exemplaire
+\sujet
+
+% --- Ligne de decoupe au milieu de la page
 \vfill
 \begin{center}
-\textit{« Le travail bien fait est la clé de la réussite. » Bonne chance !}
+\scriptsize - - - - - - - - - - - - - - - - - - - - - - - - - - \ (découper ici) \ - - - - - - - - - - - - - - - - - - - - - - - - - -
 \end{center}
+\vfill
+
+% --- Second exemplaire (identique)
+\sujet
 
 \end{document}
