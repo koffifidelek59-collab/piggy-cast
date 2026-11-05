@@ -1,0 +1,4 @@
+name,co2_emissions,color,nice_name
+AC,0.0,#898781,AC grid
+thermal,0.7,#eb6834,Thermal (HFO/diesel)
+solar,0.0,#eda100,Solar PV

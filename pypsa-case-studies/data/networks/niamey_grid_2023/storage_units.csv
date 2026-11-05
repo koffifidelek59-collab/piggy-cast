@@ -1,0 +1,2 @@
+name,bus,p_nom_extendable,carrier,capital_cost,cyclic_state_of_charge,max_hours,efficiency_store,efficiency_dispatch
+battery,3,True,battery,157353.976676423,True,4.0,0.95,0.95

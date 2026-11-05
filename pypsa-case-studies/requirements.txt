@@ -1,0 +1,14 @@
+# Power-system modelling
+pypsa>=1.4,<1.5          # networks, AC load flow, linear and security-constrained OPF
+highspy>=1.7             # HiGHS solver (LP and QP), used by n.optimize()
+pvlib>=0.12              # solar position, transposition, cell temperature, PV output
+# Data and figures
+pandas>=3.0
+numpy>=2.0
+matplotlib>=3.9
+requests>=2.31           # Renewables.ninja / NASA POWER downloads
+# Notebooks
+jupytext>=1.16           # scripts/csXX_*.py  ->  notebooks/csXX_*.ipynb
+nbconvert>=7.16
+nbformat>=5.10
+ipykernel>=6.29

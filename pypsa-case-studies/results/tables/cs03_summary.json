@@ -1,0 +1,28 @@
+{
+  "V5_A": 0.9231258342189713,
+  "V5_B": 0.9187343955234282,
+  "q_min_cap": 11.813778569921851,
+  "dV_per_MVAr_pct": 0.2771199909433424,
+  "remedies": {
+    "none": 0.9187343955234282,
+    "capacitor 15 MVAr at bus 5": 0.9587512106855348,
+    "plant set point 1.05 p.u.": 0.9531523830300976,
+    "second circuit on line 4-5": 0.955734480773942,
+    "PV inverters Q-at-night, 1.03 p.u.": 0.9415132046742208,
+    "SVC/STATCOM at bus 5 (0.97 p.u.)": 0.97
+  },
+  "losses": {
+    "none": 3.1770751059312765,
+    "capacitor 15 MVAr at bus 5": 2.7183673622952007,
+    "plant set point 1.05 p.u.": 2.955858392787299,
+    "second circuit on line 4-5": 2.483863070850923,
+    "PV inverters Q-at-night, 1.03 p.u.": 3.2168513391475457,
+    "SVC/STATCOM at bus 5 (0.97 p.u.)": 2.6599460681286224
+  },
+  "q_pv_night": 68.1189112789663,
+  "q_svc": 17.897726202263943,
+  "hours_below_without": 24,
+  "hours_below_with": 0,
+  "loss_day_without": 59.74644531955627,
+  "loss_day_with": 50.12525951742889
+}

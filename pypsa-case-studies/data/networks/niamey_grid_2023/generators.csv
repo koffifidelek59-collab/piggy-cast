@@ -1,0 +1,4 @@
+name,bus,p_nom,p_nom_extendable,carrier,marginal_cost,capital_cost
+thermal,1,200.0,False,thermal,180.0,0.0
+import,1,80.0,False,import,70.0,0.0
+pv,3,0.0,True,solar,0.0,86943.0232415745

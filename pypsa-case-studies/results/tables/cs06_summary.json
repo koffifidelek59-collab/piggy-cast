@@ -1,0 +1,69 @@
+{
+  "hosting_capacity": {
+    "unity PF, original set points": [
+      3,
+      "overvoltage"
+    ],
+    "unity PF, set points -0.03": [
+      66,
+      "overvoltage"
+    ],
+    "PF 0.95 absorbing, set points -0.03": [
+      129,
+      "undervoltage"
+    ]
+  },
+  "load14_noon": 13.771446532941857,
+  "scenarios": {
+    "S0 no PV": {
+      "max V14 (p.u.)": 1.05721606715024,
+      "highest customer V (p.u.)": 1.0733826610253718,
+      "hours with overvoltage": 15.0,
+      "hours of reverse flow": 0.0,
+      "max export from bus 14 (MW)": 0.0,
+      "max loading (%)": 58.99248580129195,
+      "daily losses (MWh)": 210.96315374574982,
+      "battery energy shifted (MWh)": 0.0
+    },
+    "S1 PV 50 MW": {
+      "max V14 (p.u.)": 1.0732810593562878,
+      "highest customer V (p.u.)": 1.0733826610253718,
+      "hours with overvoltage": 20.0,
+      "hours of reverse flow": 9.0,
+      "max export from bus 14 (MW)": 25.178196404084552,
+      "max loading (%)": 58.99248580129195,
+      "daily losses (MWh)": 186.19783980545185,
+      "battery energy shifted (MWh)": 0.0
+    },
+    "S2 PV 100 MW": {
+      "max V14 (p.u.)": 1.0980556402108457,
+      "highest customer V (p.u.)": 1.0980556402108457,
+      "hours with overvoltage": 20.0,
+      "hours of reverse flow": 10.0,
+      "max export from bus 14 (MW)": 62.41556685477089,
+      "max loading (%)": 58.99248580129195,
+      "daily losses (MWh)": 180.22922156930645,
+      "battery energy shifted (MWh)": 0.0
+    },
+    "S3 PV 100 + battery": {
+      "max V14 (p.u.)": 1.0803852524620228,
+      "highest customer V (p.u.)": 1.0803852524620228,
+      "hours with overvoltage": 24.0,
+      "hours of reverse flow": 14.0,
+      "max export from bus 14 (MW)": 37.51158137311976,
+      "max loading (%)": 51.13258921547278,
+      "daily losses (MWh)": 166.57883296209206,
+      "battery energy shifted (MWh)": 189.99999999999972
+    },
+    "S4 S3 + PF 0.95 + set points": {
+      "max V14 (p.u.)": 1.0458999341636006,
+      "highest customer V (p.u.)": 1.0458999341636006,
+      "hours with overvoltage": 0.0,
+      "hours of reverse flow": 14.0,
+      "max export from bus 14 (MW)": 37.43597174904924,
+      "max loading (%)": 51.270769259115255,
+      "daily losses (MWh)": 183.75940456366962,
+      "battery energy shifted (MWh)": 189.99999999999972
+    }
+  }
+}

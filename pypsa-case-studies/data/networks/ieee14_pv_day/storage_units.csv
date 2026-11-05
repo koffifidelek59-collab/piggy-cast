@@ -1,0 +1,2 @@
+name,bus,p_nom,p_set,carrier,max_hours,efficiency_store,efficiency_dispatch
+battery14,14,50.0,0.0,battery,4.0,0.95,0.95

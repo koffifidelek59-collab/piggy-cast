@@ -1,0 +1,6 @@
+name,v_nom,x,y,v_mag_pu_set,description
+1,132.0,0.0,1.0,1.02,Power station and interconnector
+2,132.0,1.5,2.0,1.0,Substation
+3,132.0,1.5,0.0,1.0,Solar PV site
+4,132.0,3.0,1.0,1.0,Urban area
+5,132.0,5.5,1.0,1.0,Remote industrial zone

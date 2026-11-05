@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+slides/node_modules/
+slides/apply_theme.js
+report/*.aux
+report/*.log
+report/*.toc
+report/*.out

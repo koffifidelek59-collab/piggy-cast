@@ -1,0 +1,5 @@
+name,co2_emissions,color,nice_name
+AC,0.0,#898781,AC grid
+diesel,0.74,#eb6834,Diesel genset
+solar,0.0,#eda100,Solar PV
+battery,0.0,#1baf7a,Battery

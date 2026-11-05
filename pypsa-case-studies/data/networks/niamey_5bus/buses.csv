@@ -1,0 +1,6 @@
+name,v_nom,x,y,v_mag_pu_set,v_mag_pu_min,v_mag_pu_max,description
+1,132.0,0.0,1.0,1.02,0.95,1.05,Thermal power station (slack)
+2,132.0,1.5,2.0,1.0,0.95,1.05,Substation
+3,132.0,1.5,0.0,1.0,0.95,1.05,Solar PV plant
+4,132.0,3.0,1.0,1.0,0.95,1.05,Urban area
+5,132.0,5.5,1.0,1.0,0.95,1.05,Remote industrial zone

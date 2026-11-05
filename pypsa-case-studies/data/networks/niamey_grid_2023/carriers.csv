@@ -1,0 +1,6 @@
+name,co2_emissions,color,nice_name
+AC,0.0,#898781,AC grid
+thermal,0.7,#eb6834,Thermal (HFO/diesel)
+import,0.0,#6250d6,Import interconnector
+solar,0.0,#eda100,Solar PV
+battery,0.0,#1baf7a,Battery

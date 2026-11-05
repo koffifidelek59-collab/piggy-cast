@@ -1,0 +1,4 @@
+name,bus,control,p_nom,p_min_pu,p_set,q_set,carrier,marginal_cost,marginal_cost_quadratic,q_min,q_max
+G1,1,Slack,250.0,0.04,72.3,27.03,AC,5.0,0.11,-300.0,300.0
+G2,2,PV,300.0,0.03333333333333333,163.0,6.54,AC,1.2,0.085,-300.0,300.0
+G3,3,PV,270.0,0.037037037037037035,85.0,-10.95,AC,1.0,0.1225,-300.0,300.0

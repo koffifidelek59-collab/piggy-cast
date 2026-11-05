@@ -1,0 +1,4 @@
+,hosting capacity (MW),first limit reached
+"unity PF, original set points",3,overvoltage
+"unity PF, set points -0.03",66,overvoltage
+"PF 0.95 absorbing, set points -0.03",129,undervoltage

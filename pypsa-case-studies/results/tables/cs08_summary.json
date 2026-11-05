@@ -1,0 +1,99 @@
+{
+  "demand_mwh": 12445.210102919387,
+  "peak_mw": 2.0,
+  "cf": 0.21196287457777627,
+  "base": {
+    "diesel only": {
+      "diesel price ($/l)": 1.0,
+      "PV (kW)": 0.0,
+      "battery (kW)": 0.0,
+      "battery (kWh)": 0.0,
+      "renewable share (%)": 0.0,
+      "PV curtailed (%)": 0.0,
+      "diesel (MWh)": 12445.210102919387,
+      "diesel (1000 litres)": 3484.658828817429,
+      "genset running hours": 8760.0,
+      "CO2 (t)": 9209.455476160347,
+      "cost (k$/yr)": 3733.563030875816,
+      "LCOE ($/kWh)": 0.3
+    },
+    "optimal hybrid": {
+      "diesel price ($/l)": 1.0,
+      "PV (kW)": 7508.010166403332,
+      "battery (kW)": 4482.683844672078,
+      "battery (kWh)": 17930.73537868831,
+      "renewable share (%)": 93.81189331591352,
+      "PV curtailed (%)": 11.666112618723389,
+      "diesel (MWh)": 770.1228782273605,
+      "diesel (1000 litres)": 215.63440590366096,
+      "genset running hours": 773.0,
+      "CO2 (t)": 569.8909298882468,
+      "cost (k$/yr)": 2028.3799863563322,
+      "LCOE ($/kWh)": 0.16298479250908882
+    }
+  },
+  "sensitivity": [
+    {
+      "diesel price ($/l)": 0.8,
+      "PV (kW)": 7232.8769643482065,
+      "battery (kW)": 4369.8153350752655,
+      "battery (kWh)": 17479.261340301062,
+      "renewable share (%)": 92.17257745760458,
+      "PV curtailed (%)": 9.965879376639087,
+      "diesel (MWh)": 974.1391810443854,
+      "diesel (1000 litres)": 272.7589706924279,
+      "genset running hours": 978,
+      "CO2 (t)": 720.8629939728452,
+      "cost (k$/yr)": 1980.421947697763,
+      "LCOE ($/kWh)": 0.15913125863846986,
+      "LCOE diesel only ($/kWh)": 0.24400000000000005
+    },
+    {
+      "diesel price ($/l)": 1.0,
+      "PV (kW)": 7508.010166403332,
+      "battery (kW)": 4482.683844672078,
+      "battery (kWh)": 17930.73537868831,
+      "renewable share (%)": 93.81189331591352,
+      "PV curtailed (%)": 11.666112618723389,
+      "diesel (MWh)": 770.1228782273605,
+      "diesel (1000 litres)": 215.63440590366096,
+      "genset running hours": 773,
+      "CO2 (t)": 569.8909298882468,
+      "cost (k$/yr)": 2028.3799863563322,
+      "LCOE ($/kWh)": 0.16298479250908882,
+      "LCOE diesel only ($/kWh)": 0.3
+    },
+    {
+      "diesel price ($/l)": 1.2,
+      "PV (kW)": 7718.315843323554,
+      "battery (kW)": 4623.658867483403,
+      "battery (kWh)": 18494.63546993361,
+      "renewable share (%)": 95.11569983770282,
+      "PV curtailed (%)": 12.834414566099106,
+      "diesel (MWh)": 607.8614172551172,
+      "diesel (1000 litres)": 170.20119683143284,
+      "genset running hours": 608,
+      "CO2 (t)": 449.81744876878673,
+      "cost (k$/yr)": 2067.4608287761234,
+      "LCOE ($/kWh)": 0.16612502414010188,
+      "LCOE diesel only ($/kWh)": 0.356
+    },
+    {
+      "diesel price ($/l)": 1.4,
+      "PV (kW)": 7924.373022021724,
+      "battery (kW)": 4776.819707012917,
+      "battery (kWh)": 19107.27882805167,
+      "renewable share (%)": 96.29768043539364,
+      "PV curtailed (%)": 14.008010486725686,
+      "diesel (MWh)": 460.76144849675006,
+      "diesel (1000 litres)": 129.01320557909003,
+      "genset running hours": 476,
+      "CO2 (t)": 340.96347188759506,
+      "cost (k$/yr)": 2096.8210083695203,
+      "LCOE ($/kWh)": 0.1684841791363289,
+      "LCOE diesel only ($/kWh)": 0.412
+    }
+  ],
+  "dry_day": "2023-03-22",
+  "wet_day": "2023-08-21"
+}

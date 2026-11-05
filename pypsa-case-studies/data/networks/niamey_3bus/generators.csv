@@ -1,0 +1,3 @@
+name,bus,control,p_nom,p_set,carrier,marginal_cost
+thermal,1,Slack,150.0,0.0,thermal,180.0
+pv,3,PQ,30.0,,solar,0.0
