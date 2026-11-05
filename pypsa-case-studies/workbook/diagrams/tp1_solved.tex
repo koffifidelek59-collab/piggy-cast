@@ -1,0 +1,33 @@
+\documentclass[border=6pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}\usepackage{tgtermes}
+\usepackage{amsmath,amssymb,xcolor,tikz}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\tikzset{
+  bus/.style={line width=2.4pt},
+  ln/.style={line width=0.8pt},
+  gen/.style={circle, draw, line width=0.8pt, minimum size=9mm, inner sep=0pt, font=\small},
+  load/.style={-{Stealth[length=2.6mm]}, line width=0.8pt},
+  lab/.style={font=\footnotesize, fill=white, inner sep=1.5pt},
+  res/.style={font=\footnotesize\bfseries, inner sep=1pt},
+}
+
+
+\begin{document}
+\begin{tikzpicture}
+  \draw[bus] (-0.9,0) -- (0.9,0) node[right, font=\small] {1};
+  \draw[bus] (5.2,2.2) -- (7.0,2.2) node[right, font=\small] {3};
+  \draw[bus] (5.2,-2.0) -- (7.0,-2.0) node[right, font=\small] {2};
+  \node[gen] (g) at (0,1.4) {G}; \draw[ln] (g) -- (0,0);
+  \node[gen] (pv) at (6.1,3.25) {PV}; \draw[ln] (pv) -- (6.1,2.2);
+  \draw[load] (6.1,-2.0) -- (6.1,-3.0);
+  \draw[ln] (0.6,0) -- (5.5,2.2); \draw[ln] (0.6,0) -- (5.5,-2.0); \draw[ln] (6.7,-2.0) -- (6.7,2.2);
+  \node[lab] at (3.0,1.05) {0.9 MW};
+  \node[lab] at (3.0,-1.0) {19.3 MW $\rightarrow$};
+  \node[lab, rotate=90] at (7.15,0.1) {$\leftarrow$ 30.9 MW};
+  \node[res] at (0,-0.45) {1.020 p.u.};
+  \node[res] at (6.1,1.75) {1.017 p.u.};
+  \node[res] at (5.1,-2.45) {1.011 p.u.};
+  \node[font=\footnotesize, align=center] at (-1.8,1.4) {$P = 20.2$ MW\\$Q = 17.5$ MVAr};
+\end{tikzpicture}
+\end{document}

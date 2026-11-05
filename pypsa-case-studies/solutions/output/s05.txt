@@ -1,0 +1,25 @@
+1. Economic dispatch (MW): {'G1': 101.4, 'G2': 153.5, 'G3': 107.3} | cost 6429 $/h
+   LMP 27.30 $/MWh at every bus
+2. Intact grid: max loading 72.5 %, min |V| 0.984 p.u.
+3. N-1 screening of the economic dispatch
+        worst line  loading (%)  min |V|
+outage                                 
+L4-5         L5-6       87.393    0.909
+L5-6         L6-7       84.310    0.947
+L6-7         L5-6       84.768    0.962
+L7-8         L6-7       95.906    0.952
+L8-9         L5-6      112.720    0.916
+L9-4         L6-7       97.432    0.751
+4. Secure dispatch (MW): {'G1': 119.8, 'G2': 142.7, 'G3': 99.8} | extra cost 54.1 $/h
+   LMP 25.46-31.35 $/MWh
+   N-1 screening of the secure dispatch
+        worst line  loading (%)  min |V|
+outage                                 
+L4-5         L5-6       87.418    0.908
+L5-6         L6-7       78.365    0.950
+L6-7         L5-6       78.941    0.962
+L7-8         L6-7       95.921    0.951
+L8-9         L5-6       98.656    0.920
+L9-4         L6-7      106.100    0.747
+5. Loss of 9-4: 62 MVAr at bus 9 restores 0.950 p.u.; worst loading 98.5 %
+6. Line 5-6 uprated to 200 MVA, economic dispatch: worst N-1 loading 97.4 %

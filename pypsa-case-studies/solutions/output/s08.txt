@@ -1,0 +1,21 @@
+        bus  p_nom  p_nom_extendable  marginal_cost  capital_cost
+name                                                             
+thermal   1  200.0             False          180.0           0.0
+import    1   80.0             False           70.0           0.0
+pv        3    0.0              True            0.0       86943.0
+        bus  max_hours  capital_cost  efficiency_store
+name                                                  
+battery   3        4.0     157353.98              0.95
+demand 726 GWh, peak 105 MW; PV capacity factor 19.5%
+                   PV MW  bat MW  bat MWh  solar %  curtail %  CO2 kt  cost M$  $/MWh  max line %
+A imports            0.0     0.0      0.0      0.0        0.0    35.2     56.4   77.6        55.4
+B islanded           0.0     0.0      0.0      0.0        0.0   508.2    130.7  180.0        55.4
+C islanded+100PV   100.0     0.0      0.0     23.0        2.3   391.3    109.3  150.5        62.5
+D0 islanded+optPV  153.9     0.0      0.0     29.0       20.0   360.9    106.2  146.2        63.8
+D islanded+opt     333.5   195.7    782.9     71.5        8.9   163.0    101.7  140.1        67.3
+E imports+opt      143.9     8.3     33.4     33.0        2.6     6.8     49.0   67.5        67.1
+
+AC load flow of scenario D at the evening peak and at the solar peak
+                      min |V|  max |V|  max loading %  solar MW
+2023-05-04 19:00:00    0.968     1.02         69.291    -0.000
+2023-04-16 13:00:00    0.972     1.02         64.263   273.442

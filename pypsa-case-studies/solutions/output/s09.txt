@@ -1,0 +1,10 @@
+                PV MW  battery MWh  renewable %  diesel Ml     CO2 t  $/kWh
+diesel only     0.000        0.000        0.000      3.485  9209.455  0.300
+optimal hybrid  7.508       17.931       93.812      0.216   569.891  0.163
+
+Sensitivity to the diesel price ($/litre)
+     PV MW  battery MWh  renewable %  diesel Ml    CO2 t  $/kWh  $/kWh diesel only
+0.8  7.233       17.479       92.173      0.273  720.863  0.159              0.244
+1.0  7.508       17.931       93.812      0.216  569.891  0.163              0.300
+1.2  7.718       18.495       95.116      0.170  449.817  0.166              0.356
+1.4  7.924       19.107       96.298      0.129  340.963  0.168              0.412

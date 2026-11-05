@@ -7,9 +7,10 @@ it, checks it, and interprets the result as an expert would present it.
 
 | Deliverable | File |
 |---|---|
-| Expert report (16 pages, English) | [`report/PyPSA_Case_Studies_Report.pdf`](report/PyPSA_Case_Studies_Report.pdf) |
-| Executive briefing for managers (14 slides) | [`slides/PyPSA_Case_Studies_Briefing.pptx`](slides/PyPSA_Case_Studies_Briefing.pptx) |
-| Executed notebooks (code, outputs, interpretation) | [`notebooks/`](notebooks/) |
+| **Case-study workbook** (35 pages, same layout as the per-unit method sheet): every exercise with its original diagram, the 8-step scientific approach, the full PyPSA code and its printed output | [`workbook/PyPSA_Case_Study_Workbook.pdf`](workbook/PyPSA_Case_Study_Workbook.pdf) |
+| **Presentation** (21 slides, layout of the course slides) | [`slides/PyPSA_Case_Studies_Presentation.pptx`](slides/PyPSA_Case_Studies_Presentation.pptx) |
+| Self-contained PyPSA solution scripts (one per exercise) and their outputs | [`solutions/`](solutions/) |
+| Executed notebooks with extended analyses and figures | [`notebooks/`](notebooks/) |
 | PyPSA datasets (CSV folders) | [`data/networks/`](data/networks/) |
 | Figures and result tables | [`results/`](results/) |
 
@@ -35,6 +36,7 @@ conda activate pypsa-cases
 python scripts/build_datasets.py         # rebuild the PyPSA CSV datasets
 python scripts/run_all.py                # execute every case study -> notebooks/, results/
 python scripts/run_all.py cs07           # re-run a single case study
+python solutions/s02_ex5_load_flow.py    # run one exercise solution (from the repository root)
 ```
 
 Open a dataset directly:
@@ -57,6 +59,8 @@ src/pscs/            shared library
   demand.py          temperature-driven demand model
   assumptions.py     cost assumptions (one place to change them)
   plotting.py        colour-blind-safe chart style
+solutions/           s01 ... s09: one self-contained PyPSA script per exercise, outputs in solutions/output/
+workbook/            LaTeX source and PDF of the workbook, original exercise figures, one-line diagrams
 scripts/             cs00 ... cs08 case-study sources (jupytext percent format),
                      build_datasets.py, run_all.py, fetch_renewables_ninja.py
 data/raw/            MATPOWER case9/case14, PGLib case14, NASA POWER 2023, reference results
@@ -64,8 +68,7 @@ data/networks/       ex5_3bus, niamey_3bus, niamey_5bus, ieee9, ieee14, ieee14_p
                      niamey_grid_2023 (8760 h), agadez_minigrid_2023 (8760 h)
 notebooks/           executed notebooks
 results/             figures/ (PNG) and tables/ (CSV, JSON summaries)
-report/              LaTeX source and PDF of the report
-slides/              deck generator (pptxgenjs) and the PowerPoint
+slides/              presentation generator (pptxgenjs) and the PowerPoint
 ```
 
 ## Data and honesty notes

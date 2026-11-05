@@ -1,0 +1,20 @@
+1. Hosting capacity of bus 14 at noon (1 MW steps)
+   unity PF, original set points         :    3 MW (limited by overvoltage)
+   unity PF, set points -0.03 p.u.       :   66 MW (limited by overvoltage)
+   PF 0.95 absorbing, set points -0.03   :  129 MW (limited by undervoltage)
+
+2. Flow into bus 14 at noon (original set points, MW)
+   PV   0 MW: 9->14    8.79, 13->14    5.13, total   13.92
+   PV  10 MW: 9->14    2.69, 13->14    1.11, total    3.80
+   PV  14 MW: 9->14    0.27, 13->14   -0.48, total   -0.21
+   PV  20 MW: 9->14   -3.33, 13->14   -2.86, total   -6.19
+   PV  50 MW: 9->14  -20.96, 13->14  -14.43, total  -35.39
+   PV 100 MW: 9->14  -48.96, 13->14  -32.83, total  -81.79
+
+3. Scenarios over 16 March 2023
+                         max V14  overV h  reverse h  export MW  loss MWh
+S0 no PV                   1.057     15.0        0.0      0.000   210.963
+S1 PV 50                   1.073     20.0        9.0     25.178   186.198
+S2 PV 100                  1.098     20.0       10.0     62.416   180.229
+S3 PV 100 + battery        1.080     24.0       14.0     37.512   166.579
+S4 S3 + PF0.95 + setpts    1.046      0.0       14.0     37.436   183.759

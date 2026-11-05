@@ -1,0 +1,22 @@
+1. Voltage profile (p.u.)
+name                       1       2       3       4       5
+A: PV 40 MW             1.02  0.9965  1.0060  0.9806  0.9231
+B: evening peak, no PV  1.02  0.9944  1.0003  0.9765  0.9187
+losses A 2.68 MW, B 3.18 MW
+
+2. Remedies at the evening peak
+                   V5 (p.u.)  V1 (p.u.)  losses (MW)  Q of device (MVAr)
+none                  0.9187       1.02       3.1771                 NaN
+capacitor 15 MVAr     0.9588       1.02       2.7184                 NaN
+set point 1.05        0.9532       1.05       2.9559                 NaN
+second circuit        0.9557       1.02       2.4839                 NaN
+PV Q-at-night         0.9415       1.02       3.2169             68.1189
+SVC at bus 5          0.9700       1.02       2.6599             17.8977
+
+3. Smallest capacitor bank: 11.8 MVAr -> choose 15 MVAr (3 x 5 MVAr steps)
+
+4. Real day 4 May 2023 (every 3 h)
+ snapshot       0      3      6      9      12     15     18    21
+V5 no bank  0.932  0.936  0.934  0.928  0.925  0.924  0.921  0.92
+V5 15 MVAr  0.973  0.976  0.974  0.969  0.966  0.965  0.961  0.96
+hours < 0.95 p.u.: no bank 24, with bank 0
